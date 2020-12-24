@@ -18,4 +18,12 @@ public class ExpenseReportShould {
 				"1456"
 		))).isEqualTo(514579);
 	}
+
+	@Test
+	void find_2019_and_1_and_multiply_them() {
+		assertThat(new ExpenseReport().findAnswer(Arrays.asList(
+				"2019",
+				"1"
+		))).isEqualTo(2019);
+	}
 }
