@@ -8,7 +8,7 @@ import java.util.List;
 public class ExpenseReport {
 	List<Expense> expenses;
 
-	public List<Expense> find2ExpensesSumming2020() {
-		return expenses;
+	public ExpensePair find2ExpensesSumming2020() {
+		return new ExpensePair(expenses.get(0), expenses.get(1));
 	}
 }
