@@ -16,7 +16,7 @@ public class ExpenseReportShould {
 				"299",
 				"675",
 				"1456"
-		))).isEqualTo(514579);
+		))).isEqualTo(new ExpenseReportAnswer(514579));
 	}
 
 	@Test
@@ -24,6 +24,6 @@ public class ExpenseReportShould {
 		assertThat(new ExpenseReport().findAnswer(Arrays.asList(
 				"2019",
 				"1"
-		))).isEqualTo(2019);
+		))).isEqualTo(new ExpenseReportAnswer(2019));
 	}
 }
