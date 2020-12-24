@@ -16,6 +16,6 @@ public class ExpenseReport {
 	}
 
 	private boolean sumTo2020(Expense a, Expense b) {
-		return Integer.parseInt(a.getExpense()) + Integer.parseInt(b.getExpense()) == 2020;
+		return new ExpensePair(a, b).sumIs2020();
 	}
 }

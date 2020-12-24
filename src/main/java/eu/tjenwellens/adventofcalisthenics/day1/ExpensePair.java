@@ -10,4 +10,8 @@ public class ExpensePair {
 	public ExpenseMultiplication multiply() {
 		return first.multiply(second);
 	}
+
+	public boolean sumIs2020() {
+		return first.add(second).equals(new ExpenseSum(2020));
+	}
 }
