@@ -6,11 +6,9 @@ import lombok.Value;
 public class Expense {
 	String expense;
 
-	public ExpenseMultiplication multiply(Expense other) {
-		if(expense.equals("2018")) {
-			return new ExpenseMultiplication(2018 * 2);
-		}
-		final int answer = Integer.parseInt(expense);
-		return new ExpenseMultiplication(answer);
+	public ExpenseMultiplication multiply(Expense otherExpense) {
+		final int me = Integer.parseInt(expense);
+		final int other = Integer.parseInt(otherExpense.expense);
+		return new ExpenseMultiplication(me * other);
 	}
 }
