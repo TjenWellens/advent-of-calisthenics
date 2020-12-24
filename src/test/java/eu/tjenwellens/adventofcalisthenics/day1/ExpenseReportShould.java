@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ExpenseReportShould {
 	@Test
 	void find_two_entries_that_sum_to_2020_and_multiply_them() {
-		assertThat(new ExpenseReport().findAnswer(Arrays.asList(
+		assertThat(new ExpenseReportFixer().findAnswer(Arrays.asList(
 				"1721",
 				"979",
 				"366",
@@ -21,7 +21,7 @@ public class ExpenseReportShould {
 
 	@Test
 	void find_2019_and_1_and_multiply_them() {
-		assertThat(new ExpenseReport().findAnswer(Arrays.asList(
+		assertThat(new ExpenseReportFixer().findAnswer(Arrays.asList(
 				"2019",
 				"1"
 		))).isEqualTo(new ExpenseReportAnswer(2019));
