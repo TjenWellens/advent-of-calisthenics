@@ -10,10 +10,14 @@ public class ExpenseReport {
 
 	public ExpensePair find2ExpensesSumming2020() {
 		if (expenses.size() > 2) {
-			if (Integer.parseInt(expenses.get(0).getExpense()) + Integer.parseInt(expenses.get(1).getExpense()) != 2020) {
+			if (!sumTo2020(expenses.get(0), expenses.get(1))) {
 				return new ExpensePair(expenses.get(0), expenses.get(2));
 			}
 		}
 		return new ExpensePair(expenses.get(0), expenses.get(1));
+	}
+
+	private boolean sumTo2020(Expense a, Expense b) {
+		return Integer.parseInt(a.getExpense()) + Integer.parseInt(b.getExpense()) == 2020;
 	}
 }
