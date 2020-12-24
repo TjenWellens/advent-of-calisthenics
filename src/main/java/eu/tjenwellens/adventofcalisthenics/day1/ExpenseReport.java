@@ -13,13 +13,23 @@ public class ExpenseReport {
 		if (firstPair.sumIs2020()) {
 			return firstPair;
 		}
-		return getAnotherPair();
+		final ExpensePair anotherPair = getAnotherPair();
+		if(anotherPair.sumIs2020()){
+			return anotherPair;
+		}
+		return getYetAnotherPair();
 	}
 
 	private ExpensePair getAnotherPair() {
 		final Expense firstExpense = expenses.get(0);
 		final Expense third = expenses.get(2);
 		return new ExpensePair(firstExpense, third);
+	}
+
+	private ExpensePair getYetAnotherPair() {
+		final Expense firstExpense = expenses.get(0);
+		final Expense fourth = expenses.get(3);
+		return new ExpensePair(firstExpense, fourth);
 	}
 
 	private ExpensePair getFirstPair() {
