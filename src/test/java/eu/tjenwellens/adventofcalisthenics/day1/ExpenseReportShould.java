@@ -2,8 +2,13 @@ package eu.tjenwellens.adventofcalisthenics.day1;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -78,5 +83,15 @@ public class ExpenseReportShould {
 				"1"
 		)))
 				.isEqualTo(new ExpenseMultiplication(2019));
+	}
+
+	@Test
+	void part1_input() throws IOException {
+		final Path path = Paths.get("src", "test", "resources", "day-1-input.txt");
+		final ExpenseReport report = new ExpenseReport(Files.lines(path)
+				.map(Expense::new)
+				.collect(Collectors.toList()));
+		assertThat(expenseReportFixer.findAnswer(report))
+				.isEqualTo(new ExpenseMultiplication(889779));
 	}
 }
