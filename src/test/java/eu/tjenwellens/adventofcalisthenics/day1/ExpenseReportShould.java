@@ -67,4 +67,17 @@ public class ExpenseReportShould {
 		assertThat(expenseReportFixer.findAnswer(expenseReport))
 				.isEqualTo(new ExpenseMultiplication(2019));
 	}
+
+	@Test
+	void find_2019_and_3_and_2_and_1_return_2019() {
+		final ExpenseReportFixer expenseReportFixer = new ExpenseReportFixer();
+		final ExpenseReport expenseReport = new ExpenseReport(Arrays.asList(
+				new Expense("2019"),
+				new Expense("3"),
+				new Expense("2"),
+				new Expense("1")
+		));
+		assertThat(expenseReportFixer.findAnswer(expenseReport))
+				.isEqualTo(new ExpenseMultiplication(2019));
+	}
 }
