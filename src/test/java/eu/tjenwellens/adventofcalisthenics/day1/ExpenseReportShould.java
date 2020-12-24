@@ -1,5 +1,6 @@
 package eu.tjenwellens.adventofcalisthenics.day1;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -85,6 +86,7 @@ public class ExpenseReportShould {
 				.isEqualTo(new ExpenseMultiplication(2019));
 	}
 
+	@Disabled
 	@Test
 	void part1_input() throws IOException {
 		final Path path = Paths.get("src", "test", "resources", "day-1-input.txt");
