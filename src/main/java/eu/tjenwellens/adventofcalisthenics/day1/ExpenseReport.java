@@ -9,13 +9,23 @@ public class ExpenseReport {
 	List<Expense> expenses;
 
 	public ExpensePair find2ExpensesSumming2020() {
-		final Expense firstExpense = expenses.get(0);
-		final Expense second = expenses.get(1);
-		final ExpensePair firstPair = new ExpensePair(firstExpense, second);
+		final ExpensePair firstPair = getFirstPair();
 		if (firstPair.sumIs2020()) {
 			return firstPair;
 		}
-		return new ExpensePair(firstExpense, expenses.get(2));
+		return getAnotherPair();
+	}
+
+	private ExpensePair getAnotherPair() {
+		final Expense firstExpense = expenses.get(0);
+		final Expense third = expenses.get(2);
+		return new ExpensePair(firstExpense, third);
+	}
+
+	private ExpensePair getFirstPair() {
+		final Expense firstExpense = expenses.get(0);
+		final Expense second = expenses.get(1);
+		return new ExpensePair(firstExpense, second);
 	}
 
 }
