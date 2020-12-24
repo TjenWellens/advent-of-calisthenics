@@ -9,12 +9,10 @@ public class ExpenseReport {
 	List<Expense> expenses;
 
 	public ExpensePair find2ExpensesSumming2020() {
-		if (expenses.size() > 2) {
-			if (!sumTo2020(expenses.get(0), expenses.get(1))) {
-				return new ExpensePair(expenses.get(0), expenses.get(2));
-			}
+		if (sumTo2020(expenses.get(0), expenses.get(1))) {
+			return new ExpensePair(expenses.get(0), expenses.get(1));
 		}
-		return new ExpensePair(expenses.get(0), expenses.get(1));
+		return new ExpensePair(expenses.get(0), expenses.get(2));
 	}
 
 	private boolean sumTo2020(Expense a, Expense b) {
