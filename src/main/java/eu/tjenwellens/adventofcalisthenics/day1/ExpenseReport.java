@@ -2,6 +2,8 @@ package eu.tjenwellens.adventofcalisthenics.day1;
 
 import lombok.Value;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Value
@@ -9,33 +11,22 @@ public class ExpenseReport {
 	List<Expense> expenses;
 
 	public ExpensePair find2ExpensesSumming2020() {
-		final ExpensePair firstPair = getFirstPair();
-		if (firstPair.sumIs2020()) {
-			return firstPair;
+		for (ExpensePair pair : getAllPairs()) {
+			if (pair.sumIs2020()) {
+				return pair;
+			}
 		}
-		final ExpensePair anotherPair = getAnotherPair();
-		if(anotherPair.sumIs2020()){
-			return anotherPair;
+		throw new RuntimeException("Can't find a pair summing to 2020");
+	}
+
+	private List<ExpensePair> getAllPairs() {
+		final List<ExpensePair> result = new LinkedList<>();
+		for (Expense first : expenses) {
+			for (Expense second : expenses) {
+				final ExpensePair pair = new ExpensePair(first, second);
+				result.add(pair);
+			}
 		}
-		return getYetAnotherPair();
+		return result;
 	}
-
-	private ExpensePair getAnotherPair() {
-		final Expense firstExpense = expenses.get(0);
-		final Expense third = expenses.get(2);
-		return new ExpensePair(firstExpense, third);
-	}
-
-	private ExpensePair getYetAnotherPair() {
-		final Expense firstExpense = expenses.get(0);
-		final Expense fourth = expenses.get(3);
-		return new ExpensePair(firstExpense, fourth);
-	}
-
-	private ExpensePair getFirstPair() {
-		final Expense firstExpense = expenses.get(0);
-		final Expense second = expenses.get(1);
-		return new ExpensePair(firstExpense, second);
-	}
-
 }
