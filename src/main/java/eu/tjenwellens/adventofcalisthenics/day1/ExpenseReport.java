@@ -22,8 +22,7 @@ public class ExpenseReport {
 	private List<ExpensePair> getAllPairs() {
 		final List<ExpensePair> result = new LinkedList<>();
 		for (Expense first : expenses) {
-			final List<ExpensePair> permutationsForOneExpense = permutationsFor(first);
-			result.addAll(permutationsForOneExpense);
+			result.addAll(permutationsFor(first));
 		}
 		return result;
 	}
@@ -31,8 +30,7 @@ public class ExpenseReport {
 	private List<ExpensePair> permutationsFor(Expense first) {
 		final List<ExpensePair> permutations = new LinkedList<>();
 		for (Expense second : expenses) {
-			final ExpensePair pair = new ExpensePair(first, second);
-			permutations.add(pair);
+			permutations.add(new ExpensePair(first, second));
 		}
 		return permutations;
 	}
