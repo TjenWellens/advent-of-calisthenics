@@ -12,6 +12,8 @@ public class ExpensePair {
 	}
 
 	public boolean sumIs2020() {
-		return first.add(second).equals(new ExpenseSum(2020));
+		final ExpenseSum sum = first.add(second);
+		final ExpenseSum _2020 = new ExpenseSum(2020);
+		return sum.equals(_2020);
 	}
 }
