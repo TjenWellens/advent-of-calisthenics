@@ -7,9 +7,9 @@ public class ExpensePair {
 	Expense first;
 	Expense second;
 
-	public ExpenseReportAnswer multiply() {
+	public ExpenseMultiplication multiply() {
 		final String expense = first.getExpense();
 		final int answer = Integer.parseInt(expense);
-		return new ExpenseReportAnswer(answer);
+		return new ExpenseMultiplication(answer);
 	}
 }

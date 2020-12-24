@@ -19,7 +19,7 @@ public class ExpenseReportShould {
 				new Expense("1456")
 		));
 		assertThat(expenseReportFixer.findAnswer(expenseReport))
-				.isEqualTo(new ExpenseReportAnswer(514579));
+				.isEqualTo(new ExpenseMultiplication(514579));
 	}
 
 	@Test
@@ -30,6 +30,6 @@ public class ExpenseReportShould {
 				new Expense("1")
 		));
 		assertThat(expenseReportFixer.findAnswer(expenseReport))
-				.isEqualTo(new ExpenseReportAnswer(2019));
+				.isEqualTo(new ExpenseMultiplication(2019));
 	}
 }
