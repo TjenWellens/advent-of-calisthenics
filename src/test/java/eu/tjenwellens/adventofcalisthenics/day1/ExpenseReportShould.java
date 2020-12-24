@@ -32,4 +32,15 @@ public class ExpenseReportShould {
 		assertThat(expenseReportFixer.findAnswer(expenseReport))
 				.isEqualTo(new ExpenseMultiplication(2019));
 	}
+
+	@Test
+	void findAnswer_2018_and_2_returns_multiplied() {
+		final ExpenseReportFixer expenseReportFixer = new ExpenseReportFixer();
+		final ExpenseReport expenseReport = new ExpenseReport(Arrays.asList(
+				new Expense("2018"),
+				new Expense("2")
+		));
+		assertThat(expenseReportFixer.findAnswer(expenseReport))
+				.isEqualTo(new ExpenseMultiplication(2018 * 2));
+	}
 }
