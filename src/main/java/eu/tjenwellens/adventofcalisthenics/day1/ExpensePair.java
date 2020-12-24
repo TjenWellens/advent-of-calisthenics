@@ -8,6 +8,8 @@ public class ExpensePair {
 	Expense second;
 
 	public ExpenseReportAnswer multiply() {
-		return new ExpenseReportAnswer(Integer.parseInt(first.getExpense()));
+		final String expense = first.getExpense();
+		final int answer = Integer.parseInt(expense);
+		return new ExpenseReportAnswer(answer);
 	}
 }
