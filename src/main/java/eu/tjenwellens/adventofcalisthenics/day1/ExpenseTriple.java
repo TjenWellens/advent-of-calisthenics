@@ -12,10 +12,8 @@ public class ExpenseTriple {
 	}
 
 	public boolean sumIs2020() {
-		final Expense first = getPair().getFirst();
-		final Expense second = getPair().getSecond();
 		final Expense third = getThird();
-		return first.add(second).getSum() +
-				third.getValueForMultiplication() == 2020;
+		final ExpenseSum sum = pair.sum();
+		return third.add(sum).getSum() == 2020;
 	}
 }

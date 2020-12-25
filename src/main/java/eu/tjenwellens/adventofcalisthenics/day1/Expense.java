@@ -16,4 +16,9 @@ public class Expense implements MultiplyableExpense {
 		final int other = Integer.parseInt(otherExpense.expense);
 		return new ExpenseSum(me + other);
 	}
+
+	public ExpenseSum add(ExpenseSum sum) {
+		final int me = Integer.parseInt(expense);
+		return new ExpenseSum(me + sum.getSum());
+	}
 }
