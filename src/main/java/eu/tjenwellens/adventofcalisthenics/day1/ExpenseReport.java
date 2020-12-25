@@ -30,12 +30,18 @@ public class ExpenseReport {
 	public List<ExpenseTriple> getAllTriples() {
 		final List<ExpenseTriple> result = new LinkedList<>();
 		for (ExpensePair pair : getAllPairs()) {
-			for (Expense third : expenses) {
-				if (third == pair.getFirst() || third == pair.getSecond()) continue;
-				result.add(new ExpenseTriple(pair, third));
-			}
+			result.addAll(permutationsFor(pair));
 		}
 		return result;
+	}
+
+	private List<ExpenseTriple> permutationsFor(ExpensePair pair) {
+		final List<ExpenseTriple> permutations = new LinkedList<>();
+		for (Expense third : expenses) {
+			if (third == pair.getFirst() || third == pair.getSecond()) continue;
+			permutations.add(new ExpenseTriple(pair, third));
+		}
+		return permutations;
 	}
 
 	private List<ExpensePair> getAllPairs() {
