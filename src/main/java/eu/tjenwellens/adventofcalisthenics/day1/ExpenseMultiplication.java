@@ -3,6 +3,11 @@ package eu.tjenwellens.adventofcalisthenics.day1;
 import lombok.Value;
 
 @Value
-public class ExpenseMultiplication {
+public class ExpenseMultiplication implements MultiplyableExpense{
 	int answer;
+
+	@Override
+	public int getValueForMultiplication() {
+		return answer;
+	}
 }
