@@ -2,7 +2,6 @@ package eu.tjenwellens.adventofcalisthenics.day1;
 
 import lombok.Value;
 
-import java.util.LinkedList;
 import java.util.List;
 
 @Value
@@ -10,7 +9,7 @@ public class ExpenseReport {
 	List<Expense> expenses;
 
 	public ExpensePair find2ExpensesSumming2020() {
-		for (ExpensePair pair : getAllPairs()) {
+		for (ExpensePair pair : new ExpensePairPermutations(expenses).getAllPairs()) {
 			if (pair.sumIs2020()) {
 				return pair;
 			}
@@ -19,7 +18,7 @@ public class ExpenseReport {
 	}
 
 	public ExpenseTriple find3ExpensesSumming2020() {
-		for (ExpenseTriple triple : getAllTriples()) {
+		for (ExpenseTriple triple : new ExpenseTriplePermutations(expenses).getAllTriples()) {
 			if (triple.sumIs2020()) {
 				return triple;
 			}
@@ -27,37 +26,4 @@ public class ExpenseReport {
 		throw new RuntimeException("Can't find a pair summing to 2020");
 	}
 
-	public List<ExpenseTriple> getAllTriples() {
-		final List<ExpenseTriple> result = new LinkedList<>();
-		for (ExpensePair pair : getAllPairs()) {
-			result.addAll(permutationsFor(pair));
-		}
-		return result;
-	}
-
-	private List<ExpenseTriple> permutationsFor(ExpensePair pair) {
-		final List<ExpenseTriple> permutations = new LinkedList<>();
-		for (Expense third : expenses) {
-			if (pair.containsExactExpenseObject(third)) continue;
-			permutations.add(new ExpenseTriple(pair, third));
-		}
-		return permutations;
-	}
-
-	private List<ExpensePair> getAllPairs() {
-		final List<ExpensePair> result = new LinkedList<>();
-		for (Expense first : expenses) {
-			result.addAll(permutationsFor(first));
-		}
-		return result;
-	}
-
-	private List<ExpensePair> permutationsFor(Expense first) {
-		final List<ExpensePair> permutations = new LinkedList<>();
-		for (Expense second : expenses) {
-			if (first == second) continue;
-			permutations.add(new ExpensePair(first, second));
-		}
-		return permutations;
-	}
 }
