@@ -18,6 +18,6 @@ public class ExpensePair {
 	}
 
 	public ExpenseSum sum() {
-		return first.add(second);
+		return first.sum(second);
 	}
 }

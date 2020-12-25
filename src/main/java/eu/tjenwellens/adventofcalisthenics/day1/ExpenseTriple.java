@@ -14,6 +14,6 @@ public class ExpenseTriple {
 	public boolean sumIs2020() {
 		final Expense third = getThird();
 		final ExpenseSum sum = pair.sum();
-		return third.add(sum).getSum() == 2020;
+		return third.sum(sum).getSum() == 2020;
 	}
 }
