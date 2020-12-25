@@ -19,13 +19,23 @@ public class ExpenseReport {
 	}
 
 	public ExpenseTriple find3ExpensesSumming2020() {
-		if (sumIs2020(getFirstTriple())) {
-			return getFirstTriple();
+		for (ExpenseTriple triple : getAllTriples()) {
+			if (sumIs2020(triple)) {
+				return triple;
+			}
 		}
-		if (sumIs2020(getYetAnotherTriple())) {
-			return getYetAnotherTriple();
+		throw new RuntimeException("Can't find a pair summing to 2020");
+	}
+
+	public List<ExpenseTriple> getAllTriples() {
+		if (expenses.size() == 3) {
+			return List.of(getFirstTriple());
 		}
-		return getAnotherTriple();
+		return List.of(
+				getFirstTriple(),
+				getYetAnotherTriple(),
+				getAnotherTriple()
+		);
 	}
 
 	public boolean sumIs2020(ExpenseTriple triple) {
