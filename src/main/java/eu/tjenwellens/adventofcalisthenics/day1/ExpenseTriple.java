@@ -12,9 +12,7 @@ public class ExpenseTriple {
 	}
 
 	public boolean sumIs2020() {
-		final Expense third = getThird();
-		final ExpenseSum sum = pair.sum();
 		final ExpenseSum _2020 = new ExpenseSum(2020);
-		return third.sum(sum).equals(_2020);
+		return pair.sum().sum(third).equals(_2020);
 	}
 }
