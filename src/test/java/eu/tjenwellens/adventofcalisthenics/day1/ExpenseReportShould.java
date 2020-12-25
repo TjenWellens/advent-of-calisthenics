@@ -1,6 +1,8 @@
 package eu.tjenwellens.adventofcalisthenics.day1;
 
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -37,53 +39,70 @@ public class ExpenseReportShould {
 				.isEqualTo(new ExpenseMultiplication(514579));
 	}
 
-	@Test
-	void find_2019_and_1_and_multiply_them() {
-		assertThat(expenseReportFixer.findAnswer(report(
-				"2019",
-				"1"
-		)))
-				.isEqualTo(new ExpenseMultiplication(2019));
-	}
+	@Nested
+	@DisplayName("multiply the result")
+	class Multiply {
+		@Test
+		void given_1_times_2019() {
+			assertThat(expenseReportFixer.findAnswer(report(
+					"2019",
+					"1"
+			)))
+					.isEqualTo(new ExpenseMultiplication(2019));
+		}
 
-	@Test
-	void findAnswer_2018_and_2_returns_multiplied() {
-		assertThat(expenseReportFixer.findAnswer(report(
-				"2018",
-				"2"
-		)))
-				.isEqualTo(new ExpenseMultiplication(2018 * 2));
+		@Test
+		void given_2_times_2018() {
+			assertThat(expenseReportFixer.findAnswer(report(
+					"2018",
+					"2"
+			)))
+					.isEqualTo(new ExpenseMultiplication(2018 * 2));
+		}
 	}
+	
+	@Nested
+	@DisplayName("find entries summing to 2020")
+	class FindSumTo2020 {
+		@Test
+		void given_2019_and_1() {
+			assertThat(expenseReportFixer.findAnswer(report(
+					"2019",
+					"1"
+			)))
+					.isEqualTo(new ExpenseMultiplication(2019));
+		}
 
-	@Test
-	void find_2019_and_3_and_1_return_2019() {
-		assertThat(expenseReportFixer.findAnswer(report(
-				"2019",
-				"3",
-				"1"
-		)))
-				.isEqualTo(new ExpenseMultiplication(2019));
-	}
+		@Test
+		void given_2019_and_3_and_1() {
+			assertThat(expenseReportFixer.findAnswer(report(
+					"2019",
+					"3",
+					"1"
+			)))
+					.isEqualTo(new ExpenseMultiplication(2019));
+		}
 
-	@Test
-	void find_2019_and_1_and_3_return_2019() {
-		assertThat(expenseReportFixer.findAnswer(report(
-				"2019",
-				"1",
-				"3"
-		)))
-				.isEqualTo(new ExpenseMultiplication(2019));
-	}
+		@Test
+		void given_2019_and_1_and_3() {
+			assertThat(expenseReportFixer.findAnswer(report(
+					"2019",
+					"1",
+					"3"
+			)))
+					.isEqualTo(new ExpenseMultiplication(2019));
+		}
 
-	@Test
-	void find_2019_and_3_and_2_and_1_return_2019() {
-		assertThat(expenseReportFixer.findAnswer(report(
-				"2019",
-				"3",
-				"2",
-				"1"
-		)))
-				.isEqualTo(new ExpenseMultiplication(2019));
+		@Test
+		void given_2019_and_3_and_2_and_1() {
+			assertThat(expenseReportFixer.findAnswer(report(
+					"2019",
+					"3",
+					"2",
+					"1"
+			)))
+					.isEqualTo(new ExpenseMultiplication(2019));
+		}
 	}
 
 	@Disabled
