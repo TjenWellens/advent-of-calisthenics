@@ -42,12 +42,6 @@ public class ExpenseReport {
 		);
 	}
 
-	public boolean sumIs2020(ExpenseTriple triple) {
-		return triple.getPair().getFirst().getValueForMultiplication() +
-				triple.getPair().getSecond().getValueForMultiplication() +
-				triple.getThird().getValueForMultiplication() == 2020;
-	}
-
 	private ExpenseTriple getAnotherTriple() {
 		return new ExpenseTriple(new ExpensePair(expenses.get(0), expenses.get(2)), expenses.get(3));
 	}
