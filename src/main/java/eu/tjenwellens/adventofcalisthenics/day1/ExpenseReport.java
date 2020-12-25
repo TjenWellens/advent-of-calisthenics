@@ -31,6 +31,10 @@ public class ExpenseReport {
 		if (expenses.size() == 3) {
 			return List.of(getFirstTriple());
 		}
+		return getAllTriplesWhenLargerThan3();
+	}
+
+	private List<ExpenseTriple> getAllTriplesWhenLargerThan3() {
 		return List.of(
 				getFirstTriple(),
 				getYetAnotherTriple(),
