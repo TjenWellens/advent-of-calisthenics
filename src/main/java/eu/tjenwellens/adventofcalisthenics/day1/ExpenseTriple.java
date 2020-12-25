@@ -4,11 +4,10 @@ import lombok.Value;
 
 @Value
 public class ExpenseTriple {
-	Expense first;
-	Expense second;
+	ExpensePair pair;
 	Expense third;
 
 	public ExpenseMultiplication multiply() {
-		return first.multiply(second);
+		return pair.multiply();
 	}
 }

@@ -20,7 +20,7 @@ public class ExpenseReport {
 	}
 
 	public ExpenseTriple find3ExpensesSumming2020() {
-		return new ExpenseTriple(expenses.get(0), expenses.get(1), expenses.get(2));
+		return new ExpenseTriple(new ExpensePair(expenses.get(0), expenses.get(1)), expenses.get(2));
 	}
 
 	private List<ExpensePair> getAllPairs() {
