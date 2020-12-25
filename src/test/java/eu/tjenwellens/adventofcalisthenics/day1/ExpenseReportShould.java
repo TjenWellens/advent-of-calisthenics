@@ -52,6 +52,16 @@ public class ExpenseReportShould {
 				.isEqualTo(new ExpenseMultiplication(241861950));
 	}
 
+	@Test
+	void multiply_given_1_times_1_times_2018() {
+		assertThat(expenseReportFixer.findThreeMultiplied(report(
+				"2018",
+				"1",
+				"1"
+		)))
+				.isEqualTo(new ExpenseMultiplication(2018));
+	}
+
 	@Nested
 	@DisplayName("multiply the result")
 	class Multiply {
