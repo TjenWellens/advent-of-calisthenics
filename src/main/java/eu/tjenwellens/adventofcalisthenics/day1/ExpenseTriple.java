@@ -8,6 +8,6 @@ public class ExpenseTriple {
 	Expense third;
 
 	public ExpenseMultiplication multiply() {
-		return pair.multiply();
+		return new ExpenseMultiplication(pair.multiply().getAnswer() * Integer.parseInt(third.getExpense()));
 	}
 }
