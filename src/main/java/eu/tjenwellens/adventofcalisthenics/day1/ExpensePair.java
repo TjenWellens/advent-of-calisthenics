@@ -20,4 +20,8 @@ public class ExpensePair {
 	public ExpenseSum sum() {
 		return first.sum(second);
 	}
+
+	public boolean containsExactExpenseObject(Expense other) {
+		return other == first || other == second;
+	}
 }

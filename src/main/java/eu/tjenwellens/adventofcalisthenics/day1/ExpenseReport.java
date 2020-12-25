@@ -38,7 +38,7 @@ public class ExpenseReport {
 	private List<ExpenseTriple> permutationsFor(ExpensePair pair) {
 		final List<ExpenseTriple> permutations = new LinkedList<>();
 		for (Expense third : expenses) {
-			if (third == pair.getFirst() || third == pair.getSecond()) continue;
+			if (pair.containsExactExpenseObject(third)) continue;
 			permutations.add(new ExpenseTriple(pair, third));
 		}
 		return permutations;
