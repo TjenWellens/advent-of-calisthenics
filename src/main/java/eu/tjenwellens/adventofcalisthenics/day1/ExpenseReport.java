@@ -20,7 +20,7 @@ public class ExpenseReport {
 
 	public ExpenseTriple find3ExpensesSumming2020() {
 		for (ExpenseTriple triple : getAllTriples()) {
-			if (sumIs2020(triple)) {
+			if (triple.sumIs2020()) {
 				return triple;
 			}
 		}
