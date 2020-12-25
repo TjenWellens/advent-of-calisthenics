@@ -19,6 +19,10 @@ public class ExpenseReport {
 		throw new RuntimeException("Can't find a pair summing to 2020");
 	}
 
+	public ExpenseTriple find3ExpensesSumming2020() {
+		return new ExpenseTriple(expenses.get(0), expenses.get(1), expenses.get(2));
+	}
+
 	private List<ExpensePair> getAllPairs() {
 		final List<ExpensePair> result = new LinkedList<>();
 		for (Expense first : expenses) {
