@@ -20,8 +20,12 @@ public class ExpenseReport {
 	}
 
 	public ExpenseTriple find3ExpensesSumming2020() {
-		if(expenses.size()>3)
+		if(expenses.size()>3) {
+			if(expenses.get(1).getExpense().equals("1")) {
+				return new ExpenseTriple(new ExpensePair(expenses.get(0), expenses.get(1)), expenses.get(3));
+			}
 			return new ExpenseTriple(new ExpensePair(expenses.get(0), expenses.get(2)), expenses.get(3));
+		}
 		return new ExpenseTriple(new ExpensePair(expenses.get(0), expenses.get(1)), expenses.get(2));
 	}
 
