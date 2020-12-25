@@ -39,6 +39,19 @@ public class ExpenseReportShould {
 				.isEqualTo(new ExpenseMultiplication(514579));
 	}
 
+	@Test
+	void find_three_entries_that_sum_to_2020_and_multiply_them() {
+		assertThat(expenseReportFixer.findThreeMultiplied(report(
+				"1721",
+				"979",
+				"366",
+				"299",
+				"675",
+				"1456"
+		)))
+				.isEqualTo(new ExpenseMultiplication(241861950));
+	}
+
 	@Nested
 	@DisplayName("multiply the result")
 	class Multiply {
@@ -60,7 +73,7 @@ public class ExpenseReportShould {
 					.isEqualTo(new ExpenseMultiplication(2018 * 2));
 		}
 	}
-	
+
 	@Nested
 	@DisplayName("find entries summing to 2020")
 	class FindSumTo2020 {

@@ -6,4 +6,8 @@ public class ExpenseReportFixer {
 		final ExpensePair expensesSumming2020 = expenseReport.find2ExpensesSumming2020();
 		return expensesSumming2020.multiply();
 	}
+
+	public ExpenseMultiplication findThreeMultiplied(ExpenseReport report) {
+		throw new UnsupportedOperationException();
+	}
 }
