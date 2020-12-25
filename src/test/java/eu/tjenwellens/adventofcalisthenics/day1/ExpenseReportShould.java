@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ExpenseReportShould {
 	final ExpenseReportFixer expenseReportFixer = new ExpenseReportFixer();
@@ -112,6 +113,22 @@ public class ExpenseReportShould {
 						"1"
 				)))
 						.isEqualTo(new ExpenseMultiplication(2018));
+			}
+		}
+
+		@Nested
+		@DisplayName("fail")
+		class Fail {
+
+			@Test
+			void given_2018_and_1_and_2() {
+				assertThatThrownBy(() -> expenseReportFixer.findThreeMultiplied(report(
+						"2018",
+						"1",
+						"2"
+				)))
+						.isInstanceOf(RuntimeException.class)
+						.hasMessage("Can't find a pair summing to 2020");
 			}
 		}
 	}
