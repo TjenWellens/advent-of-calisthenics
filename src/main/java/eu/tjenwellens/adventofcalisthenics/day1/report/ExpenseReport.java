@@ -24,7 +24,7 @@ public class ExpenseReport {
 				return triple;
 			}
 		}
-		throw new RuntimeException("Can't find a pair summing to 2020");
+		throw new RuntimeException("Can't find a triple summing to 2020");
 	}
 
 }

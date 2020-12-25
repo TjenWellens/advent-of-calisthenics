@@ -131,7 +131,7 @@ public class ExpenseReportShould {
 						"2"
 				)))
 						.isInstanceOf(RuntimeException.class)
-						.hasMessage("Can't find a pair summing to 2020");
+						.hasMessage("Can't find a triple summing to 2020");
 			}
 		}
 	}
