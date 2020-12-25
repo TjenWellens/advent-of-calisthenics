@@ -59,7 +59,7 @@ public class ExpenseReportShould {
 		@DisplayName("multiply the result")
 		class Multiply {
 			@Test
-			void given_1_times_1_times_2018() {
+			void given_2018_times_1_times_1() {
 				assertThat(expenseReportFixer.findThreeMultiplied(report(
 						"2018",
 						"1",
@@ -73,7 +73,7 @@ public class ExpenseReportShould {
 		@DisplayName("find entries summing to 2020")
 		class FindSumTo2020 {
 			@Test
-			void given_1_and_1_and_2018() {
+			void given_2018_and_1_and_1() {
 				assertThat(expenseReportFixer.findThreeMultiplied(report(
 						"2018",
 						"1",
@@ -91,7 +91,7 @@ public class ExpenseReportShould {
 		@DisplayName("multiply the result")
 		class Multiply {
 			@Test
-			void given_1_times_2019() {
+			void given_2019_times_1() {
 				assertThat(expenseReportFixer.findAnswer(report(
 						"2019",
 						"1"
@@ -100,7 +100,7 @@ public class ExpenseReportShould {
 			}
 
 			@Test
-			void given_2_times_2018() {
+			void given_2018_times_2() {
 				assertThat(expenseReportFixer.findAnswer(report(
 						"2018",
 						"2"
