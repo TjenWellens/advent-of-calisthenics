@@ -67,6 +67,16 @@ public class ExpenseReportShould {
 				)))
 						.isEqualTo(new ExpenseMultiplication(2018));
 			}
+
+			@Test
+			void given_2016_times_2_times_2() {
+				assertThat(expenseReportFixer.findThreeMultiplied(report(
+						"2016",
+						"2",
+						"2"
+				)))
+						.isEqualTo(new ExpenseMultiplication(2016 * 2 * 2));
+			}
 		}
 
 		@Nested
