@@ -9,7 +9,6 @@ public class ExpenseTriple {
 	Expense third;
 
 	public ExpenseMultiplication multiply() {
-		int _2018 = Integer.parseInt(first.getExpense());
-		return new ExpenseMultiplication(_2018);
+		return first.multiply(second);
 	}
 }
