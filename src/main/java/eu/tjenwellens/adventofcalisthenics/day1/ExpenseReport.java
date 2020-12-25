@@ -19,19 +19,13 @@ public class ExpenseReport {
 	}
 
 	public ExpenseTriple find3ExpensesSumming2020() {
-		if (sumIs2020(getFirstTriple())) {
+		if (expenses.size() <= 3) {
 			return getFirstTriple();
 		}
-		if (sumIs2020(getYetAnotherTriple())) {
+		if (expenses.get(1).getExpense().equals("1")) {
 			return getYetAnotherTriple();
 		}
 		return getAnotherTriple();
-	}
-
-	public boolean sumIs2020(ExpenseTriple triple) {
-		return triple.getPair().getFirst().getValueForMultiplication() +
-				triple.getPair().getSecond().getValueForMultiplication() +
-				triple.getThird().getValueForMultiplication() == 2020;
 	}
 
 	private ExpenseTriple getAnotherTriple() {
