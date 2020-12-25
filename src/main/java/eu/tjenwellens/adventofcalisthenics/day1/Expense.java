@@ -17,4 +17,9 @@ public class Expense {
 		final int other = Integer.parseInt(otherExpense.expense);
 		return new ExpenseSum(me + other);
 	}
+
+	public ExpenseMultiplication multiply(ExpenseMultiplication multiply) {
+		final int me = Integer.parseInt(expense);
+		return new ExpenseMultiplication(me * multiply.getAnswer());
+	}
 }
