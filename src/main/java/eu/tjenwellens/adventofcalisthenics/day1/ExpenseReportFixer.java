@@ -8,6 +8,7 @@ public class ExpenseReportFixer {
 	}
 
 	public ExpenseMultiplication findThreeMultiplied(ExpenseReport report) {
-		return new ExpenseMultiplication(2018);
+		int _2018 = Integer.parseInt(report.getExpenses().get(0).getExpense());
+		return new ExpenseMultiplication(_2018);
 	}
 }
