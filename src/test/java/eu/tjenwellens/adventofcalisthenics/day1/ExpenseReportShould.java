@@ -53,16 +53,34 @@ public class ExpenseReportShould {
 	}
 
 	@Nested
-	@DisplayName("when find 2 numbers summing to 2020")
+	@DisplayName("when find 3 numbers summing to 2020")
 	class _3Numbers {
-		@Test
-		void multiply_given_1_times_1_times_2018() {
-			assertThat(expenseReportFixer.findThreeMultiplied(report(
-					"2018",
-					"1",
-					"1"
-			)))
-					.isEqualTo(new ExpenseMultiplication(2018));
+		@Nested
+		@DisplayName("multiply the result")
+		class Multiply {
+			@Test
+			void given_1_times_1_times_2018() {
+				assertThat(expenseReportFixer.findThreeMultiplied(report(
+						"2018",
+						"1",
+						"1"
+				)))
+						.isEqualTo(new ExpenseMultiplication(2018));
+			}
+		}
+
+		@Nested
+		@DisplayName("find entries summing to 2020")
+		class FindSumTo2020 {
+			@Test
+			void given_1_and_1_and_2018() {
+				assertThat(expenseReportFixer.findThreeMultiplied(report(
+						"2018",
+						"1",
+						"1"
+				)))
+						.isEqualTo(new ExpenseMultiplication(2018));
+			}
 		}
 	}
 
