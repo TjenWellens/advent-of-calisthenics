@@ -2,7 +2,6 @@ package eu.tjenwellens.adventofcalisthenics.day1;
 
 import lombok.Value;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,12 +19,24 @@ public class ExpenseReport {
 	}
 
 	public ExpenseTriple find3ExpensesSumming2020() {
-		if(expenses.size()>3) {
-			if(expenses.get(1).getExpense().equals("1")) {
-				return new ExpenseTriple(new ExpensePair(expenses.get(0), expenses.get(1)), expenses.get(3));
+		if (expenses.size() > 3) {
+			if (expenses.get(1).getExpense().equals("1")) {
+				return getYetAnotherTriple();
 			}
-			return new ExpenseTriple(new ExpensePair(expenses.get(0), expenses.get(2)), expenses.get(3));
+			return getAnotherTriple();
 		}
+		return getFirstTriple();
+	}
+
+	private ExpenseTriple getAnotherTriple() {
+		return new ExpenseTriple(new ExpensePair(expenses.get(0), expenses.get(2)), expenses.get(3));
+	}
+
+	private ExpenseTriple getYetAnotherTriple() {
+		return new ExpenseTriple(new ExpensePair(expenses.get(0), expenses.get(1)), expenses.get(3));
+	}
+
+	private ExpenseTriple getFirstTriple() {
 		return new ExpenseTriple(new ExpensePair(expenses.get(0), expenses.get(1)), expenses.get(2));
 	}
 
