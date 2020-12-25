@@ -134,6 +134,17 @@ public class ExpenseReportShould {
 						.hasMessage("Can't find a triple summing to 2020");
 			}
 		}
+
+		@Disabled
+		@Test
+		void part2_input() throws IOException {
+			final Path path = Paths.get("src", "test", "resources", "day-1-input.txt");
+			final ExpenseReport report = new ExpenseReport(Files.lines(path)
+					.map(Expense::new)
+					.collect(Collectors.toList()));
+			assertThat(expenseReportFixer.findThreeMultiplied(report))
+					.isEqualTo(new ExpenseMultiplication(76110336));
+		}
 	}
 
 	@Nested
