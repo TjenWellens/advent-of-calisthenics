@@ -28,30 +28,14 @@ public class ExpenseReport {
 	}
 
 	public List<ExpenseTriple> getAllTriples() {
-		if (expenses.size() == 3) {
-			return List.of(getFirstTriple());
+		final List<ExpenseTriple> result = new LinkedList<>();
+		for (ExpensePair pair : getAllPairs()) {
+			for (Expense third : expenses) {
+				if (third == pair.getFirst() || third == pair.getSecond()) continue;
+				result.add(new ExpenseTriple(pair, third));
+			}
 		}
-		return getAllTriplesWhenLargerThan3();
-	}
-
-	private List<ExpenseTriple> getAllTriplesWhenLargerThan3() {
-		return List.of(
-				getFirstTriple(),
-				getYetAnotherTriple(),
-				getAnotherTriple()
-		);
-	}
-
-	private ExpenseTriple getAnotherTriple() {
-		return new ExpenseTriple(new ExpensePair(expenses.get(0), expenses.get(2)), expenses.get(3));
-	}
-
-	private ExpenseTriple getYetAnotherTriple() {
-		return new ExpenseTriple(new ExpensePair(expenses.get(0), expenses.get(1)), expenses.get(3));
-	}
-
-	private ExpenseTriple getFirstTriple() {
-		return new ExpenseTriple(new ExpensePair(expenses.get(0), expenses.get(1)), expenses.get(2));
+		return result;
 	}
 
 	private List<ExpensePair> getAllPairs() {
@@ -65,6 +49,7 @@ public class ExpenseReport {
 	private List<ExpensePair> permutationsFor(Expense first) {
 		final List<ExpensePair> permutations = new LinkedList<>();
 		for (Expense second : expenses) {
+			if (first == second) continue;
 			permutations.add(new ExpensePair(first, second));
 		}
 		return permutations;
