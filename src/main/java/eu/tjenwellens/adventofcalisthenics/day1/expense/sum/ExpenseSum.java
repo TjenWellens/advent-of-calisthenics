@@ -1,4 +1,4 @@
-package eu.tjenwellens.adventofcalisthenics.day1;
+package eu.tjenwellens.adventofcalisthenics.day1.expense.sum;
 
 import lombok.Value;
 

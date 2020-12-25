@@ -1,5 +1,8 @@
 package eu.tjenwellens.adventofcalisthenics.day1;
 
+import eu.tjenwellens.adventofcalisthenics.day1.expense.Expense;
+import eu.tjenwellens.adventofcalisthenics.day1.expense.multiply.ExpenseMultiplication;
+import eu.tjenwellens.adventofcalisthenics.day1.report.ExpenseReport;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

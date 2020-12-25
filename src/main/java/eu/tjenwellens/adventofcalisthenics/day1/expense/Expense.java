@@ -1,5 +1,7 @@
-package eu.tjenwellens.adventofcalisthenics.day1;
+package eu.tjenwellens.adventofcalisthenics.day1.expense;
 
+import eu.tjenwellens.adventofcalisthenics.day1.expense.multiply.MultiplyableExpense;
+import eu.tjenwellens.adventofcalisthenics.day1.expense.sum.SumableExpense;
 import lombok.Value;
 
 @Value

@@ -1,5 +1,6 @@
-package eu.tjenwellens.adventofcalisthenics.day1;
+package eu.tjenwellens.adventofcalisthenics.day1.report;
 
+import eu.tjenwellens.adventofcalisthenics.day1.expense.Expense;
 import lombok.Value;
 
 import java.util.List;

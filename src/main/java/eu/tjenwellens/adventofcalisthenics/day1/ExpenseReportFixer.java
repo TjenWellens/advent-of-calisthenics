@@ -1,6 +1,11 @@
 package eu.tjenwellens.adventofcalisthenics.day1;
 
 
+import eu.tjenwellens.adventofcalisthenics.day1.expense.multiply.ExpenseMultiplication;
+import eu.tjenwellens.adventofcalisthenics.day1.report.ExpensePair;
+import eu.tjenwellens.adventofcalisthenics.day1.report.ExpenseReport;
+import eu.tjenwellens.adventofcalisthenics.day1.report.ExpenseTriple;
+
 public class ExpenseReportFixer {
 	public ExpenseMultiplication findAnswer(ExpenseReport expenseReport) {
 		final ExpensePair expensesSumming2020 = expenseReport.find2ExpensesSumming2020();
