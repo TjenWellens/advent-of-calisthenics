@@ -52,90 +52,98 @@ public class ExpenseReportShould {
 				.isEqualTo(new ExpenseMultiplication(241861950));
 	}
 
-	@Test
-	void multiply_given_1_times_1_times_2018() {
-		assertThat(expenseReportFixer.findThreeMultiplied(report(
-				"2018",
-				"1",
-				"1"
-		)))
-				.isEqualTo(new ExpenseMultiplication(2018));
-	}
-
 	@Nested
-	@DisplayName("multiply the result")
-	class Multiply {
+	@DisplayName("when find 2 numbers summing to 2020")
+	class _3Numbers {
 		@Test
-		void given_1_times_2019() {
-			assertThat(expenseReportFixer.findAnswer(report(
-					"2019",
-					"1"
-			)))
-					.isEqualTo(new ExpenseMultiplication(2019));
-		}
-
-		@Test
-		void given_2_times_2018() {
-			assertThat(expenseReportFixer.findAnswer(report(
+		void multiply_given_1_times_1_times_2018() {
+			assertThat(expenseReportFixer.findThreeMultiplied(report(
 					"2018",
-					"2"
+					"1",
+					"1"
 			)))
-					.isEqualTo(new ExpenseMultiplication(2018 * 2));
+					.isEqualTo(new ExpenseMultiplication(2018));
 		}
 	}
 
 	@Nested
-	@DisplayName("find entries summing to 2020")
-	class FindSumTo2020 {
-		@Test
-		void given_2019_and_1() {
-			assertThat(expenseReportFixer.findAnswer(report(
-					"2019",
-					"1"
-			)))
-					.isEqualTo(new ExpenseMultiplication(2019));
+	@DisplayName("when find 2 numbers summing to 2020")
+	class _2Numbers {
+		@Nested
+		@DisplayName("multiply the result")
+		class Multiply {
+			@Test
+			void given_1_times_2019() {
+				assertThat(expenseReportFixer.findAnswer(report(
+						"2019",
+						"1"
+				)))
+						.isEqualTo(new ExpenseMultiplication(2019));
+			}
+
+			@Test
+			void given_2_times_2018() {
+				assertThat(expenseReportFixer.findAnswer(report(
+						"2018",
+						"2"
+				)))
+						.isEqualTo(new ExpenseMultiplication(2018 * 2));
+			}
 		}
 
-		@Test
-		void given_2019_and_3_and_1() {
-			assertThat(expenseReportFixer.findAnswer(report(
-					"2019",
-					"3",
-					"1"
-			)))
-					.isEqualTo(new ExpenseMultiplication(2019));
+		@Nested
+		@DisplayName("find entries summing to 2020")
+		class FindSumTo2020 {
+			@Test
+			void given_2019_and_1() {
+				assertThat(expenseReportFixer.findAnswer(report(
+						"2019",
+						"1"
+				)))
+						.isEqualTo(new ExpenseMultiplication(2019));
+			}
+
+			@Test
+			void given_2019_and_3_and_1() {
+				assertThat(expenseReportFixer.findAnswer(report(
+						"2019",
+						"3",
+						"1"
+				)))
+						.isEqualTo(new ExpenseMultiplication(2019));
+			}
+
+			@Test
+			void given_2019_and_1_and_3() {
+				assertThat(expenseReportFixer.findAnswer(report(
+						"2019",
+						"1",
+						"3"
+				)))
+						.isEqualTo(new ExpenseMultiplication(2019));
+			}
+
+			@Test
+			void given_2019_and_3_and_2_and_1() {
+				assertThat(expenseReportFixer.findAnswer(report(
+						"2019",
+						"3",
+						"2",
+						"1"
+				)))
+						.isEqualTo(new ExpenseMultiplication(2019));
+			}
 		}
 
+		@Disabled
 		@Test
-		void given_2019_and_1_and_3() {
-			assertThat(expenseReportFixer.findAnswer(report(
-					"2019",
-					"1",
-					"3"
-			)))
-					.isEqualTo(new ExpenseMultiplication(2019));
+		void part1_input() throws IOException {
+			final Path path = Paths.get("src", "test", "resources", "day-1-input.txt");
+			final ExpenseReport report = new ExpenseReport(Files.lines(path)
+					.map(Expense::new)
+					.collect(Collectors.toList()));
+			assertThat(expenseReportFixer.findAnswer(report))
+					.isEqualTo(new ExpenseMultiplication(889779));
 		}
-
-		@Test
-		void given_2019_and_3_and_2_and_1() {
-			assertThat(expenseReportFixer.findAnswer(report(
-					"2019",
-					"3",
-					"2",
-					"1"
-			)))
-					.isEqualTo(new ExpenseMultiplication(2019));
-		}
-	}
-
-	@Disabled
-	@Test
-	void part1_input() throws IOException {
-		final Path path = Paths.get("src", "test", "resources", "day-1-input.txt");
-		final ExpenseReport report = new ExpenseReport(Files.lines(path)
-				.map(Expense::new)
-				.collect(Collectors.toList()));
-		assertThat(expenseReportFixer.findAnswer(report))
-				.isEqualTo(new ExpenseMultiplication(889779));
 	}
 }
