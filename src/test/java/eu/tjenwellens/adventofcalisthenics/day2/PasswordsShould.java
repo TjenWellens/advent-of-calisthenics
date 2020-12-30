@@ -73,7 +73,17 @@ public class PasswordsShould {
 		@Nested
 		class Valid {
 			@Test
-			void when_policy_letter_match() {
+			void when_policy_letter_found_a() {
+				final List<String> input = List.of(
+						"1-2 a: a"
+				);
+				ValidPasswordCounter counter = ValidPasswordCounter.create(input);
+				assertThat(counter.countValidPasswords())
+						.isEqualTo(new PasswordCount(1));
+			}
+
+			@Test
+			void when_policy_letter_found_b() {
 				final List<String> input = List.of(
 						"1-2 b: b"
 				);
@@ -90,6 +100,16 @@ public class PasswordsShould {
 			void when_policy_range_mismatch() {
 				final List<String> input = List.of(
 						"1-2 a: aaa"
+				);
+				ValidPasswordCounter counter = ValidPasswordCounter.create(input);
+				assertThat(counter.countValidPasswords())
+						.isEqualTo(new PasswordCount(0));
+			}
+
+			@Test
+			void when_policy_letter_not_found() {
+				final List<String> input = List.of(
+						"1-2 a: b"
 				);
 				ValidPasswordCounter counter = ValidPasswordCounter.create(input);
 				assertThat(counter.countValidPasswords())
