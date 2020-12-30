@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class ValidPasswordCounter {
 	private final List<PasswordAndPasswordPolicy> input;
 
-	public PasswordCount count() {
+	public PasswordCount countValidPasswords() {
 		int valid = 0;
 		for (PasswordAndPasswordPolicy passwordAndPasswordPolicy : input) {
 			if (passwordAndPasswordPolicy.isValid())

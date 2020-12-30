@@ -16,7 +16,7 @@ public class PasswordsShould {
 				"1-3 b: cdefg",
 				"2-9 c: ccccccccc"
 		);
-		assertThat(ValidPasswordCounter.create(input).count()).isEqualTo(new PasswordCount(2));
+		assertThat(ValidPasswordCounter.create(input).countValidPasswords()).isEqualTo(new PasswordCount(2));
 	}
 
 	@Test
@@ -24,13 +24,13 @@ public class PasswordsShould {
 		final List<String> input = List.of(
 				"1-2 a: a"
 		);
-		assertThat(ValidPasswordCounter.create(input).count()).isEqualTo(new PasswordCount(1));
+		assertThat(ValidPasswordCounter.create(input).countValidPasswords()).isEqualTo(new PasswordCount(1));
 	}
 
 	@Test
 	void no_passwords_count_as_0() {
 		final List<String> input = List.of();
-		assertThat(ValidPasswordCounter.create(input).count()).isEqualTo(new PasswordCount(0));
+		assertThat(ValidPasswordCounter.create(input).countValidPasswords()).isEqualTo(new PasswordCount(0));
 	}
 
 	@Test
@@ -38,7 +38,7 @@ public class PasswordsShould {
 		final List<String> input = List.of(
 				"1-2 a: b"
 		);
-		assertThat(ValidPasswordCounter.create(input).count()).isEqualTo(new PasswordCount(0));
+		assertThat(ValidPasswordCounter.create(input).countValidPasswords()).isEqualTo(new PasswordCount(0));
 	}
 
 	@Test
@@ -47,6 +47,6 @@ public class PasswordsShould {
 				"1-2 a: a",
 				"1-2 a: b"
 		);
-		assertThat(ValidPasswordCounter.create(input).count()).isEqualTo(new PasswordCount(1));
+		assertThat(ValidPasswordCounter.create(input).countValidPasswords()).isEqualTo(new PasswordCount(1));
 	}
 }
