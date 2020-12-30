@@ -1,9 +1,14 @@
 package eu.tjenwellens.adventofcalisthenics.day2;
 
+import lombok.AllArgsConstructor;
+
 import java.util.List;
 
+@AllArgsConstructor
 public class ValidPasswordCounter {
-	public PasswordCount count(List<String> input) {
+	private final List<String> input;
+
+	public PasswordCount count() {
 		return new PasswordCount(input.size());
 	}
 }
