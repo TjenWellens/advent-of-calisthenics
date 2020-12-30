@@ -69,4 +69,14 @@ public class PasswordsShould {
 		assertThat(counter.countValidPasswords())
 				.isEqualTo(new PasswordCount(1));
 	}
+
+	@Test
+	void compare_policy_amount_with_input() {
+		final List<String> input = List.of(
+				"1-2 a: aaa"
+		);
+		ValidPasswordCounter counter = ValidPasswordCounter.create(input);
+		assertThat(counter.countValidPasswords())
+				.isEqualTo(new PasswordCount(0));
+	}
 }
