@@ -21,10 +21,14 @@ public class PasswordPolicy {
 	}
 
 	private boolean policyIs(String b) {
-		return policy.contains(b);
+		return policyLetter().equals(new Letter(b));
 	}
 
 	private boolean passwordIs(Password password, String a) {
 		return password.contains(a);
+	}
+
+	private Letter policyLetter() {
+		return new Letter(policy.split(" ")[1]);
 	}
 }
