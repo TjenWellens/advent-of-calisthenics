@@ -8,7 +8,6 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
-@ToString
 public class Password {
 	private final String password;
 

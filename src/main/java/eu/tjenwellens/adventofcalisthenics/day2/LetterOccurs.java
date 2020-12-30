@@ -5,8 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @AllArgsConstructor
-@EqualsAndHashCode
-@ToString
 public class LetterOccurs {
 	private final long occurrences;
 

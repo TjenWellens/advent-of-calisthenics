@@ -6,7 +6,6 @@ import lombok.ToString;
 
 @AllArgsConstructor
 @EqualsAndHashCode
-@ToString
 public class PasswordCount {
 	private final int count;
 }
