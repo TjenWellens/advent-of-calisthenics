@@ -3,6 +3,10 @@ package eu.tjenwellens.adventofcalisthenics.day2;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -77,5 +81,15 @@ public class PasswordsShould {
 		ValidPasswordCounter counter = ValidPasswordCounter.create(input);
 		assertThat(counter.countValidPasswords())
 				.isEqualTo(new PasswordCount(0));
+	}
+
+	@Disabled
+	@Test
+	void part1_input() throws IOException {
+		final Path path = Paths.get("src", "test", "resources", "day-2-input.txt");
+		final List<String> input = Files.readAllLines(path);
+		ValidPasswordCounter counter = ValidPasswordCounter.create(input);
+		assertThat(counter.countValidPasswords())
+				.isEqualTo(new PasswordCount(569));
 	}
 }
