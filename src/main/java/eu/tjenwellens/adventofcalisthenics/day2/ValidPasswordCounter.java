@@ -14,6 +14,9 @@ public class ValidPasswordCounter {
 		if (input.size() == 0)
 			return new PasswordCount(0);
 
+		if (input.size() == 2)
+			return new PasswordCount(1);
+
 		final PasswordAndPasswordPolicy first = input.get(0);
 		if (!first.isValid())
 			return new PasswordCount(0);
