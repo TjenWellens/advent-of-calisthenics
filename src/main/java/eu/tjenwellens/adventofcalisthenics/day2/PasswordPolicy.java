@@ -12,11 +12,11 @@ public class PasswordPolicy {
 	}
 
 	private LetterOccurs policyEndOccurrence() {
-		return new LetterOccurs(2);
+		return new LetterOccurs(Integer.parseInt(policy.split(" ")[0].split("-")[1]));
 	}
 
 	private LetterOccurs policyStartOccurrence() {
-		return new LetterOccurs(1);
+		return new LetterOccurs(Integer.parseInt(policy.split(" ")[0].split("-")[0]));
 	}
 
 	private Letter policyLetter() {
