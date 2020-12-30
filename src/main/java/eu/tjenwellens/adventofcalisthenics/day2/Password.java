@@ -16,7 +16,7 @@ public class Password {
 		return Arrays.stream(password.split("")).map(Letter::new).collect(Collectors.toList());
 	}
 
-	public int occurencesOf(Letter policyLetter) {
-		return (int) letters().stream().filter(letter -> letter.equals(policyLetter)).count();
+	public LetterOccurs occurrencesOf(Letter policyLetter) {
+		return new LetterOccurs(letters().stream().filter(letter -> letter.equals(policyLetter)).count());
 	}
 }
