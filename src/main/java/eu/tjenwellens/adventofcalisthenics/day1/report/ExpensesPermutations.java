@@ -11,10 +11,18 @@ import java.util.List;
 class ExpensesPermutations {
 	List<Expense> expenses;
 
-	public List<Expenses> getAllPairs() {
+	private List<Expenses> getAllSingles() {
 		final List<Expenses> result = new LinkedList<>();
 		for (Expense first : expenses) {
-			result.addAll(permutationsFor(new ExpensesCollection(List.of(first))));
+			result.add(new ExpensesCollection(List.of(first)));
+		}
+		return result;
+	}
+
+	public List<Expenses> getAllPairs() {
+		final List<Expenses> result = new LinkedList<>();
+		for (Expenses pair : getAllSingles()) {
+			result.addAll(permutationsFor(pair));
 		}
 		return result;
 	}
