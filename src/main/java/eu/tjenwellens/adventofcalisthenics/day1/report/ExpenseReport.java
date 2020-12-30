@@ -11,7 +11,7 @@ public class ExpenseReport {
 	List<Expense> expenses;
 
 	public Expenses find2ExpensesSumming2020() {
-		for (Expenses pair : new ExpensePairPermutations(expenses).getAllPairs()) {
+		for (Expenses pair : new ExpensesPermutations(expenses).getAllPairs()) {
 			if (pair.sumIs2020()) {
 				return pair;
 			}
@@ -20,7 +20,7 @@ public class ExpenseReport {
 	}
 
 	public Expenses find3ExpensesSumming2020() {
-		for (Expenses triple : new ExpenseTriplePermutations(expenses).getAllTriples()) {
+		for (Expenses triple : new ExpensesPermutations(expenses).getAllTriples()) {
 			if (triple.sumIs2020()) {
 				return triple;
 			}

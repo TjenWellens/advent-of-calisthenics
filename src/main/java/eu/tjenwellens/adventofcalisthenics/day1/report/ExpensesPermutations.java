@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Value
-class ExpensePairPermutations {
+class ExpensesPermutations {
 	List<Expense> expenses;
 
 	public List<Expenses> getAllPairs() {
@@ -24,6 +24,23 @@ class ExpensePairPermutations {
 		for (Expense second : expenses) {
 			if (first == second) continue;
 			permutations.add(new ExpensesCollection(List.of(first, second)));
+		}
+		return permutations;
+	}
+
+	public List<Expenses> getAllTriples() {
+		final List<Expenses> result = new LinkedList<>();
+		for (Expenses pair : getAllPairs()) {
+			result.addAll(permutationsFor(pair));
+		}
+		return result;
+	}
+
+	private List<Expenses> permutationsFor(Expenses pair) {
+		final List<Expenses> permutations = new LinkedList<>();
+		for (Expense third : expenses) {
+			if (pair.containsExactExpenseObject(third)) continue;
+			permutations.add(pair.add(third));
 		}
 		return permutations;
 	}
