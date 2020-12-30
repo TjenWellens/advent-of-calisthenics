@@ -9,4 +9,8 @@ import lombok.ToString;
 @ToString
 public class LetterOccurs {
 	private final long occurrences;
+
+	public boolean isBetween(LetterOccurs startInclusive, LetterOccurs endInclusive) {
+		return startInclusive.occurrences <= occurrences && occurrences <= endInclusive.occurrences;
+	}
 }
