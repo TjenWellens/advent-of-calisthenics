@@ -1,5 +1,6 @@
 package eu.tjenwellens.adventofcalisthenics.day1.report;
 
+import eu.tjenwellens.adventofcalisthenics.day1.Expenses;
 import eu.tjenwellens.adventofcalisthenics.day1.expense.Expense;
 import lombok.Value;
 
@@ -9,8 +10,8 @@ import java.util.List;
 public class ExpenseReport {
 	List<Expense> expenses;
 
-	public ExpensePair find2ExpensesSumming2020() {
-		for (ExpensePair pair : new ExpensePairPermutations(expenses).getAllPairs()) {
+	public Expenses find2ExpensesSumming2020() {
+		for (Expenses pair : new ExpensesPermutations(expenses).getAllPairs()) {
 			if (pair.sumIs2020()) {
 				return pair;
 			}
@@ -18,8 +19,8 @@ public class ExpenseReport {
 		throw new RuntimeException("Can't find a pair summing to 2020");
 	}
 
-	public ExpenseTriple find3ExpensesSumming2020() {
-		for (ExpenseTriple triple : new ExpenseTriplePermutations(expenses).getAllTriples()) {
+	public Expenses find3ExpensesSumming2020() {
+		for (Expenses triple : new ExpensesPermutations(expenses).getAllTriples()) {
 			if (triple.sumIs2020()) {
 				return triple;
 			}
