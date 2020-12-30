@@ -14,16 +14,16 @@ class ExpensesPermutations {
 	public List<Expenses> getAllPairs() {
 		final List<Expenses> result = new LinkedList<>();
 		for (Expense first : expenses) {
-			result.addAll(permutationsFor(first));
+			result.addAll(permutationsFor(new ExpensesCollection(List.of(first))));
 		}
 		return result;
 	}
 
-	private List<Expenses> permutationsFor(Expense first) {
+	private List<Expenses> permutationsFor(Expenses current) {
 		final List<Expenses> permutations = new LinkedList<>();
-		for (Expense second : expenses) {
-			if (first == second) continue;
-			permutations.add(new ExpensesCollection(List.of(first, second)));
+		for (Expense extra : expenses) {
+			if (current.containsExactExpenseObject(extra)) continue;
+			permutations.add(current.add(extra));
 		}
 		return permutations;
 	}
@@ -34,14 +34,5 @@ class ExpensesPermutations {
 			result.addAll(permutationsFor(pair));
 		}
 		return result;
-	}
-
-	private List<Expenses> permutationsFor(Expenses pair) {
-		final List<Expenses> permutations = new LinkedList<>();
-		for (Expense third : expenses) {
-			if (pair.containsExactExpenseObject(third)) continue;
-			permutations.add(pair.add(third));
-		}
-		return permutations;
 	}
 }
