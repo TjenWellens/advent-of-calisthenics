@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 public class PasswordAndPasswordPolicy {
 	private final String line;
 
-	public boolean contains(String b) {
-		return line.contains(b);
+	public boolean isValid() {
+		return line.contains("b");
 	}
 }
