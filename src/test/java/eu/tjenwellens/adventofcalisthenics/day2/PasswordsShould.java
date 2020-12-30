@@ -32,4 +32,12 @@ public class PasswordsShould {
 		final List<String> input = List.of();
 		assertThat(new ValidPasswordCounter(input).count()).isEqualTo(new PasswordCount(0));
 	}
+
+	@Test
+	void invalid_password_is_not_counted() {
+		final List<String> input = List.of(
+				"1-2 a: b"
+		);
+		assertThat(new ValidPasswordCounter(input).count()).isEqualTo(new PasswordCount(0));
+	}
 }
