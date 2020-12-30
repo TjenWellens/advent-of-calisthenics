@@ -20,8 +20,12 @@ class ExpensesPermutations {
 	}
 
 	public List<Expenses> getAllPairs() {
+		return getAllPermutations(getAllSingles());
+	}
+
+	private List<Expenses> getAllPermutations(List<Expenses> allSingles) {
 		final List<Expenses> result = new LinkedList<>();
-		for (Expenses pair : getAllSingles()) {
+		for (Expenses pair : allSingles) {
 			result.addAll(permutationsFor(pair));
 		}
 		return result;
@@ -37,10 +41,6 @@ class ExpensesPermutations {
 	}
 
 	public List<Expenses> getAllTriples() {
-		final List<Expenses> result = new LinkedList<>();
-		for (Expenses pair : getAllPairs()) {
-			result.addAll(permutationsFor(pair));
-		}
-		return result;
+		return getAllPermutations(getAllPairs());
 	}
 }
