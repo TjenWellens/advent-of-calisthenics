@@ -14,6 +14,6 @@ public class PasswordsShould {
 				"1-3 b: cdefg",
 				"2-9 c: ccccccccc"
 		);
-		assertThat(new ValidPasswordCounter().count(input)).isEqualTo(2);
+		assertThat(new ValidPasswordCounter().count(input)).isEqualTo(new PasswordCount(2));
 	}
 }
