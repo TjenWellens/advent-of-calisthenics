@@ -7,11 +7,7 @@ public class PasswordPolicy {
 	private final String policy;
 
 	public boolean validate(Password password) {
-		if (!occursAtMaxOnce(password))
-			return false;
-		if (occursAtLeastOnce(password))
-			return true;
-		return false;
+		return password.occurencesOf(policyLetter()) == 1;
 	}
 
 	private boolean occursAtLeastOnce(Password password) {
