@@ -1,5 +1,6 @@
 package eu.tjenwellens.adventofcalisthenics.day1.report;
 
+import eu.tjenwellens.adventofcalisthenics.day1.Expenses;
 import eu.tjenwellens.adventofcalisthenics.day1.expense.Expense;
 import lombok.Value;
 
@@ -10,16 +11,16 @@ import java.util.List;
 class ExpensePairPermutations {
 	List<Expense> expenses;
 
-	public List<ExpensePair> getAllPairs() {
-		final List<ExpensePair> result = new LinkedList<>();
+	public List<Expenses> getAllPairs() {
+		final List<Expenses> result = new LinkedList<>();
 		for (Expense first : expenses) {
 			result.addAll(permutationsFor(first));
 		}
 		return result;
 	}
 
-	private List<ExpensePair> permutationsFor(Expense first) {
-		final List<ExpensePair> permutations = new LinkedList<>();
+	private List<Expenses> permutationsFor(Expense first) {
+		final List<Expenses> permutations = new LinkedList<>();
 		for (Expense second : expenses) {
 			if (first == second) continue;
 			permutations.add(new ExpensePair(first, second));

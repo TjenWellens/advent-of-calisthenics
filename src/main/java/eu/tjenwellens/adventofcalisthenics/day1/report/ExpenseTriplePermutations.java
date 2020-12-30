@@ -13,13 +13,13 @@ class ExpenseTriplePermutations {
 
 	public List<Expenses> getAllTriples() {
 		final List<Expenses> result = new LinkedList<>();
-		for (ExpensePair pair : new ExpensePairPermutations(expenses).getAllPairs()) {
+		for (Expenses pair : new ExpensePairPermutations(expenses).getAllPairs()) {
 			result.addAll(permutationsFor(pair));
 		}
 		return result;
 	}
 
-	private List<Expenses> permutationsFor(ExpensePair pair) {
+	private List<Expenses> permutationsFor(Expenses pair) {
 		final List<Expenses> permutations = new LinkedList<>();
 		for (Expense third : expenses) {
 			if (pair.containsExactExpenseObject(third)) continue;
