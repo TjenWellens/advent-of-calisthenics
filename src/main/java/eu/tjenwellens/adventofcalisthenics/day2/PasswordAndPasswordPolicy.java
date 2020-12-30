@@ -7,6 +7,6 @@ public class PasswordAndPasswordPolicy {
 	private final String line;
 
 	public boolean isValid() {
-		return line.contains("b");
+		return !line.contains("b");
 	}
 }
