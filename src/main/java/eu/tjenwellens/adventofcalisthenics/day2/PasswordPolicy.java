@@ -7,15 +7,19 @@ public class PasswordPolicy {
 	private final String policy;
 
 	public boolean validate(Password password) {
-		if (!occurenceInBounds(password))
+		if (!occursAtMaxOnce(password))
 			return false;
-		if (password.contains(policyLetter()))
+		if (occursAtLeastOnce(password))
 			return true;
 		return false;
 	}
 
-	private boolean occurenceInBounds(Password password) {
-		return password.length() <= " x".length();
+	private boolean occursAtLeastOnce(Password password) {
+		return password.occurencesOf(policyLetter()) >= 1;
+	}
+
+	private boolean occursAtMaxOnce(Password password) {
+		return password.occurencesOf(policyLetter()) <= 1;
 	}
 
 	private Letter policyLetter() {

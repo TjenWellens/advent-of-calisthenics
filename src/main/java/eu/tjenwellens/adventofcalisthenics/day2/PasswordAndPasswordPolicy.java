@@ -11,10 +11,10 @@ public class PasswordAndPasswordPolicy {
 	}
 
 	private PasswordPolicy policy() {
-		return new PasswordPolicy(line.split(":")[0]);
+		return new PasswordPolicy(line.split(": ")[0]);
 	}
 
 	private Password password() {
-		return new Password(line.split(":")[1]);
+		return new Password(line.split(": ")[1]);
 	}
 }
