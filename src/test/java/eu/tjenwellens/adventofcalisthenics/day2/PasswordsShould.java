@@ -18,4 +18,12 @@ public class PasswordsShould {
 		);
 		assertThat(new ValidPasswordCounter().count(input)).isEqualTo(new PasswordCount(2));
 	}
+
+	@Test
+	void valid_password_is_counted() {
+		final List<String> input = List.of(
+				"1-2 a: a"
+		);
+		assertThat(new ValidPasswordCounter().count(input)).isEqualTo(new PasswordCount(1));
+	}
 }
