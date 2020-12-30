@@ -9,4 +9,8 @@ public class Password {
 	public boolean contains(String a) {
 		return password.contains(a);
 	}
+
+	public int length() {
+		return password.length();
+	}
 }
