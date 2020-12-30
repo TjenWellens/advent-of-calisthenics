@@ -7,6 +7,8 @@ public class PasswordAndPasswordPolicy {
 	private final String line;
 
 	public boolean isValid() {
+		if (line.length() > "0-0 x: x".length())
+			return false;
 		if (passwordIsA())
 			return !policyIsB();
 		return true;
