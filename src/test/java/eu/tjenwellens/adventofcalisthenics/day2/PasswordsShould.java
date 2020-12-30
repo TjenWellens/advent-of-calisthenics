@@ -1,6 +1,7 @@
 package eu.tjenwellens.adventofcalisthenics.day2;
 
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -24,63 +25,77 @@ public class PasswordsShould {
 				.isEqualTo(new PasswordCount(2));
 	}
 
-	@Test
-	void valid_password_is_counted() {
-		final List<String> input = List.of(
-				"1-2 a: a"
-		);
-		ValidPasswordCounter counter = ValidPasswordCounter.create(input);
-		assertThat(counter.countValidPasswords())
-				.isEqualTo(new PasswordCount(1));
+	@Nested
+	class Count {
+		@Test
+		void single_valid() {
+			final List<String> input = List.of(
+					"1-2 a: a"
+			);
+			ValidPasswordCounter counter = ValidPasswordCounter.create(input);
+			assertThat(counter.countValidPasswords())
+					.isEqualTo(new PasswordCount(1));
+		}
+
+
+		@Test
+		void no_passwords_count_as_0() {
+			final List<String> input = List.of();
+			ValidPasswordCounter counter = ValidPasswordCounter.create(input);
+			assertThat(counter.countValidPasswords())
+					.isEqualTo(new PasswordCount(0));
+		}
+
+		@Test
+		void single_invalid() {
+			final List<String> input = List.of(
+					"1-2 a: b"
+			);
+			ValidPasswordCounter counter = ValidPasswordCounter.create(input);
+			assertThat(counter.countValidPasswords())
+					.isEqualTo(new PasswordCount(0));
+		}
+
+		@Test
+		void multiple_mixed() {
+			final List<String> input = List.of(
+					"1-2 a: a",
+					"1-2 a: b"
+			);
+			ValidPasswordCounter counter = ValidPasswordCounter.create(input);
+			assertThat(counter.countValidPasswords())
+					.isEqualTo(new PasswordCount(1));
+		}
 	}
 
-	@Test
-	void no_passwords_count_as_0() {
-		final List<String> input = List.of();
-		ValidPasswordCounter counter = ValidPasswordCounter.create(input);
-		assertThat(counter.countValidPasswords())
-				.isEqualTo(new PasswordCount(0));
-	}
+	@Nested
+	class Validate {
+		@Nested
+		class Valid {
+			@Test
+			void when_policy_letter_match() {
+				final List<String> input = List.of(
+						"1-2 b: b"
+				);
+				ValidPasswordCounter counter = ValidPasswordCounter.create(input);
+				assertThat(counter.countValidPasswords())
+						.isEqualTo(new PasswordCount(1));
+			}
 
-	@Test
-	void invalid_password_is_not_counted() {
-		final List<String> input = List.of(
-				"1-2 a: b"
-		);
-		ValidPasswordCounter counter = ValidPasswordCounter.create(input);
-		assertThat(counter.countValidPasswords())
-				.isEqualTo(new PasswordCount(0));
-	}
+		}
 
-	@Test
-	void invalid_passwords_are_not_counted() {
-		final List<String> input = List.of(
-				"1-2 a: a",
-				"1-2 a: b"
-		);
-		ValidPasswordCounter counter = ValidPasswordCounter.create(input);
-		assertThat(counter.countValidPasswords())
-				.isEqualTo(new PasswordCount(1));
-	}
-
-	@Test
-	void compare_policy_letter_with_input() {
-		final List<String> input = List.of(
-				"1-2 b: b"
-		);
-		ValidPasswordCounter counter = ValidPasswordCounter.create(input);
-		assertThat(counter.countValidPasswords())
-				.isEqualTo(new PasswordCount(1));
-	}
-
-	@Test
-	void compare_policy_amount_with_input() {
-		final List<String> input = List.of(
-				"1-2 a: aaa"
-		);
-		ValidPasswordCounter counter = ValidPasswordCounter.create(input);
-		assertThat(counter.countValidPasswords())
-				.isEqualTo(new PasswordCount(0));
+		@Nested
+		class Invalid {
+			@Test
+			void when_policy_range_mismatch() {
+				final List<String> input = List.of(
+						"1-2 a: aaa"
+				);
+				ValidPasswordCounter counter = ValidPasswordCounter.create(input);
+				assertThat(counter.countValidPasswords())
+						.isEqualTo(new PasswordCount(0));
+			}
+		}
 	}
 
 	@Disabled
