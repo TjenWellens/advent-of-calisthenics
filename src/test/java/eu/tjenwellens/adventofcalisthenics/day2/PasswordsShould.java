@@ -8,7 +8,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PasswordsShould {
-	@Disabled
 	@Test
 	void count_valid_passwords() {
 		final List<String> input = List.of(
