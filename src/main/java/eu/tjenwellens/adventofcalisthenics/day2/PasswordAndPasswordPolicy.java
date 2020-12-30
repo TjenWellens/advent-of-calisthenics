@@ -26,11 +26,11 @@ public class PasswordAndPasswordPolicy {
 		return password().contains("a");
 	}
 
-	private String policy() {
-		return line;
+	private PasswordPolicy policy() {
+		return new PasswordPolicy(line);
 	}
 
-	private String password() {
-		return line;
+	private Password password() {
+		return new Password(line);
 	}
 }
