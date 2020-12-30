@@ -9,28 +9,30 @@ public class PasswordAndPasswordPolicy {
 	public boolean isValid() {
 		if (!occurenceInBounds())
 			return false;
-		if (passwordIsA())
-			return !policyIsB();
-		return true;
+		if (passwordIs("a") && policyIs("a"))
+			return true;
+		if (passwordIs("b") && policyIs("b"))
+			return true;
+		return false;
 	}
 
 	private boolean occurenceInBounds() {
 		return line.length() <= "0-0 x: x".length();
 	}
 
-	private boolean policyIsB() {
-		return policy().contains("b");
+	private boolean policyIs(String b) {
+		return policy().contains(b);
 	}
 
-	private boolean passwordIsA() {
-		return password().contains("a");
+	private boolean passwordIs(String a) {
+		return password().contains(a);
 	}
 
 	private PasswordPolicy policy() {
-		return new PasswordPolicy(line);
+		return new PasswordPolicy(line.split(":")[0]);
 	}
 
 	private Password password() {
-		return new Password(line);
+		return new Password(line.split(":")[1]);
 	}
 }
