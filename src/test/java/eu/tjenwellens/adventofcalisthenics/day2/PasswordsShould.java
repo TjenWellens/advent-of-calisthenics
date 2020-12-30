@@ -1,5 +1,6 @@
 package eu.tjenwellens.adventofcalisthenics.day2;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PasswordsShould {
+	@Disabled
 	@Test
 	void count_valid_passwords() {
 		final List<String> input = List.of(
