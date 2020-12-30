@@ -23,7 +23,7 @@ class ExpenseTriplePermutations {
 		final List<Expenses> permutations = new LinkedList<>();
 		for (Expense third : expenses) {
 			if (pair.containsExactExpenseObject(third)) continue;
-			permutations.add(new ExpenseTriple(pair, third));
+			permutations.add(pair.add(third));
 		}
 		return permutations;
 	}

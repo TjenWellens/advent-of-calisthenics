@@ -22,4 +22,9 @@ public class ExpenseTriple implements Expenses {
 	public boolean containsExactExpenseObject(Expense other) {
 		return other == third || pair.containsExactExpenseObject(other);
 	}
+
+	@Override
+	public Expenses add(Expense expense) {
+		throw new UnsupportedOperationException();
+	}
 }

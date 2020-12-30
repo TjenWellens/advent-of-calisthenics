@@ -22,4 +22,9 @@ public class ExpensePair implements Expenses {
 	public boolean containsExactExpenseObject(Expense other) {
 		return other == first || other == second;
 	}
+
+	@Override
+	public Expenses add(Expense expense) {
+		return new ExpenseTriple(this, expense);
+	}
 }

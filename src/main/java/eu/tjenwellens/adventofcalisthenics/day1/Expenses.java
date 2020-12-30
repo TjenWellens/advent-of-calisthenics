@@ -15,4 +15,6 @@ public interface Expenses {
 	ExpenseSum sum();
 
 	boolean containsExactExpenseObject(Expense other);
+
+	Expenses add(Expense expense);
 }
