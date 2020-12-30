@@ -4,6 +4,6 @@ import java.util.List;
 
 public class ValidPasswordCounter {
 	public PasswordCount count(List<String> input) {
-		return new PasswordCount(1);
+		return new PasswordCount(input.size());
 	}
 }
