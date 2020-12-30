@@ -11,24 +11,12 @@ public class ValidPasswordCounter {
 	private final List<PasswordAndPasswordPolicy> input;
 
 	public PasswordCount count() {
-		if (input.size() == 0)
-			return new PasswordCount(0);
-
-
-		if (input.size() == 1) {
-			final PasswordAndPasswordPolicy first = input.get(0);
-			if (!first.isValid())
-				return new PasswordCount(0);
+		int valid = 0;
+		for (PasswordAndPasswordPolicy passwordAndPasswordPolicy : input) {
+			if (passwordAndPasswordPolicy.isValid())
+				valid++;
 		}
-
-
-		if (input.size() == 2) {
-			final PasswordAndPasswordPolicy second = input.get(1);
-			if (!second.isValid())
-				return new PasswordCount(1);
-		}
-
-		return new PasswordCount(input.size());
+		return new PasswordCount(valid);
 	}
 
 	public static ValidPasswordCounter create(List<String> input) {
