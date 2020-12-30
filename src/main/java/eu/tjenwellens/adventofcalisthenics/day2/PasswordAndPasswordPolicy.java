@@ -19,10 +19,18 @@ public class PasswordAndPasswordPolicy {
 	}
 
 	private boolean policyIsB() {
-		return line.contains("b");
+		return policy().contains("b");
 	}
 
 	private boolean passwordIsA() {
-		return line.contains("a");
+		return password().contains("a");
+	}
+
+	private String policy() {
+		return line;
+	}
+
+	private String password() {
+		return line;
 	}
 }
