@@ -8,9 +8,15 @@ public class PasswordPolicy {
 
 	public boolean validate(Password password) {
 		final LetterOccurs policyLetterOccurs = password.occurrencesOf(policyLetter());
-		final LetterOccurs _1 = new LetterOccurs(1);
-		final LetterOccurs _2 = new LetterOccurs(2);
-		return policyLetterOccurs.isBetween(_1, _2);
+		return policyLetterOccurs.isBetween(policyStartOccurrence(), policyEndOccurrence());
+	}
+
+	private LetterOccurs policyEndOccurrence() {
+		return new LetterOccurs(2);
+	}
+
+	private LetterOccurs policyStartOccurrence() {
+		return new LetterOccurs(1);
 	}
 
 	private Letter policyLetter() {
