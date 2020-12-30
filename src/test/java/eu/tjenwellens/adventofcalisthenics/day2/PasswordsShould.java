@@ -13,6 +13,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PasswordsShould {
+	@Disabled
 	@Test
 	void count_valid_passwords() {
 		final List<String> input = List.of(
@@ -74,22 +75,12 @@ public class PasswordsShould {
 		class Valid {
 			@Test
 			void when_policy_letter_found_a() {
-				final List<String> input = List.of(
-						"1-2 a: a"
-				);
-				ValidPasswordCounter counter = ValidPasswordCounter.create(input);
-				assertThat(counter.countValidPasswords())
-						.isEqualTo(new PasswordCount(1));
+				assertThat(new PasswordAndPasswordPolicy("1-2 a: a").isValid()).isTrue();
 			}
 
 			@Test
 			void when_policy_letter_found_b() {
-				final List<String> input = List.of(
-						"1-2 b: b"
-				);
-				ValidPasswordCounter counter = ValidPasswordCounter.create(input);
-				assertThat(counter.countValidPasswords())
-						.isEqualTo(new PasswordCount(1));
+				assertThat(new PasswordAndPasswordPolicy("1-2 b: b").isValid()).isTrue();
 			}
 
 		}
@@ -98,22 +89,12 @@ public class PasswordsShould {
 		class Invalid {
 			@Test
 			void when_policy_range_mismatch() {
-				final List<String> input = List.of(
-						"1-2 a: aaa"
-				);
-				ValidPasswordCounter counter = ValidPasswordCounter.create(input);
-				assertThat(counter.countValidPasswords())
-						.isEqualTo(new PasswordCount(0));
+				assertThat(new PasswordAndPasswordPolicy("1-2 a: aaa").isValid()).isFalse();
 			}
 
 			@Test
 			void when_policy_letter_not_found() {
-				final List<String> input = List.of(
-						"1-2 a: b"
-				);
-				ValidPasswordCounter counter = ValidPasswordCounter.create(input);
-				assertThat(counter.countValidPasswords())
-						.isEqualTo(new PasswordCount(0));
+				assertThat(new PasswordAndPasswordPolicy("1-2 a: b").isValid()).isFalse();
 			}
 		}
 	}
