@@ -9,12 +9,17 @@ public class ValidPasswordCounter {
 	private final List<String> input;
 
 	public PasswordCount count() {
-		if(input.size() == 0)
+		if (input.size() == 0)
 			return new PasswordCount(0);
 
-		if(input.get(0).contains("b"))
+		final String first = input.get(0);
+		if (isValid(first))
 			return new PasswordCount(0);
 
 		return new PasswordCount(input.size());
+	}
+
+	private boolean isValid(String first) {
+		return first.contains("b");
 	}
 }
