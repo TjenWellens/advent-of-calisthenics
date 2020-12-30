@@ -23,7 +23,7 @@ class ExpensePairPermutations {
 		final List<Expenses> permutations = new LinkedList<>();
 		for (Expense second : expenses) {
 			if (first == second) continue;
-			permutations.add(new ExpensePair(first, second));
+			permutations.add(new ExpensesCollection(List.of(first, second)));
 		}
 		return permutations;
 	}
