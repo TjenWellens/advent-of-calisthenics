@@ -17,15 +17,28 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PasswordsShould {
 	@Disabled
 	@Test
-	void count_valid_passwords() {
+	void count_valid_sled_rental_passwords() {
 		final List<String> input = List.of(
 				"1-3 a: abcde",
 				"1-3 b: cdefg",
 				"2-9 c: ccccccccc"
 		);
-		ValidPasswordCounter counter = ValidPasswordCounter.create(input);
+		ValidPasswordCounter counter = ValidPasswordCounter.createSledRental(input);
 		assertThat(counter.countValidPasswords())
 				.isEqualTo(new PasswordCount(2));
+	}
+
+	@Disabled
+	@Test
+	void count_valid_toboggan_rental_passwords() {
+		final List<String> input = List.of(
+				"1-3 a: abcde",
+				"1-3 b: cdefg",
+				"2-9 c: ccccccccc"
+		);
+		ValidPasswordCounter counter = ValidPasswordCounter.createTobogganRental(input);
+		assertThat(counter.countValidPasswords())
+				.isEqualTo(new PasswordCount(1));
 	}
 
 	@Nested
@@ -35,7 +48,7 @@ public class PasswordsShould {
 			final List<String> input = List.of(
 					"1-2 a: a"
 			);
-			ValidPasswordCounter counter = ValidPasswordCounter.create(input);
+			ValidPasswordCounter counter = ValidPasswordCounter.createSledRental(input);
 			assertThat(counter.countValidPasswords())
 					.isEqualTo(new PasswordCount(1));
 		}
@@ -44,7 +57,7 @@ public class PasswordsShould {
 		@Test
 		void no_passwords_count_as_0() {
 			final List<String> input = List.of();
-			ValidPasswordCounter counter = ValidPasswordCounter.create(input);
+			ValidPasswordCounter counter = ValidPasswordCounter.createSledRental(input);
 			assertThat(counter.countValidPasswords())
 					.isEqualTo(new PasswordCount(0));
 		}
@@ -54,7 +67,7 @@ public class PasswordsShould {
 			final List<String> input = List.of(
 					"1-2 a: b"
 			);
-			ValidPasswordCounter counter = ValidPasswordCounter.create(input);
+			ValidPasswordCounter counter = ValidPasswordCounter.createSledRental(input);
 			assertThat(counter.countValidPasswords())
 					.isEqualTo(new PasswordCount(0));
 		}
@@ -65,7 +78,7 @@ public class PasswordsShould {
 					"1-2 a: a",
 					"1-2 a: b"
 			);
-			ValidPasswordCounter counter = ValidPasswordCounter.create(input);
+			ValidPasswordCounter counter = ValidPasswordCounter.createSledRental(input);
 			assertThat(counter.countValidPasswords())
 					.isEqualTo(new PasswordCount(1));
 		}
@@ -133,7 +146,7 @@ public class PasswordsShould {
 	void part1_input() throws IOException {
 		final Path path = Paths.get("src", "test", "resources", "day-2-input.txt");
 		final List<String> input = Files.readAllLines(path);
-		ValidPasswordCounter counter = ValidPasswordCounter.create(input);
+		ValidPasswordCounter counter = ValidPasswordCounter.createSledRental(input);
 		assertThat(counter.countValidPasswords())
 				.isEqualTo(new PasswordCount(569));
 	}

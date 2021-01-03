@@ -21,8 +21,13 @@ public class ValidPasswordCounter {
 		return new PasswordCount(valid);
 	}
 
-	public static ValidPasswordCounter create(List<String> input) {
+	public static ValidPasswordCounter createSledRental(List<String> input) {
 		final List<PasswordAndPasswordPolicy> passwordsAndPolicies = input.stream().map(PasswordAndPasswordPolicy::sledRental).collect(Collectors.toList());
+		return new ValidPasswordCounter(passwordsAndPolicies);
+	}
+
+	public static ValidPasswordCounter createTobogganRental(List<String> input) {
+		final List<PasswordAndPasswordPolicy> passwordsAndPolicies = input.stream().map(PasswordAndPasswordPolicy::tobogganRental).collect(Collectors.toList());
 		return new ValidPasswordCounter(passwordsAndPolicies);
 	}
 }
