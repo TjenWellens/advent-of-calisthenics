@@ -75,12 +75,12 @@ public class PasswordsShould {
 		class Valid {
 			@Test
 			void when_policy_letter_found_a() {
-				assertThat(PasswordAndPasswordPolicy.of("1-2 a: a").isValid()).isTrue();
+				assertThat(PasswordAndPasswordPolicy.sledRental("1-2 a: a").isValid()).isTrue();
 			}
 
 			@Test
 			void when_policy_letter_found_b() {
-				assertThat(PasswordAndPasswordPolicy.of("1-2 b: b").isValid()).isTrue();
+				assertThat(PasswordAndPasswordPolicy.sledRental("1-2 b: b").isValid()).isTrue();
 			}
 
 		}
@@ -89,12 +89,12 @@ public class PasswordsShould {
 		class Invalid {
 			@Test
 			void when_policy_range_mismatch() {
-				assertThat(PasswordAndPasswordPolicy.of("1-2 a: aaa").isValid()).isFalse();
+				assertThat(PasswordAndPasswordPolicy.sledRental("1-2 a: aaa").isValid()).isFalse();
 			}
 
 			@Test
 			void when_policy_letter_not_found() {
-				assertThat(PasswordAndPasswordPolicy.of("1-2 a: b").isValid()).isFalse();
+				assertThat(PasswordAndPasswordPolicy.sledRental("1-2 a: b").isValid()).isFalse();
 			}
 		}
 	}
@@ -105,7 +105,7 @@ public class PasswordsShould {
 		class Valid {
 			@Test
 			void when_exactly_one_policy_position_contains_policy_letter() {
-				assertThat(PasswordAndPasswordPolicy.of("1-3 a: abcde", PasswordPolicy.TOBOGGAN_RENTAL).isValid()).isTrue();
+				assertThat(PasswordAndPasswordPolicy.tobogganRental("1-3 a: abcde").isValid()).isTrue();
 			}
 		}
 
@@ -113,7 +113,7 @@ public class PasswordsShould {
 		class Invalid {
 			@Test
 			void when_exactly_no_policy_position_contains_policy_letter() {
-				assertThat(PasswordAndPasswordPolicy.of("1-3 b: abc", PasswordPolicy.TOBOGGAN_RENTAL).isValid()).isFalse();
+				assertThat(PasswordAndPasswordPolicy.tobogganRental("1-3 b: abc").isValid()).isFalse();
 			}
 		}
 	}
