@@ -12,15 +12,7 @@ public class PasswordAndPasswordPolicy {
 		return policy.validate(password);
 	}
 
-	private static PasswordPolicy policy(String line) {
-		return new PasswordPolicy(line.split(": ")[0]);
-	}
-
-	private static Password password(String line) {
-		return new Password(line.split(": ")[1]);
-	}
-
 	public static PasswordAndPasswordPolicy of(String line) {
-		return new PasswordAndPasswordPolicy(policy(line), password(line));
+		return new PasswordAndPasswordPolicy(PasswordPolicy.of(line), Password.of(line));
 	}
 }

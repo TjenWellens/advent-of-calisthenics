@@ -18,4 +18,8 @@ public class Password {
 	public LetterOccurs occurrencesOf(Letter policyLetter) {
 		return new LetterOccurs(letters().stream().filter(letter -> letter.equals(policyLetter)).count());
 	}
+
+	static Password of(String line) {
+		return new Password(line.split(": ")[1]);
+	}
 }
