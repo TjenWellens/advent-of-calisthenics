@@ -9,7 +9,7 @@ public class PasswordAndPasswordPolicy {
 	private final Password password;
 
 	public static PasswordAndPasswordPolicy of(String line, Object tobogganRental) {
-		return of(line);
+		return new PasswordAndPasswordPolicy(PasswordPolicy.of(line, tobogganRental), Password.of(line));
 	}
 
 	public boolean isValid() {

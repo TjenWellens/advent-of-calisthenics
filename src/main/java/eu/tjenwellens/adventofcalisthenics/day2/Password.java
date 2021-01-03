@@ -2,11 +2,13 @@ package eu.tjenwellens.adventofcalisthenics.day2;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+@Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Password {
 	private final String password;
