@@ -7,4 +7,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public class Position {
 	private final int position;
+
+	public Position previous() {
+		return new Position(position - 1);
+	}
 }

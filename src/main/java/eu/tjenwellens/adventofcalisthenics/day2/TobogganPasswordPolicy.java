@@ -16,7 +16,7 @@ public class TobogganPasswordPolicy extends PasswordPolicy {
 	}
 
 	private Position firstPosition() {
-		return new Position(_policyStartOccurrence().getPosition() - 1);
+		return _policyStartOccurrence().previous();
 	}
 
 	public static PasswordPolicy of(String line) {
