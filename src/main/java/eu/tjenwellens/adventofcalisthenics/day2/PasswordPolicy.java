@@ -1,8 +1,9 @@
 package eu.tjenwellens.adventofcalisthenics.day2;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class PasswordPolicy {
 	private final String policy;
 
