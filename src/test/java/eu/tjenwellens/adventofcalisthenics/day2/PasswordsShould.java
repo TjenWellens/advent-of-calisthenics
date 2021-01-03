@@ -70,7 +70,7 @@ public class PasswordsShould {
 	}
 
 	@Nested
-	class Validate {
+	class Validate_SledRental {
 		@Nested
 		class Valid {
 			@Test
