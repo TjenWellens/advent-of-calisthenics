@@ -6,8 +6,17 @@ public class TobogganPasswordPolicy extends PasswordPolicy {
 	}
 
 	public boolean validate(Password password) {
-			final char firstChar = password.getPassword().toCharArray()[_policyStartOccurrence() - 1];
-			return policyLetter().equals(new Letter("" + firstChar));
+		final Letter firstLetter = getLetter(password, firstPosition());
+		return policyLetter().equals(firstLetter);
+	}
+
+	private Letter getLetter(Password password, int position) {
+		final char aChar = password.getPassword().toCharArray()[position];
+		return new Letter("" + aChar);
+	}
+
+	private int firstPosition() {
+		return _policyStartOccurrence() - 1;
 	}
 
 	public static PasswordPolicy of(String line) {
