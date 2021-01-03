@@ -106,8 +106,12 @@ public class PasswordsShould {
 		@Nested
 		class Valid {
 			@Test
-			void when_exactly_one_policy_position_contains_policy_letter() {
+			void when_only_first_policy_position_contains_policy_letter() {
 				assertThat(PasswordAndPasswordPolicy.tobogganRental("1-3 a: abcde").isValid()).isEqualTo(VALID);
+			}
+			@Test
+			void when_only_second_policy_position_contains_policy_letter() {
+				assertThat(PasswordAndPasswordPolicy.tobogganRental("1-3 a: bba").isValid()).isEqualTo(VALID);
 			}
 		}
 
