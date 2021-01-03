@@ -5,21 +5,22 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class PasswordAndPasswordPolicy {
-	private final String line;
+	private final PasswordPolicy policy;
+	private final Password password;
 
 	public boolean isValid() {
-		return policy().validate(password());
+		return policy.validate(password);
 	}
 
-	private PasswordPolicy policy() {
+	private static PasswordPolicy policy(String line) {
 		return new PasswordPolicy(line.split(": ")[0]);
 	}
 
-	private Password password() {
+	private static Password password(String line) {
 		return new Password(line.split(": ")[1]);
 	}
 
 	public static PasswordAndPasswordPolicy of(String line) {
-		return new PasswordAndPasswordPolicy(line);
+		return new PasswordAndPasswordPolicy(policy(line), password(line));
 	}
 }
