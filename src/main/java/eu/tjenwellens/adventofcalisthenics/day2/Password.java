@@ -24,7 +24,7 @@ public class Password {
 	}
 
 	private Letter getLetter(Position position) {
-		final char aChar = password.toCharArray()[position.getPosition()];
+		final char aChar = password.toCharArray()[position.position];
 		return new Letter("" + aChar);
 	}
 
@@ -35,5 +35,14 @@ public class Password {
 	public static class LetterAtPositionMatch {
 		public static final LetterAtPositionMatch MATCH = new LetterAtPositionMatch();
 		public static final LetterAtPositionMatch NO_MATCH = new LetterAtPositionMatch();
+	}
+
+	@AllArgsConstructor
+	public static class Position {
+		private final int position;
+
+		public Position previous() {
+			return new Position(position - 1);
+		}
 	}
 }

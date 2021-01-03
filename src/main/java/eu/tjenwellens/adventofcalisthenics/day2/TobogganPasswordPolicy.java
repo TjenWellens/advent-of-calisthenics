@@ -27,12 +27,12 @@ public class TobogganPasswordPolicy extends PasswordPolicy {
 		return secondMatch == MATCH;
 	}
 
-	private Position firstPosition() {
-		return _policyStartOccurrence().previous();
+	private Password.Position firstPosition() {
+		return new Password.Position(_policyStartOccurrence().getNumber()).previous();
 	}
 
-	private Position secondPosition() {
-		return _policyEndOccurrence().previous();
+	private Password.Position secondPosition() {
+		return new Password.Position(_policyEndOccurrence().getNumber()).previous();
 	}
 
 	public static PasswordPolicy of(String line) {
