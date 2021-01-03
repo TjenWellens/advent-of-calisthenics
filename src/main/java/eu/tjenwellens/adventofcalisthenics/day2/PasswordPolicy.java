@@ -9,12 +9,12 @@ public abstract class PasswordPolicy {
 
 	public abstract boolean validate(Password password);
 
-	protected int _policyStartOccurrence() {
-		return Integer.parseInt(policy.split(" ")[0].split("-")[0]);
+	protected Position _policyStartOccurrence() {
+		return new Position(Integer.parseInt(policy.split(" ")[0].split("-")[0]));
 	}
 
-	protected int _policyEndOccurrence() {
-		return Integer.parseInt(policy.split(" ")[0].split("-")[1]);
+	protected Position _policyEndOccurrence() {
+		return new Position(Integer.parseInt(policy.split(" ")[0].split("-")[1]));
 	}
 
 	protected Letter policyLetter() {
