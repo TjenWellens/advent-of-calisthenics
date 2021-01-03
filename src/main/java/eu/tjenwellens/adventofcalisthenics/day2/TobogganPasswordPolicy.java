@@ -10,13 +10,13 @@ public class TobogganPasswordPolicy extends PasswordPolicy {
 		return policyLetter().equals(firstLetter);
 	}
 
-	private Letter getLetter(Password password, int position) {
-		final char aChar = password.getPassword().toCharArray()[position];
+	private Letter getLetter(Password password, Position position) {
+		final char aChar = password.getPassword().toCharArray()[position.getPosition()];
 		return new Letter("" + aChar);
 	}
 
-	private int firstPosition() {
-		return _policyStartOccurrence() - 1;
+	private Position firstPosition() {
+		return new Position(_policyStartOccurrence() - 1);
 	}
 
 	public static PasswordPolicy of(String line) {
