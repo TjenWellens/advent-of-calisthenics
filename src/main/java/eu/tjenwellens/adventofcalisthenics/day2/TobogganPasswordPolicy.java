@@ -12,6 +12,8 @@ public class TobogganPasswordPolicy extends PasswordPolicy {
 	public PasswordValidation validate(Password password) {
 		final Password.LetterAtPositionMatch firstMatch = password.letterAtPositionEquals(policyLetter(), firstPosition());
 		final Password.LetterAtPositionMatch secondMatch = password.letterAtPositionEquals(policyLetter(), secondPosition());
+		if (firstMatch == MATCH && secondMatch == MATCH)
+			return INVALID;
 		if (firstMatch == MATCH)
 			return VALID;
 		if (secondMatch == MATCH)
