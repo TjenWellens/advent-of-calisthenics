@@ -34,8 +34,8 @@ class ExpensesPermutations {
 	private List<Expenses> permutationsFor(Expenses current) {
 		final List<Expenses> permutations = new LinkedList<>();
 		for (Expense extra : expenses) {
-			if (current.containsExactExpenseObject(extra)) continue;
-			permutations.add(current.add(extra));
+			if (!current.containsExactExpenseObject(extra))
+				permutations.add(current.add(extra));
 		}
 		return permutations;
 	}

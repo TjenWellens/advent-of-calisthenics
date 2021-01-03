@@ -8,11 +8,15 @@ public class PasswordAndPasswordPolicy {
 	private final PasswordPolicy policy;
 	private final Password password;
 
-	public boolean isValid() {
+	public static PasswordAndPasswordPolicy tobogganRental(String line) {
+		return new PasswordAndPasswordPolicy(TobogganPasswordPolicy.of(line), Password.of(line));
+	}
+
+	public PasswordPolicy.PasswordValidation isValid() {
 		return policy.validate(password);
 	}
 
-	public static PasswordAndPasswordPolicy of(String line) {
-		return new PasswordAndPasswordPolicy(PasswordPolicy.of(line), Password.of(line));
+	public static PasswordAndPasswordPolicy sledRental(String line) {
+		return new PasswordAndPasswordPolicy(SledPasswordPolicy.of(line), Password.of(line));
 	}
 }

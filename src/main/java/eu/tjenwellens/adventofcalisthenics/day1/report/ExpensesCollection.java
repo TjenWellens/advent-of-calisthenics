@@ -43,7 +43,7 @@ public class ExpensesCollection implements Expenses {
 
 	@Override
 	public Expenses add(Expense expense) {
-		LinkedList<Expense> list = new LinkedList<Expense>(expenses);
+		LinkedList<Expense> list = new LinkedList<>(expenses);
 		list.add(expense);
 		return new ExpensesCollection(list);
 	}
