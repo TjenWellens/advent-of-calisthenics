@@ -15,10 +15,10 @@ public class SledPasswordPolicy extends PasswordPolicy {
 	}
 
 	private LetterOccurs policyEndOccurrence() {
-		return new LetterOccurs(_policyEndOccurrence().getNumber());
+		return new LetterOccurs(_policyEndOccurrence());
 	}
 
 	private LetterOccurs policyStartOccurrence() {
-		return new LetterOccurs(_policyStartOccurrence().getNumber());
+		return new LetterOccurs(_policyStartOccurrence());
 	}
 }

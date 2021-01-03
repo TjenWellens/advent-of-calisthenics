@@ -2,7 +2,6 @@ package eu.tjenwellens.adventofcalisthenics.day2;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public abstract class PasswordPolicy {
@@ -27,12 +26,8 @@ public abstract class PasswordPolicy {
 		public static final PasswordValidation INVALID = new PasswordValidation();
 	}
 
-	@AllArgsConstructor(access = AccessLevel.PRIVATE)
+	@AllArgsConstructor(access = AccessLevel.PROTECTED)
 	protected static class Number {
-		private final int number;
-
-		public int getNumber() {
-			return number;
-		}
+		protected final int number;
 	}
 }

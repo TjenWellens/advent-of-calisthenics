@@ -24,7 +24,7 @@ public class Password {
 	}
 
 	private Letter getLetter(Position position) {
-		final char aChar = password.toCharArray()[position.position];
+		final char aChar = password.toCharArray()[position.number];
 		return new Letter("" + aChar);
 	}
 
@@ -37,12 +37,16 @@ public class Password {
 		public static final LetterAtPositionMatch NO_MATCH = new LetterAtPositionMatch();
 	}
 
-	@AllArgsConstructor
-	public static class Position {
-		private final int position;
+	public static class Position extends PasswordPolicy.Number{
+		private Position(int number) {
+			super(number);
+		}
+		public Position(PasswordPolicy.Number number) {
+			this(number.number);
+		}
 
 		public Position previous() {
-			return new Position(position - 1);
+			return new Position(number - 1);
 		}
 	}
 }

@@ -28,11 +28,11 @@ public class TobogganPasswordPolicy extends PasswordPolicy {
 	}
 
 	private Password.Position firstPosition() {
-		return new Password.Position(_policyStartOccurrence().getNumber()).previous();
+		return new Password.Position(_policyStartOccurrence()).previous();
 	}
 
 	private Password.Position secondPosition() {
-		return new Password.Position(_policyEndOccurrence().getNumber()).previous();
+		return new Password.Position(_policyEndOccurrence()).previous();
 	}
 
 	public static PasswordPolicy of(String line) {
