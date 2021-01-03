@@ -111,6 +111,10 @@ public class PasswordsShould {
 
 		@Nested
 		class Invalid {
+			@Test
+			void when_exactly_no_policy_position_contains_policy_letter() {
+				assertThat(PasswordAndPasswordPolicy.of("1-3 b: abc", PasswordPolicy.TOBOGGAN_RENTAL).isValid()).isFalse();
+			}
 		}
 	}
 
