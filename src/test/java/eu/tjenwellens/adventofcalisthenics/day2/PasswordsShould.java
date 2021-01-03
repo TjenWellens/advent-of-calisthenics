@@ -150,4 +150,14 @@ public class PasswordsShould {
 		assertThat(counter.countValidPasswords())
 				.isEqualTo(new PasswordCount(569));
 	}
+
+	@Disabled
+	@Test
+	void part2_input() throws IOException {
+		final Path path = Paths.get("src", "test", "resources", "day-2-input.txt");
+		final List<String> input = Files.readAllLines(path);
+		ValidPasswordCounter counter = ValidPasswordCounter.createTobogganRental(input);
+		assertThat(counter.countValidPasswords())
+				.isEqualTo(new PasswordCount(346));
+	}
 }
