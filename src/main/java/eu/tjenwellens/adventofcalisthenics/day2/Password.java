@@ -2,13 +2,11 @@ package eu.tjenwellens.adventofcalisthenics.day2;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-@Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Password {
 	private final String password;
@@ -19,6 +17,15 @@ public class Password {
 
 	public LetterOccurs occurrencesOf(Letter policyLetter) {
 		return new LetterOccurs(letters().stream().filter(letter -> letter.equals(policyLetter)).count());
+	}
+
+	public boolean letterAtPositionEquals(Letter letter, Position position) {
+		return letter.equals(getLetter(position));
+	}
+
+	private Letter getLetter(Position position) {
+		final char aChar = password.toCharArray()[position.getPosition()];
+		return new Letter("" + aChar);
 	}
 
 	static Password of(String line) {
