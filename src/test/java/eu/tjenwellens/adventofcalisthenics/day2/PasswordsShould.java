@@ -121,6 +121,10 @@ public class PasswordsShould {
 			void when_exactly_no_policy_position_contains_policy_letter() {
 				assertThat(PasswordAndPasswordPolicy.tobogganRental("1-3 b: abc").isValid()).isEqualTo(INVALID);
 			}
+			@Test
+			void when_both_policy_positions_contain_policy_letter() {
+				assertThat(PasswordAndPasswordPolicy.tobogganRental("1-3 a: aba").isValid()).isEqualTo(INVALID);
+			}
 		}
 	}
 
