@@ -13,7 +13,7 @@ public class PasswordPolicy {
 	}
 
 	private LetterOccurs policyEndOccurrence() {
-		return new LetterOccurs(Integer.parseInt(policy.split(" ")[0].split("-")[1]));
+		return new LetterOccurs(_policyEndOccurrence());
 	}
 
 	private LetterOccurs policyStartOccurrence() {
@@ -22,6 +22,10 @@ public class PasswordPolicy {
 
 	protected int _policyStartOccurrence() {
 		return Integer.parseInt(policy.split(" ")[0].split("-")[0]);
+	}
+
+	private int _policyEndOccurrence() {
+		return Integer.parseInt(policy.split(" ")[0].split("-")[1]);
 	}
 
 	protected Letter policyLetter() {
