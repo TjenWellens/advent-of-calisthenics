@@ -6,6 +6,19 @@ public class SledPasswordPolicy extends PasswordPolicy {
 	}
 
 	static PasswordPolicy of(String line) {
-		return new PasswordPolicy(line.split(": ")[0]);
+		return new SledPasswordPolicy(line.split(": ")[0]);
+	}
+
+	public boolean validate(Password password) {
+		final LetterOccurs policyLetterOccurs = password.occurrencesOf(policyLetter());
+		return policyLetterOccurs.isBetween(policyStartOccurrence(), policyEndOccurrence());
+	}
+
+	private LetterOccurs policyEndOccurrence() {
+		return new LetterOccurs(_policyEndOccurrence());
+	}
+
+	private LetterOccurs policyStartOccurrence() {
+		return new LetterOccurs(_policyStartOccurrence());
 	}
 }

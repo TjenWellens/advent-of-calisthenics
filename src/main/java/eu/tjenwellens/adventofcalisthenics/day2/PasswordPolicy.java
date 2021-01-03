@@ -4,27 +4,16 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-public class PasswordPolicy {
+public abstract class PasswordPolicy {
 	private final String policy;
 
-	public boolean validate(Password password) {
-		final LetterOccurs policyLetterOccurs = password.occurrencesOf(policyLetter());
-		return policyLetterOccurs.isBetween(policyStartOccurrence(), policyEndOccurrence());
-	}
-
-	private LetterOccurs policyEndOccurrence() {
-		return new LetterOccurs(_policyEndOccurrence());
-	}
-
-	private LetterOccurs policyStartOccurrence() {
-		return new LetterOccurs(_policyStartOccurrence());
-	}
+	public abstract boolean validate(Password password);
 
 	protected int _policyStartOccurrence() {
 		return Integer.parseInt(policy.split(" ")[0].split("-")[0]);
 	}
 
-	private int _policyEndOccurrence() {
+	protected int _policyEndOccurrence() {
 		return Integer.parseInt(policy.split(" ")[0].split("-")[1]);
 	}
 
