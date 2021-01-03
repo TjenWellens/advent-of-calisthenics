@@ -36,17 +36,4 @@ public class Password {
 		public static final LetterAtPositionMatch MATCH = new LetterAtPositionMatch();
 		public static final LetterAtPositionMatch NO_MATCH = new LetterAtPositionMatch();
 	}
-
-	public static class Position extends PasswordPolicy.Number{
-		private Position(int number) {
-			super(number);
-		}
-		public Position(PasswordPolicy.Number number) {
-			this(number.number);
-		}
-
-		public Position previous() {
-			return new Position(number - 1);
-		}
-	}
 }
