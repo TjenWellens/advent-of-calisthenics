@@ -12,11 +12,17 @@ public class TobogganPasswordPolicy extends PasswordPolicy {
 	public PasswordValidation validate(Password password) {
 		if (password.letterAtPositionEquals(policyLetter(), firstPosition()) == MATCH)
 			return VALID;
+		if (password.letterAtPositionEquals(policyLetter(), secondPosition()) == MATCH)
+			return VALID;
 		return INVALID;
 	}
 
 	private Position firstPosition() {
 		return _policyStartOccurrence().previous();
+	}
+
+	private Position secondPosition() {
+		return _policyEndOccurrence().previous();
 	}
 
 	public static PasswordPolicy of(String line) {
