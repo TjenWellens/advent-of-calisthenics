@@ -8,6 +8,10 @@ public class PasswordAndPasswordPolicy {
 	private final PasswordPolicy policy;
 	private final Password password;
 
+	public static PasswordAndPasswordPolicy of(String line, Object tobogganRental) {
+		return of(line);
+	}
+
 	public boolean isValid() {
 		return policy.validate(password);
 	}

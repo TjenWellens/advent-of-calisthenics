@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class PasswordPolicy {
+	public static final Object TOBOGGAN_RENTAL = "toboggan";
 	private final String policy;
 
 	public boolean validate(Password password) {
