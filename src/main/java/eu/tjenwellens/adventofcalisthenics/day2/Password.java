@@ -19,8 +19,8 @@ public class Password {
 		return new LetterOccurs(letters().stream().filter(letter -> letter.equals(policyLetter)).count());
 	}
 
-	public boolean letterAtPositionEquals(Letter letter, Position position) {
-		return letter.equals(getLetter(position));
+	public LetterAtPositionMatch letterAtPositionEquals(Letter letter, Position position) {
+		return letter.equals(getLetter(position)) ? LetterAtPositionMatch.MATCH : LetterAtPositionMatch.NO_MATCH;
 	}
 
 	private Letter getLetter(Position position) {
@@ -30,5 +30,10 @@ public class Password {
 
 	static Password of(String line) {
 		return new Password(line.split(": ")[1]);
+	}
+
+	public static class LetterAtPositionMatch {
+		public static final LetterAtPositionMatch MATCH = new LetterAtPositionMatch();
+		public static final LetterAtPositionMatch NO_MATCH = new LetterAtPositionMatch();
 	}
 }

@@ -6,7 +6,9 @@ public class TobogganPasswordPolicy extends PasswordPolicy {
 	}
 
 	public boolean validate(Password password) {
-		return password.letterAtPositionEquals(policyLetter(), firstPosition());
+		if (password.letterAtPositionEquals(policyLetter(), firstPosition()) == Password.LetterAtPositionMatch.MATCH)
+			return true;
+		return false;
 	}
 
 	private Position firstPosition() {
