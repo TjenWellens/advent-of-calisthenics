@@ -32,8 +32,7 @@ public class Password {
 		return new Password(line.split(": ")[1]);
 	}
 
-	public static class LetterAtPositionMatch {
-		public static final LetterAtPositionMatch MATCH = new LetterAtPositionMatch();
-		public static final LetterAtPositionMatch NO_MATCH = new LetterAtPositionMatch();
+	public enum LetterAtPositionMatch {
+		MATCH, NO_MATCH
 	}
 }

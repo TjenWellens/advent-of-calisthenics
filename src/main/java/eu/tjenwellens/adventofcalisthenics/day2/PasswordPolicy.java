@@ -21,9 +21,8 @@ public abstract class PasswordPolicy {
 		return new Letter(policy.split(" ")[1]);
 	}
 
-	public static class PasswordValidation {
-		public static final PasswordValidation VALID = new PasswordValidation();
-		public static final PasswordValidation INVALID = new PasswordValidation();
+	public enum PasswordValidation {
+		VALID, INVALID
 	}
 
 	@AllArgsConstructor(access = AccessLevel.PROTECTED)
