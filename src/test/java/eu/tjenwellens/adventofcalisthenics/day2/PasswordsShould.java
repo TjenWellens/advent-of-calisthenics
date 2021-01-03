@@ -75,12 +75,12 @@ public class PasswordsShould {
 		class Valid {
 			@Test
 			void when_policy_letter_found_a() {
-				assertThat(new PasswordAndPasswordPolicy("1-2 a: a").isValid()).isTrue();
+				assertThat(PasswordAndPasswordPolicy.of("1-2 a: a").isValid()).isTrue();
 			}
 
 			@Test
 			void when_policy_letter_found_b() {
-				assertThat(new PasswordAndPasswordPolicy("1-2 b: b").isValid()).isTrue();
+				assertThat(PasswordAndPasswordPolicy.of("1-2 b: b").isValid()).isTrue();
 			}
 
 		}
@@ -89,12 +89,12 @@ public class PasswordsShould {
 		class Invalid {
 			@Test
 			void when_policy_range_mismatch() {
-				assertThat(new PasswordAndPasswordPolicy("1-2 a: aaa").isValid()).isFalse();
+				assertThat(PasswordAndPasswordPolicy.of("1-2 a: aaa").isValid()).isFalse();
 			}
 
 			@Test
 			void when_policy_letter_not_found() {
-				assertThat(new PasswordAndPasswordPolicy("1-2 a: b").isValid()).isFalse();
+				assertThat(PasswordAndPasswordPolicy.of("1-2 a: b").isValid()).isFalse();
 			}
 		}
 	}

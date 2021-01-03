@@ -20,7 +20,7 @@ public class ValidPasswordCounter {
 	}
 
 	public static ValidPasswordCounter create(List<String> input) {
-		final List<PasswordAndPasswordPolicy> passwordsAndPolicies = input.stream().map(PasswordAndPasswordPolicy::new).collect(Collectors.toList());
+		final List<PasswordAndPasswordPolicy> passwordsAndPolicies = input.stream().map(PasswordAndPasswordPolicy::of).collect(Collectors.toList());
 		return new ValidPasswordCounter(passwordsAndPolicies);
 	}
 }

@@ -1,8 +1,9 @@
 package eu.tjenwellens.adventofcalisthenics.day2;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class PasswordAndPasswordPolicy {
 	private final String line;
 
@@ -16,5 +17,9 @@ public class PasswordAndPasswordPolicy {
 
 	private Password password() {
 		return new Password(line.split(": ")[1]);
+	}
+
+	public static PasswordAndPasswordPolicy of(String line) {
+		return new PasswordAndPasswordPolicy(line);
 	}
 }
