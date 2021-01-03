@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 public abstract class PasswordPolicy {
 	private final String policy;
 
-	public abstract boolean validate(Password password);
+	public abstract PasswordValidation validate(Password password);
 
 	protected Position _policyStartOccurrence() {
 		return new Position(Integer.parseInt(policy.split(" ")[0].split("-")[0]));
@@ -21,4 +21,8 @@ public abstract class PasswordPolicy {
 		return new Letter(policy.split(" ")[1]);
 	}
 
+	public static class PasswordValidation {
+		public static final PasswordValidation VALID = new PasswordValidation();
+		public static final PasswordValidation INVALID = new PasswordValidation();
+	}
 }

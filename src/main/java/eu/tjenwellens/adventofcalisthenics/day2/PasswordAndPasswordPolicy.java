@@ -12,7 +12,7 @@ public class PasswordAndPasswordPolicy {
 		return new PasswordAndPasswordPolicy(TobogganPasswordPolicy.of(line), Password.of(line));
 	}
 
-	public boolean isValid() {
+	public PasswordPolicy.PasswordValidation isValid() {
 		return policy.validate(password);
 	}
 

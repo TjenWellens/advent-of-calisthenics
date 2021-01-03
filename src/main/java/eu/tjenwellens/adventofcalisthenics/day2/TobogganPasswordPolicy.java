@@ -5,10 +5,10 @@ public class TobogganPasswordPolicy extends PasswordPolicy {
 		super(policy);
 	}
 
-	public boolean validate(Password password) {
+	public PasswordValidation validate(Password password) {
 		if (password.letterAtPositionEquals(policyLetter(), firstPosition()) == Password.LetterAtPositionMatch.MATCH)
-			return true;
-		return false;
+			return PasswordValidation.VALID;
+		return PasswordValidation.INVALID;
 	}
 
 	private Position firstPosition() {

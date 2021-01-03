@@ -9,9 +9,9 @@ public class SledPasswordPolicy extends PasswordPolicy {
 		return new SledPasswordPolicy(line.split(": ")[0]);
 	}
 
-	public boolean validate(Password password) {
+	public PasswordValidation validate(Password password) {
 		final LetterOccurs policyLetterOccurs = password.occurrencesOf(policyLetter());
-		return policyLetterOccurs.isBetween(policyStartOccurrence(), policyEndOccurrence());
+		return policyLetterOccurs.isBetween(policyStartOccurrence(), policyEndOccurrence()) ? PasswordValidation.VALID : PasswordValidation.INVALID;
 	}
 
 	private LetterOccurs policyEndOccurrence() {

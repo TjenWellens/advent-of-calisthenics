@@ -10,6 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static eu.tjenwellens.adventofcalisthenics.day2.PasswordPolicy.PasswordValidation.INVALID;
+import static eu.tjenwellens.adventofcalisthenics.day2.PasswordPolicy.PasswordValidation.VALID;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PasswordsShould {
@@ -75,12 +77,12 @@ public class PasswordsShould {
 		class Valid {
 			@Test
 			void when_policy_letter_found_a() {
-				assertThat(PasswordAndPasswordPolicy.sledRental("1-2 a: a").isValid()).isTrue();
+				assertThat(PasswordAndPasswordPolicy.sledRental("1-2 a: a").isValid()).isEqualTo(VALID);
 			}
 
 			@Test
 			void when_policy_letter_found_b() {
-				assertThat(PasswordAndPasswordPolicy.sledRental("1-2 b: b").isValid()).isTrue();
+				assertThat(PasswordAndPasswordPolicy.sledRental("1-2 b: b").isValid()).isEqualTo(VALID);
 			}
 
 		}
@@ -89,12 +91,12 @@ public class PasswordsShould {
 		class Invalid {
 			@Test
 			void when_policy_range_mismatch() {
-				assertThat(PasswordAndPasswordPolicy.sledRental("1-2 a: aaa").isValid()).isFalse();
+				assertThat(PasswordAndPasswordPolicy.sledRental("1-2 a: aaa").isValid()).isEqualTo(INVALID);
 			}
 
 			@Test
 			void when_policy_letter_not_found() {
-				assertThat(PasswordAndPasswordPolicy.sledRental("1-2 a: b").isValid()).isFalse();
+				assertThat(PasswordAndPasswordPolicy.sledRental("1-2 a: b").isValid()).isEqualTo(INVALID);
 			}
 		}
 	}
@@ -105,7 +107,7 @@ public class PasswordsShould {
 		class Valid {
 			@Test
 			void when_exactly_one_policy_position_contains_policy_letter() {
-				assertThat(PasswordAndPasswordPolicy.tobogganRental("1-3 a: abcde").isValid()).isTrue();
+				assertThat(PasswordAndPasswordPolicy.tobogganRental("1-3 a: abcde").isValid()).isEqualTo(VALID);
 			}
 		}
 
@@ -113,7 +115,7 @@ public class PasswordsShould {
 		class Invalid {
 			@Test
 			void when_exactly_no_policy_position_contains_policy_letter() {
-				assertThat(PasswordAndPasswordPolicy.tobogganRental("1-3 b: abc").isValid()).isFalse();
+				assertThat(PasswordAndPasswordPolicy.tobogganRental("1-3 b: abc").isValid()).isEqualTo(INVALID);
 			}
 		}
 	}
