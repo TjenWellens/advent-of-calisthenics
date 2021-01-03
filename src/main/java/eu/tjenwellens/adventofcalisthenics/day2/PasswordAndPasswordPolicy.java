@@ -17,6 +17,6 @@ public class PasswordAndPasswordPolicy {
 	}
 
 	public static PasswordAndPasswordPolicy sledRental(String line) {
-		return new PasswordAndPasswordPolicy(PasswordPolicy.of(line), Password.of(line));
+		return new PasswordAndPasswordPolicy(SledPasswordPolicy.of(line), Password.of(line));
 	}
 }

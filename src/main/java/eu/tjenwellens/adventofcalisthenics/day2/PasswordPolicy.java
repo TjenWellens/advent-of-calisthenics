@@ -28,7 +28,4 @@ public class PasswordPolicy {
 		return new Letter(policy.split(" ")[1]);
 	}
 
-	static PasswordPolicy of(String line) {
-		return new PasswordPolicy(line.split(": ")[0]);
-	}
 }
