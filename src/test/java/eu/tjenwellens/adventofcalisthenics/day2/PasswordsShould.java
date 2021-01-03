@@ -99,6 +99,21 @@ public class PasswordsShould {
 		}
 	}
 
+	@Nested
+	class Validate_TobogganRental {
+		@Nested
+		class Valid {
+			@Test
+			void when_exactly_one_policy_position_contains_policy_letter() {
+				assertThat(PasswordAndPasswordPolicy.of("1-3 a: abcde", PasswordPolicy.TOBOGGAN_RENTAL).isValid()).isTrue();
+			}
+		}
+
+		@Nested
+		class Invalid {
+		}
+	}
+
 	@Disabled
 	@Test
 	void part1_input() throws IOException {
