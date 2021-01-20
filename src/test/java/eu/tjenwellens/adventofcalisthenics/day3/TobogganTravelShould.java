@@ -1,10 +1,16 @@
 package eu.tjenwellens.adventofcalisthenics.day3;
 
+import eu.tjenwellens.adventofcalisthenics.day2.PasswordCount;
+import eu.tjenwellens.adventofcalisthenics.day2.ValidPasswordCounter;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -111,5 +117,16 @@ public class TobogganTravelShould {
 		));
 		final Navigator navigator = new Navigator(map);
 		assertThat(navigator.countTreesAlongSlope(slope)).isEqualTo(new EncounteredTrees(1));
+	}
+
+	@Disabled
+	@Test
+	void part1_input() throws IOException {
+		final Path path = Paths.get("src", "test", "resources", "day-3-input.txt");
+		final List<String> input = Files.readAllLines(path);
+		final Slope slope = new Slope(new Coordinate.Right(3), new Coordinate.Down(1));
+		final TravelMap map = TravelMap.parse(input);
+		final Navigator navigator = new Navigator(map);
+		assertThat(navigator.countTreesAlongSlope(slope)).isEqualTo(new EncounteredTrees(292));
 	}
 }

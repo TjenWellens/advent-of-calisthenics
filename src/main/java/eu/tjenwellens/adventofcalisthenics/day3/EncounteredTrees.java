@@ -1,8 +1,10 @@
 package eu.tjenwellens.adventofcalisthenics.day3;
 
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @EqualsAndHashCode
+@ToString
 public class EncounteredTrees {
 	private final int trees;
 
