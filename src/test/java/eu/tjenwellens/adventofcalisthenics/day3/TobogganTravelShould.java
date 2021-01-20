@@ -34,13 +34,13 @@ public class TobogganTravelShould {
 	@Nested
 	@DisplayName("given slope=straight-down")
 	class StraightDownSlope {
+		private final Slope slope = new Slope(new Coordinate.Right(0), new Coordinate.Down(1));
 		@Test
 		void count_0_trees_when_there_are_no_trees() {
 			final TravelMap map = TravelMap.parse(List.of(
 					"."
 			));
 			final Navigator navigator = new Navigator(map);
-			final Slope slope = new Slope(new Coordinate.Right(0), new Coordinate.Down(1));
 			assertThat(navigator.countTreesAlongSlope(slope)).isEqualTo(new EncounteredTrees(0));
 		}
 
@@ -51,7 +51,6 @@ public class TobogganTravelShould {
 					"#"
 			));
 			final Navigator navigator = new Navigator(map);
-			final Slope slope = new Slope(new Coordinate.Right(0), new Coordinate.Down(1));
 			assertThat(navigator.countTreesAlongSlope(slope)).isEqualTo(new EncounteredTrees(1));
 		}
 
@@ -62,7 +61,6 @@ public class TobogganTravelShould {
 					".#"
 			));
 			final Navigator navigator = new Navigator(map);
-			final Slope slope = new Slope(new Coordinate.Right(0), new Coordinate.Down(1));
 			assertThat(navigator.countTreesAlongSlope(slope)).isEqualTo(new EncounteredTrees(0));
 		}
 
@@ -74,7 +72,6 @@ public class TobogganTravelShould {
 					"#"
 			));
 			final Navigator navigator = new Navigator(map);
-			final Slope slope = new Slope(new Coordinate.Right(0), new Coordinate.Down(1));
 			assertThat(navigator.countTreesAlongSlope(slope)).isEqualTo(new EncounteredTrees(1));
 		}
 
@@ -86,7 +83,6 @@ public class TobogganTravelShould {
 					"#"
 			));
 			final Navigator navigator = new Navigator(map);
-			final Slope slope = new Slope(new Coordinate.Right(0), new Coordinate.Down(1));
 			assertThat(navigator.countTreesAlongSlope(slope)).isEqualTo(new EncounteredTrees(2));
 		}
 	}
