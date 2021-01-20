@@ -13,12 +13,12 @@ public class TravelMap {
 		return new TravelMap(rows);
 	}
 
-	public boolean hasTree(Position position) {
-		final char c = rows.get(position.getRow()).charAt(position.getColumn());
+	public boolean hasTree(Coordinate coordinate) {
+		final char c = rows.get(coordinate.getRow()).charAt(coordinate.getColumn());
 		return c == '#';
 	}
 
-	public boolean contains(Position position) {
-		return position.rowIsLessThan(rows.size());
+	public boolean contains(Coordinate coordinate) {
+		return coordinate.rowIsLessThan(rows.size());
 	}
 }
