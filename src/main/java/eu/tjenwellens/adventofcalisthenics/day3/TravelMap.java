@@ -6,10 +6,6 @@ import java.util.stream.Collectors;
 public class TravelMap {
 	private final List<TravelMapRow> rows;
 
-	enum TileType {
-		TREE, OPEN_SQUARE
-	}
-
 	private TravelMap(List<TravelMapRow> rows) {
 		this.rows = rows;
 	}

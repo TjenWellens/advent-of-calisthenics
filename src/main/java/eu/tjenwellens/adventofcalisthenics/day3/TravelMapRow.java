@@ -7,17 +7,17 @@ class TravelMapRow {
 		this.tiles = tiles;
 	}
 
-	public TravelMap.TileType getTileAtCoordinate(Coordinate coordinate) {
+	public TileType getTileAtCoordinate(Coordinate coordinate) {
 		final char c = tiles.charAt(coordinate.getColumn());
 		return getTileType(c);
 	}
 
-	private TravelMap.TileType getTileType(char c) {
+	private TileType getTileType(char c) {
 		switch (c) {
 			case '#':
-				return TravelMap.TileType.TREE;
+				return TileType.TREE;
 			case '.':
-				return TravelMap.TileType.OPEN_SQUARE;
+				return TileType.OPEN_SQUARE;
 		}
 		throw new IllegalArgumentException("Char c is not known");
 	}
