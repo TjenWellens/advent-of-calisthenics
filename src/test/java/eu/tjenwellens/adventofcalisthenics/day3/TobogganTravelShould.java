@@ -1,5 +1,6 @@
 package eu.tjenwellens.adventofcalisthenics.day3;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TobogganTravelShould {
+	@Disabled
 	@Test
 	void count_trees_for_slope_right_3_down_1() {
 		final TravelMap map = TravelMap.parse(List.of(
