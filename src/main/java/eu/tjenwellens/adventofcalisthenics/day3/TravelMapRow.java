@@ -8,7 +8,8 @@ class TravelMapRow {
 	}
 
 	public TileType getTileAtCoordinate(Coordinate coordinate) {
-		final char c = tiles.charAt(coordinate.getColumn());
+		final int column = coordinate.getColumn();
+		final char c = tiles.charAt(column % tiles.length());
 		return getTileType(c);
 	}
 
