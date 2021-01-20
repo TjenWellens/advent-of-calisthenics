@@ -9,4 +9,8 @@ public class EncounteredTrees {
 	public EncounteredTrees(int trees) {
 		this.trees = trees;
 	}
+
+	public EncounteredTrees add(EncounteredTrees other) {
+		return new EncounteredTrees(this.trees + other.trees);
+	}
 }

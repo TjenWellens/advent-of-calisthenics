@@ -9,13 +9,11 @@ public class Navigator {
 
 	public EncounteredTrees countTreesAlongSlope(Slope slope) {
 		Coordinate coordinate = Coordinate.INITIAL;
-		int count = 0;
+		EncounteredTrees result = new EncounteredTrees(0);
 		while (map.contains(coordinate)) {
-			if (map.hasTree(coordinate)) {
-				count++;
-			}
+			result = result.add(map.hasTree(coordinate));
 			coordinate = slope.getNext(coordinate);
 		}
-		return new EncounteredTrees(count);
+		return result;
 	}
 }

@@ -18,9 +18,9 @@ public class TravelMap {
 		return new TravelMap(rows.stream().map(TravelMapRow::new).collect(Collectors.toList()));
 	}
 
-	public boolean hasTree(Coordinate coordinate) {
+	public EncounteredTrees hasTree(Coordinate coordinate) {
 		final TileType tile = getTileAtCoordinate(coordinate);
-		return tile == TileType.TREE;
+		return tile == TileType.TREE ? new EncounteredTrees(1) : new EncounteredTrees(0);
 	}
 
 	private TileType getTileAtCoordinate(Coordinate coordinate) {
