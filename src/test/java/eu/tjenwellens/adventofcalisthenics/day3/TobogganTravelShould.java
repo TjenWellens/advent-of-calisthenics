@@ -86,4 +86,19 @@ public class TobogganTravelShould {
 			assertThat(navigator.countTreesAlongSlope(slope)).isEqualTo(new EncounteredTrees(2));
 		}
 	}
+
+	@Nested
+	@DisplayName("given slope=down-right")
+	class DownRightSlope {
+		private final Slope slope = new Slope(new Coordinate.Right(1), new Coordinate.Down(1));
+		@Test
+		void count_1_tree_when_there_is_a_tree_further_down_the_slope() {
+			final TravelMap map = TravelMap.parse(List.of(
+					"..",
+					".#"
+			));
+			final Navigator navigator = new Navigator(map);
+			assertThat(navigator.countTreesAlongSlope(slope)).isEqualTo(new EncounteredTrees(1));
+		}
+	}
 }
