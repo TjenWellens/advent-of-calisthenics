@@ -1,7 +1,5 @@
 package eu.tjenwellens.adventofcalisthenics.day3;
 
-import eu.tjenwellens.adventofcalisthenics.day2.PasswordCount;
-import eu.tjenwellens.adventofcalisthenics.day2.ValidPasswordCounter;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -41,6 +39,7 @@ public class TobogganTravelShould {
 	@DisplayName("given slope=straight-down")
 	class StraightDownSlope {
 		private final Slope slope = new Slope(new Coordinate.Right(0), new Coordinate.Down(1));
+
 		@Test
 		void count_0_trees_when_there_are_no_trees() {
 			final TravelMap map = TravelMap.parse(List.of(
@@ -97,6 +96,7 @@ public class TobogganTravelShould {
 	@DisplayName("given slope=down-right")
 	class DownRightSlope {
 		private final Slope slope = new Slope(new Coordinate.Right(1), new Coordinate.Down(1));
+
 		@Test
 		void count_1_tree_when_there_is_a_tree_further_down_the_slope() {
 			final TravelMap map = TravelMap.parse(List.of(
@@ -155,5 +155,20 @@ public class TobogganTravelShould {
 				new Slope(new Coordinate.Right(1), new Coordinate.Down(2))
 		));
 		assertThat(navigator.multiplyTreesAlongSlopes(slopes)).isEqualTo(new EncounteredTrees(336));
+	}
+
+	@Test
+	void multiply_trees_for_2_slopes() {
+		final TravelMap map = TravelMap.parse(List.of(
+				"..",
+				"##",
+				"##"
+		));
+		final Navigator navigator = new Navigator(map);
+		final Slopes slopes = new Slopes(List.of(
+				new Slope(new Coordinate.Right(0), new Coordinate.Down(1)),
+				new Slope(new Coordinate.Right(1), new Coordinate.Down(1))
+		));
+		assertThat(navigator.multiplyTreesAlongSlopes(slopes)).isEqualTo(new EncounteredTrees(2 * 2));
 	}
 }
