@@ -13,7 +13,11 @@ public class TravelMap {
 		return new TravelMap(rows);
 	}
 
-	public int amountOfRows() {
-		return rows.size();
+	public boolean hasTree(Position position) {
+		return true;
+	}
+
+	public boolean contains(Position position) {
+		return position.getRow() < rows.size();
 	}
 }
