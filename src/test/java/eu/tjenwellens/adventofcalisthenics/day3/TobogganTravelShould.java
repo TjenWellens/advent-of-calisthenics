@@ -42,6 +42,7 @@ public class TobogganTravelShould {
 	@Test
 	void count_1_trees_when_there_is_one_tree() {
 		final TravelMap map = TravelMap.parse(List.of(
+				".",
 				"#"
 		));
 		final Navigator navigator = new Navigator(map);
