@@ -171,4 +171,21 @@ public class TobogganTravelShould {
 		));
 		assertThat(navigator.multiplyTreesAlongSlopes(slopes)).isEqualTo(new EncounteredTrees(2 * 2));
 	}
+
+	@Disabled
+	@Test
+	void part2_input() throws IOException {
+		final Path path = Paths.get("src", "test", "resources", "day-3-input.txt");
+		final List<String> input = Files.readAllLines(path);
+		final Slopes slopes = new Slopes(List.of(
+				new Slope(new Coordinate.Right(1), new Coordinate.Down(1)),
+				new Slope(new Coordinate.Right(3), new Coordinate.Down(1)),
+				new Slope(new Coordinate.Right(5), new Coordinate.Down(1)),
+				new Slope(new Coordinate.Right(7), new Coordinate.Down(1)),
+				new Slope(new Coordinate.Right(1), new Coordinate.Down(2))
+		));
+		final TravelMap map = TravelMap.parse(input);
+		final Navigator navigator = new Navigator(map);
+		assertThat(navigator.multiplyTreesAlongSlopes(slopes)).isEqualTo(new EncounteredTrees(0));
+	}
 }
