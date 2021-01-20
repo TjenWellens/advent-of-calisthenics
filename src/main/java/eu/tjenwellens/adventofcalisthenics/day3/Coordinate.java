@@ -6,7 +6,6 @@ import lombok.Getter;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Coordinate {
-	public static final Coordinate INITIAL = new Coordinate(0, 0);
 	@Getter
 	private final int row;
 	@Getter
@@ -22,6 +21,10 @@ public class Coordinate {
 
 	public Coordinate move(Right right) {
 		return new Coordinate(this.row, this.column + right.value);
+	}
+
+	public static Coordinate INITIAL() {
+		return new Coordinate(0, 0);
 	}
 
 	@AllArgsConstructor
