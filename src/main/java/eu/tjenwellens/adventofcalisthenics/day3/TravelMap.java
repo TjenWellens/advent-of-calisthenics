@@ -4,6 +4,6 @@ import java.util.List;
 
 public class TravelMap {
 	public static TravelMap parse(List<String> strings) {
-		throw new UnsupportedOperationException();
+		return new TravelMap();
 	}
 }

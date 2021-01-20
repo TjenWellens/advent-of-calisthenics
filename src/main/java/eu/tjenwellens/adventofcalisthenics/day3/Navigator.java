@@ -5,6 +5,6 @@ public class Navigator {
 	}
 
 	public EncounteredTrees countTreesAlongSlope(Slope slope) {
-		throw new UnsupportedOperationException();
+		return new EncounteredTrees(0);
 	}
 }

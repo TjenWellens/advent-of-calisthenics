@@ -33,7 +33,7 @@ public class TobogganTravelShould {
 				"."
 		));
 		final Navigator navigator = new Navigator(map);
-		final Slope slope = new Slope(new Right(3), new Down(1));
+		final Slope slope = new Slope(new Right(0), new Down(1));
 		assertThat(navigator.countTreesAlongSlope(slope)).isEqualTo(new EncounteredTrees(0));
 	}
 }
