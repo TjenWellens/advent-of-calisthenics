@@ -15,4 +15,8 @@ public class EncounteredTrees {
 	public EncounteredTrees add(EncounteredTrees other) {
 		return new EncounteredTrees(this.trees + other.trees);
 	}
+
+	public EncounteredTrees multiply(EncounteredTrees other) {
+		return new EncounteredTrees(this.trees * other.trees);
+	}
 }

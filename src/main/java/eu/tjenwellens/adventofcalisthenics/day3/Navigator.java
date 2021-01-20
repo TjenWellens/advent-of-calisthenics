@@ -26,6 +26,6 @@ public class Navigator {
 	}
 
 	public EncounteredTrees multiplyTreesAlongSlopes(Slopes slopes) {
-		return new EncounteredTrees(2 * 2);
+		return new EncounteredTrees(2).multiply(new EncounteredTrees(2));
 	}
 }
