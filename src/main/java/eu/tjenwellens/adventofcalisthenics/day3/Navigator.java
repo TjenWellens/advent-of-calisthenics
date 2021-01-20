@@ -13,12 +13,8 @@ public class Navigator {
 			if (map.hasTree(coordinate)) {
 				return new EncounteredTrees(1);
 			}
-			coordinate = getNextPositionAlongSlope(coordinate, slope);
+			coordinate = slope.getNext(coordinate);
 		}
 		return new EncounteredTrees(0);
-	}
-
-	private Coordinate getNextPositionAlongSlope(Coordinate initialCoordinate, Slope slope) {
-		return new Coordinate(initialCoordinate.getRow() + slope.getDown().getValue(),0);
 	}
 }
