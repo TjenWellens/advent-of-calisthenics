@@ -49,4 +49,15 @@ public class TobogganTravelShould {
 		final Slope slope = new Slope(new Right(0), new Down(1));
 		assertThat(navigator.countTreesAlongSlope(slope)).isEqualTo(new EncounteredTrees(1));
 	}
+
+	@Test
+	void count_0_trees_when_there_are_trees_but_not_in_slope_path() {
+		final TravelMap map = TravelMap.parse(List.of(
+				"..",
+				".#"
+		));
+		final Navigator navigator = new Navigator(map);
+		final Slope slope = new Slope(new Right(0), new Down(1));
+		assertThat(navigator.countTreesAlongSlope(slope)).isEqualTo(new EncounteredTrees(0));
+	}
 }
