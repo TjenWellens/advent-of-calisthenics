@@ -28,7 +28,7 @@ public class Navigator {
 	public EncounteredTrees multiplyTreesAlongSlopes(Slopes slopes) {
 		EncounteredTrees result = new EncounteredTrees(1);
 		for (Slope slope : slopes) {
-			result = result.multiply(new EncounteredTrees(2));
+			result = result.multiply(countTreesAlongSlope(slope));
 		}
 		return result;
 	}
