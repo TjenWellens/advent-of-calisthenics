@@ -14,7 +14,8 @@ public class TravelMap {
 	}
 
 	public boolean hasTree(Position position) {
-		return true;
+		final char c = rows.get(position.getRow()).charAt(position.getColumn());
+		return c == '#';
 	}
 
 	public boolean contains(Position position) {
