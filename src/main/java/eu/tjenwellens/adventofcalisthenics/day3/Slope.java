@@ -7,7 +7,7 @@ public class Slope {
 		this.down = down;
 	}
 
-	public Coordinate getNext(Coordinate coordinate) {
+	public Coordinate next(Coordinate coordinate) {
 		return coordinate.move(this.down);
 	}
 

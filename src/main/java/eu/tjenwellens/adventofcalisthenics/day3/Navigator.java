@@ -12,7 +12,7 @@ public class Navigator {
 		EncounteredTrees result = new EncounteredTrees(0);
 		while (map.contains(coordinate)) {
 			result = result.add(map.countTreesAt(coordinate));
-			coordinate = slope.getNext(coordinate);
+			coordinate = slope.next(coordinate);
 		}
 		return result;
 	}
