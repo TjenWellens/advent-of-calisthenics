@@ -129,4 +129,31 @@ public class TobogganTravelShould {
 		final Navigator navigator = new Navigator(map);
 		assertThat(navigator.countTreesAlongSlope(slope)).isEqualTo(new EncounteredTrees(292));
 	}
+
+	@Disabled
+	@Test
+	void multiply_trees_for_multiple_slopes() {
+		final TravelMap map = TravelMap.parse(List.of(
+				"..##.......",
+				"#...#...#..",
+				".#....#..#.",
+				"..#.#...#.#",
+				".#...##..#.",
+				"..#.##.....",
+				".#.#.#....#",
+				".#........#",
+				"#.##...#...",
+				"#...##....#",
+				".#..#...#.#"
+		));
+		final Navigator navigator = new Navigator(map);
+		final Slopes slopes = new Slopes(List.of(
+				new Slope(new Coordinate.Right(1), new Coordinate.Down(1)),
+				new Slope(new Coordinate.Right(3), new Coordinate.Down(1)),
+				new Slope(new Coordinate.Right(5), new Coordinate.Down(1)),
+				new Slope(new Coordinate.Right(7), new Coordinate.Down(1)),
+				new Slope(new Coordinate.Right(1), new Coordinate.Down(2))
+		));
+		assertThat(navigator.multiplyTreesAlongSlopes(slopes)).isEqualTo(new EncounteredTrees(336));
+	}
 }

@@ -24,4 +24,8 @@ public class Navigator {
 		}
 		return result;
 	}
+
+	public EncounteredTrees multiplyTreesAlongSlopes(Slopes slopes) {
+		throw new UnsupportedOperationException();
+	}
 }
