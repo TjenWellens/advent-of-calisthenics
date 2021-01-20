@@ -11,7 +11,7 @@ public class Navigator {
 		Coordinate coordinate = Coordinate.INITIAL;
 		EncounteredTrees result = new EncounteredTrees(0);
 		while (map.contains(coordinate)) {
-			result = result.add(map.hasTree(coordinate));
+			result = result.add(map.countTreesAt(coordinate));
 			coordinate = slope.getNext(coordinate);
 		}
 		return result;
