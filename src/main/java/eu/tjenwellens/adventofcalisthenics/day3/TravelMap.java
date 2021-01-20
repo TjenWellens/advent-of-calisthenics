@@ -4,18 +4,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TravelMap {
-	private final List<Row> rows;
+	private final List<TravelMapRow> rows;
 
 	enum TileType {
 		TREE, OPEN_SQUARE
 	}
 
-	private TravelMap(List<Row> rows) {
+	private TravelMap(List<TravelMapRow> rows) {
 		this.rows = rows;
 	}
 
 	public static TravelMap parse(List<String> rows) {
-		return new TravelMap(rows.stream().map(Row::new).collect(Collectors.toList()));
+		return new TravelMap(rows.stream().map(TravelMapRow::new).collect(Collectors.toList()));
 	}
 
 	public boolean hasTree(Coordinate coordinate) {
@@ -31,20 +31,4 @@ public class TravelMap {
 		return coordinate.rowIsLessThan(rows.size());
 	}
 
-	private static class Row {
-		private final String tiles;
-
-		private Row(String tiles) {
-			this.tiles = tiles;
-		}
-
-		public TileType getTileAtCoordinate(Coordinate coordinate) {
-			final char c = tiles.charAt(coordinate.getColumn());
-			switch (c) {
-				case '#': return TileType.TREE;
-				case '.': return TileType.OPEN_SQUARE;
-			}
-			throw new IllegalArgumentException("Char c is not known");
-		}
-	}
 }
