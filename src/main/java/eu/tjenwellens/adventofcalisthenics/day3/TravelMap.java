@@ -18,6 +18,6 @@ public class TravelMap {
 	}
 
 	public boolean contains(Position position) {
-		return position.getRow() < rows.size();
+		return position.rowIsLessThan(rows.size());
 	}
 }
