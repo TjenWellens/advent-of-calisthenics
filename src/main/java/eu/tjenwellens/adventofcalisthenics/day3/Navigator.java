@@ -19,10 +19,8 @@ public class Navigator {
 
 	private Route getRoute(Slope slope) {
 		Route result = new Route(List.of());
-		Coordinate coordinate = Coordinate.INITIAL;
-		while (map.contains(coordinate)) {
+		for (Coordinate coordinate = Coordinate.INITIAL; map.contains(coordinate); coordinate = slope.next(coordinate)) {
 			result = result.add(coordinate);
-			coordinate = slope.next(coordinate);
 		}
 		return result;
 	}
