@@ -1,5 +1,7 @@
 package eu.tjenwellens.adventofcalisthenics.day3;
 
+import java.util.List;
+
 public class Navigator {
 	private final TravelMap map;
 
@@ -8,10 +10,18 @@ public class Navigator {
 	}
 
 	public EncounteredTrees countTreesAlongSlope(Slope slope) {
-		Coordinate coordinate = Coordinate.INITIAL;
 		EncounteredTrees result = new EncounteredTrees(0);
-		while (map.contains(coordinate)) {
+		for (Coordinate coordinate : getRoute(slope)) {
 			result = result.add(map.countTreesAt(coordinate));
+		}
+		return result;
+	}
+
+	private Route getRoute(Slope slope) {
+		Route result = new Route(List.of());
+		Coordinate coordinate = Coordinate.INITIAL;
+		while (map.contains(coordinate)) {
+			result = result.add(coordinate);
 			coordinate = slope.next(coordinate);
 		}
 		return result;
