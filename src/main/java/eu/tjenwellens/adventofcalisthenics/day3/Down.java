@@ -1,6 +1,12 @@
 package eu.tjenwellens.adventofcalisthenics.day3;
 
+import lombok.Getter;
+
+@Getter
 public class Down {
-	public Down(int i) {
+	private final int value;
+
+	public Down(int value) {
+		this.value = value;
 	}
 }
