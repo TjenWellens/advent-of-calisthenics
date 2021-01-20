@@ -17,4 +17,21 @@ public class Coordinate {
 	public boolean rowIsLessThan(int size) {
 		return this.row < size;
 	}
+
+	public Coordinate move(Down down) {
+		return new Coordinate(this.row + down.value,0);
+	}
+
+	public static class Down {
+		private final int value;
+
+		public Down(int value) {
+			this.value = value;
+		}
+	}
+
+	public static class Right {
+		public Right(int i) {
+		}
+	}
 }

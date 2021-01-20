@@ -1,26 +1,14 @@
 package eu.tjenwellens.adventofcalisthenics.day3;
 
 public class Slope {
-	private final Down down;
+	private final Coordinate.Down down;
 
-	public Slope(Right right, Down down) {
+	public Slope(Coordinate.Right right, Coordinate.Down down) {
 		this.down = down;
 	}
 
 	public Coordinate getNext(Coordinate coordinate) {
-		return new Coordinate(coordinate.getRow() + this.down.value,0);
+		return coordinate.move(this.down);
 	}
 
-	public static class Down {
-		private final int value;
-
-		public Down(int value) {
-			this.value = value;
-		}
-	}
-
-	public static class Right {
-		public Right(int i) {
-		}
-	}
 }
