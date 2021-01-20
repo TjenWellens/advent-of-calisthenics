@@ -101,4 +101,15 @@ public class TobogganTravelShould {
 			assertThat(navigator.countTreesAlongSlope(slope)).isEqualTo(new EncounteredTrees(1));
 		}
 	}
+
+	@Test
+	void have_an_infinite_map_to_the_right() {
+		final Slope slope = new Slope(new Coordinate.Right(4), new Coordinate.Down(1));
+		final TravelMap map = TravelMap.parse(List.of(
+				"..",
+				".#"
+		));
+		final Navigator navigator = new Navigator(map);
+		assertThat(navigator.countTreesAlongSlope(slope)).isEqualTo(new EncounteredTrees(1));
+	}
 }
