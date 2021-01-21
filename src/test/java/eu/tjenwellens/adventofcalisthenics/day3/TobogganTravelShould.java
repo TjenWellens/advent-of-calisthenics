@@ -186,6 +186,6 @@ public class TobogganTravelShould {
 		));
 		final TravelMap map = TravelMap.parse(input);
 		final Navigator navigator = new Navigator(map);
-		assertThat(navigator.multiplyTreesAlongSlopes(slopes)).isEqualTo(new EncounteredTrees(0));
+		assertThat(navigator.multiplyTreesAlongSlopes(slopes)).isEqualTo(new EncounteredTrees(764809840));
 	}
 }
