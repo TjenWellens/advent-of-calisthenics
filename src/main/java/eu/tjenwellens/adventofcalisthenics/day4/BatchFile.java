@@ -11,20 +11,10 @@ public class BatchFile {
 
 	public Passports parse() {
 		List<Passport> result = new LinkedList<>();
-
-		if (lines.size() > 1) {
-			result.add(new Passport(parseFields(lines.get(0))));
-			result.add(new Passport(parseFields(lines.get(2))));
-			result.add(new Passport(parseFields(lines.get(4))));
-			result.add(new Passport(parseFields(lines.get(6))));
-			result.add(new Passport(parseFields(lines.get(8))));
-			result.add(new Passport(parseFields(lines.get(10))));
-			result.add(new Passport(parseFields(lines.get(12))));
-			result.add(new Passport(parseFields(lines.get(14))));
-		} else {
-			result.add(new Passport(parseFields(lines.get(0))));
+		for (String line : lines) {
+			if(line.isBlank()) continue;
+			result.add(new Passport(parseFields(line)));
 		}
-
 		return new Passports(result);
 	}
 
