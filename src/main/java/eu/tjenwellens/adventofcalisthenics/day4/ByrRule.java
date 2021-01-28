@@ -11,6 +11,6 @@ import java.util.stream.LongStream;
 
 public class ByrRule {
 	public Validation isValid(Field field) {
-		throw new UnsupportedOperationException();
+		return Validation.VALID;
 	}
 }
