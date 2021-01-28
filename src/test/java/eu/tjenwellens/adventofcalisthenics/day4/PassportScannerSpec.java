@@ -1,6 +1,8 @@
 package eu.tjenwellens.adventofcalisthenics.day4;
 
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -45,34 +47,38 @@ public class PassportScannerSpec {
 		assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(1));
 	}
 
-	@Test
-	void a_batchfile_can_parse_passwords() {
-		final List<String> lines = Arrays.asList("""
-							ecl:gry
+	@DisplayName("a batchfile")
+	@Nested
+	class ABatchFile {
+		@Test
+		void can_parse_multiple_single_line_single_field_passwords() {
+			final List<String> lines = Arrays.asList("""
+								ecl:gry
 
-							pid:860033327
+								pid:860033327
 
-							eyr:2020 hcl:#fffffd
+								eyr:2020 hcl:#fffffd
 
-							byr:1937
+								byr:1937
 
-							iyr:2017
+								iyr:2017
 
-							cid:147
+								cid:147
 
-							hgt:183cm
-				""".split("\n"));
+								hgt:183cm
+					""".split("\n"));
 
-		final BatchFile batchFile = new BatchFile(lines);
+			final BatchFile batchFile = new BatchFile(lines);
 
-		assertThat(batchFile.parse()).isEqualTo(new Passports(List.of(
-				new Passport(List.of(new Field("ecl","gry"))),
-				new Passport(List.of(new Field("pid","860033327"))),
-				new Passport(List.of(new Field("eyr","2020 hcl:#fffffd"))),
-				new Passport(List.of(new Field("byr","1937"))),
-				new Passport(List.of(new Field("iyr","2017"))),
-				new Passport(List.of(new Field("cid","147"))),
-				new Passport(List.of(new Field("hgt","183cm")))
-		)));
+			assertThat(batchFile.parse()).isEqualTo(new Passports(List.of(
+					new Passport(List.of(new Field("ecl", "gry"))),
+					new Passport(List.of(new Field("pid", "860033327"))),
+					new Passport(List.of(new Field("eyr", "2020 hcl:#fffffd"))),
+					new Passport(List.of(new Field("byr", "1937"))),
+					new Passport(List.of(new Field("iyr", "2017"))),
+					new Passport(List.of(new Field("cid", "147"))),
+					new Passport(List.of(new Field("hgt", "183cm")))
+			)));
+		}
 	}
 }
