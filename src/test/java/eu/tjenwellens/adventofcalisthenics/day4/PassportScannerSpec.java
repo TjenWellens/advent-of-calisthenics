@@ -17,6 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PassportScannerSpec {
 	@Nested
 	class V1_KeyValidation {
+		private final PassportScanner scanner = new PassportScanner();
 		@Disabled
 		@Test
 		void scanner_counts_valid_passports() {
@@ -38,7 +39,7 @@ public class PassportScannerSpec {
 
 			final BatchFile batchFile = new BatchFile(lines);
 
-			assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(2));
+			assertThat(scanner.countValidPassports(batchFile)).isEqualTo(new PassportCount(2));
 		}
 
 		@DisplayName("a batchfile")
@@ -212,6 +213,7 @@ public class PassportScannerSpec {
 		@DisplayName("a passport validator")
 		@Nested
 		class APassportValidator {
+
 			@Test
 			void counts_a_valid_passport() {
 				final List<String> lines = Arrays.asList("""
@@ -221,7 +223,7 @@ public class PassportScannerSpec {
 
 				final BatchFile batchFile = new BatchFile(lines);
 
-				assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(1));
+				assertThat(scanner.countValidPassports(batchFile)).isEqualTo(new PassportCount(1));
 			}
 
 			@Test
@@ -236,7 +238,7 @@ public class PassportScannerSpec {
 
 				final BatchFile batchFile = new BatchFile(lines);
 
-				assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(2));
+				assertThat(scanner.countValidPassports(batchFile)).isEqualTo(new PassportCount(2));
 			}
 
 			@Test
@@ -247,7 +249,7 @@ public class PassportScannerSpec {
 
 				final BatchFile batchFile = new BatchFile(lines);
 
-				assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(0));
+				assertThat(scanner.countValidPassports(batchFile)).isEqualTo(new PassportCount(0));
 			}
 		}
 
@@ -257,7 +259,7 @@ public class PassportScannerSpec {
 			final Path path = Paths.get("src", "test", "resources", "day-4-input.txt");
 			final List<String> lines = Files.readAllLines(path);
 			final BatchFile batchFile = new BatchFile(lines);
-			assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(226));
+			assertThat(scanner.countValidPassports(batchFile)).isEqualTo(new PassportCount(226));
 		}
 	}
 
