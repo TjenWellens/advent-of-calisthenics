@@ -379,6 +379,15 @@ public class PassportScannerSpec {
 				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "150"))).isEqualTo(Validation.INVALID);
 				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "1000"))).isEqualTo(Validation.INVALID);
 			}
+			@Test
+			void hair_color_is_valid_when_hexcolor() {
+				assertThat(FieldRules.HAIR_COLOR.isValid(new Field("hcl", "#123abc"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.HAIR_COLOR.isValid(new Field("hcl", "#abc123"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.HAIR_COLOR.isValid(new Field("hcl", "#abcdef"))).isEqualTo(Validation.VALID);
+
+				assertThat(FieldRules.HAIR_COLOR.isValid(new Field("hcl", "123abc"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.HAIR_COLOR.isValid(new Field("hcl", "#55555"))).isEqualTo(Validation.INVALID);
+			}
 		}
 	}
 }
