@@ -147,7 +147,7 @@ public class PassportScannerSpec {
 
 	@DisplayName("a passport")
 	@Nested
-	class APassportValidator {
+	class APassport {
 		@DisplayName("is valid")
 		@Nested
 		class IsValid {
