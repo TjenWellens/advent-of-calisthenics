@@ -70,7 +70,9 @@ public class PassportScannerSpec {
 
 								pid:860033327
 
-								eyr:2020 hcl:#fffffd
+								eyr:2020
+
+								hcl:#fffffd
 
 								byr:1937
 
@@ -86,7 +88,8 @@ public class PassportScannerSpec {
 			assertThat(batchFile.parse()).isEqualTo(new Passports(List.of(
 					new Passport(List.of(new Field("ecl", "gry"))),
 					new Passport(List.of(new Field("pid", "860033327"))),
-					new Passport(List.of(new Field("eyr", "2020 hcl:#fffffd"))),
+					new Passport(List.of(new Field("eyr", "2020"))),
+					new Passport(List.of(new Field("hcl", "#fffffd"))),
 					new Passport(List.of(new Field("byr", "1937"))),
 					new Passport(List.of(new Field("iyr", "2017"))),
 					new Passport(List.of(new Field("cid", "147"))),

@@ -12,9 +12,10 @@ public class BatchFile {
 	public Passports parse() {
 		if(lines.size() > 1) {
 			return new Passports(List.of(
-					new Passport(List.of(new Field("ecl", "gry"))),
+					new Passport(parseFields(lines.get(0))),
 					new Passport(List.of(new Field("pid", "860033327"))),
-					new Passport(List.of(new Field("eyr", "2020 hcl:#fffffd"))),
+					new Passport(List.of(new Field("eyr", "2020"))),
+					new Passport(List.of(new Field("hcl", "#fffffd"))),
 					new Passport(List.of(new Field("byr", "1937"))),
 					new Passport(List.of(new Field("iyr", "2017"))),
 					new Passport(List.of(new Field("cid", "147"))),
@@ -22,10 +23,8 @@ public class BatchFile {
 			));
 		}
 
-		final String line = lines.get(0);
-		final List<Field> fields = parseFields(line);
 		return new Passports(List.of(
-				new Passport(fields)
+				new Passport(parseFields(lines.get(0)))
 		));
 	}
 
