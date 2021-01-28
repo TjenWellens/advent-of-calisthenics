@@ -1,5 +1,6 @@
 package eu.tjenwellens.adventofcalisthenics.day4;
 
+import eu.tjenwellens.adventofcalisthenics.day4.rule.field.FieldRules;
 import eu.tjenwellens.adventofcalisthenics.day4.rule.field.key.KeyRules;
 import eu.tjenwellens.adventofcalisthenics.day4.rule.field.value.ValueRules;
 import org.junit.jupiter.api.Disabled;
@@ -496,6 +497,25 @@ public class PassportScannerSpec {
 		@DisplayName("field-rules")
 		@Nested
 		class FieldRulesTest {
+			final Rules rules = new FieldRules();
+			@Test
+			void checks_keys() {
+				assertThat(rules.isValid(new Passport(List.of(
+						new Field("pid","087499704")
+				)))).isEqualTo(Validation.INVALID);
+			}
+			@Test
+			void checks_values() {
+				assertThat(rules.isValid(new Passport(List.of(
+						new Field("pid","087499704"),
+						new Field("hgt","foo"),
+						new Field("ecl","grn"),
+						new Field("iyr","2012"),
+						new Field("eyr","2030"),
+						new Field("byr","1980"),
+						new Field("hcl","#623a2f")
+				)))).isEqualTo(Validation.INVALID);
+			}
 		}
 	}
 }
