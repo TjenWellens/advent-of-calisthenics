@@ -231,5 +231,15 @@ public class PassportScannerSpec {
 
 			assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(2));
 		}
+		@Test
+		void does_not_count_an_invalid_passport() {
+			final List<String> lines = Arrays.asList("""
+							ecl:gry hgt:183cm
+				""".split("\n"));
+
+			final BatchFile batchFile = new BatchFile(lines);
+
+			assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(0));
+		}
 	}
 }
