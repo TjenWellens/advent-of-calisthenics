@@ -166,6 +166,7 @@ public class PassportScannerSpec {
 				assertThat(new PassportValidator().isValid(passport)).isEqualTo(PassportValidator.Validation.VALID);
 			}
 		}
+
 		@DisplayName("is invalid")
 		@Nested
 		class IsInvalid {
@@ -179,6 +180,21 @@ public class PassportScannerSpec {
 						new Field("iyr", "2017"),
 						new Field("cid", "147"),
 						new Field("hgt", "183cm")
+				));
+				assertThat(new PassportValidator().isValid(passport)).isEqualTo(PassportValidator.Validation.INVALID);
+			}
+
+			@Test
+			void when_an_unknown_field_is_present() {
+				final Passport passport = new Passport(List.of(
+						new Field("foo", "bar"),
+						new Field("pid", "bar"),
+						new Field("eyr", "bar"),
+						new Field("hcl", "bar"),
+						new Field("byr", "bar"),
+						new Field("iyr", "bar"),
+						new Field("cid", "bar"),
+						new Field("hgt", "bar")
 				));
 				assertThat(new PassportValidator().isValid(passport)).isEqualTo(PassportValidator.Validation.INVALID);
 			}
