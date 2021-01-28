@@ -165,6 +165,20 @@ public class PassportScannerSpec {
 				));
 				assertThat(new PassportValidator().isValid(passport)).isEqualTo(PassportValidator.Validation.VALID);
 			}
+
+			@Test
+			void when_only_missing_cid() {
+				final Passport passport = new Passport(List.of(
+						new Field("ecl", "gry"),
+						new Field("pid", "860033327"),
+						new Field("eyr", "2020"),
+						new Field("hcl", "#fffffd"),
+						new Field("byr", "1937"),
+						new Field("iyr", "2017"),
+						new Field("hgt", "183cm")
+				));
+				assertThat(new PassportValidator().isValid(passport)).isEqualTo(PassportValidator.Validation.VALID);
+			}
 		}
 
 		@DisplayName("is invalid")
