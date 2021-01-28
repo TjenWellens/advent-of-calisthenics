@@ -9,10 +9,16 @@ public class BatchFile {
 	private final List<String> lines;
 
 	public Passports parse() {
-		final String[] split = lines.get(0).trim().split(":");
-
+		final String line = lines.get(0);
+		final List<Field> fields = parseFields(line);
 		return new Passports(List.of(
-				new Passport(List.of(new Field(split[0],split[1])))
+				new Passport(fields)
 		));
+	}
+
+	private List<Field> parseFields(String line) {
+		final String[] split = line.trim().split(":");
+		final Field field = new Field(split[0], split[1]);
+		return List.of(field);
 	}
 }
