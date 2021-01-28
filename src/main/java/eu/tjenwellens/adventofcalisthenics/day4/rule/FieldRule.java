@@ -1,4 +1,4 @@
-package eu.tjenwellens.adventofcalisthenics.day4.rule.field;
+package eu.tjenwellens.adventofcalisthenics.day4.rule;
 
 import eu.tjenwellens.adventofcalisthenics.day4.passport.Field;
 import eu.tjenwellens.adventofcalisthenics.day4.Validation;

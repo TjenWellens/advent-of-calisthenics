@@ -1,11 +1,10 @@
-package eu.tjenwellens.adventofcalisthenics.day4.rule.field;
+package eu.tjenwellens.adventofcalisthenics.day4.rule;
 
 
 import eu.tjenwellens.adventofcalisthenics.day4.passport.Passport;
-import eu.tjenwellens.adventofcalisthenics.day4.rule.Rules;
 import eu.tjenwellens.adventofcalisthenics.day4.Validation;
-import eu.tjenwellens.adventofcalisthenics.day4.rule.field.key.KeyRules;
-import eu.tjenwellens.adventofcalisthenics.day4.rule.field.value.ValueRules;
+import eu.tjenwellens.adventofcalisthenics.day4.rule.key.KeyRules;
+import eu.tjenwellens.adventofcalisthenics.day4.rule.value.ValueRules;
 
 public class FieldRules implements Rules {
 	private final KeyRules keys = new KeyRules();
