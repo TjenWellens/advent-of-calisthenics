@@ -8,6 +8,15 @@ import lombok.ToString;
 @EqualsAndHashCode
 @ToString
 public class Field {
-	private final String ecl;
-	private final String gry;
+	private final String key;
+	private final String value;
+
+	public boolean hasKey(Key key) {
+		return this.key.equals(key.key);
+	}
+
+	@AllArgsConstructor
+	public static class Key {
+		private final String key;
+	}
 }
