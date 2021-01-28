@@ -1,10 +1,15 @@
 package eu.tjenwellens.adventofcalisthenics.day4;
 
+import eu.tjenwellens.adventofcalisthenics.day3.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
@@ -241,5 +246,14 @@ public class PassportScannerSpec {
 
 			assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(0));
 		}
+	}
+
+	@Disabled
+	@Test
+	void part1_input() throws IOException {
+		final Path path = Paths.get("src", "test", "resources", "day-4-input.txt");
+		final List<String> lines = Files.readAllLines(path);
+		final BatchFile batchFile = new BatchFile(lines);
+		assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(226));
 	}
 }
