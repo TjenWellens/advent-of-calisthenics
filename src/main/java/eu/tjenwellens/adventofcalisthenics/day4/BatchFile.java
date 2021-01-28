@@ -12,18 +12,28 @@ public class BatchFile {
 	public Passports parse() {
 		List<Passport> result = new LinkedList<>();
 		for (String line : lines) {
-			if(line.isBlank()) continue;
+			if (line.isBlank()) continue;
 			result.add(new Passport(parseFields(line)));
 		}
 		return new Passports(result);
 	}
 
 	private List<Field> parseFields(String line) {
-		if(line.trim().contains(" ")) {
-			return List.of(new Field("ecl", "gry"),new Field("pid", "860033327"));
+		if (line.trim().contains(" ")) {
+			final String[] fieldStrings = line.trim().split(" ");
+			final List<Field> result = new LinkedList<>();
+			for (String fieldString : fieldStrings) {
+				result.add(parseField(fieldString));
+			}
+			return result;
 		}
-		final String[] split = line.trim().split(":");
-		final Field field = new Field(split[0], split[1]);
+		final String fieldString = line;
+		final Field field = parseField(fieldString);
 		return List.of(field);
+	}
+
+	private Field parseField(String fieldString) {
+		final String[] split = fieldString.trim().split(":");
+		return new Field(split[0], split[1]);
 	}
 }
