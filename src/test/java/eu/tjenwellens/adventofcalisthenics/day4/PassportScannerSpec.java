@@ -1,6 +1,6 @@
 package eu.tjenwellens.adventofcalisthenics.day4;
 
-import eu.tjenwellens.adventofcalisthenics.day4.rule.field.FieldValueRules;
+import eu.tjenwellens.adventofcalisthenics.day4.rule.field.value.FieldValueRules;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

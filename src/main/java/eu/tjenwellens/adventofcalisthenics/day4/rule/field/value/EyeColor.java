@@ -1,9 +1,10 @@
-package eu.tjenwellens.adventofcalisthenics.day4.rule.field;
+package eu.tjenwellens.adventofcalisthenics.day4.rule.field.value;
 
 import eu.tjenwellens.adventofcalisthenics.day4.Field;
 import eu.tjenwellens.adventofcalisthenics.day4.Validation;
+import eu.tjenwellens.adventofcalisthenics.day4.rule.field.FieldRule;
 
-public class EyeColor extends FieldRule {
+class EyeColor extends FieldRule {
 	public EyeColor() {
 		super(new Field.Key("ecl"));
 	}

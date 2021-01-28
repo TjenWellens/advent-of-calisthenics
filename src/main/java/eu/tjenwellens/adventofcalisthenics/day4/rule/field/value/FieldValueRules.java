@@ -1,8 +1,9 @@
-package eu.tjenwellens.adventofcalisthenics.day4.rule.field;
+package eu.tjenwellens.adventofcalisthenics.day4.rule.field.value;
 
 import eu.tjenwellens.adventofcalisthenics.day4.Passport;
 import eu.tjenwellens.adventofcalisthenics.day4.Rules;
 import eu.tjenwellens.adventofcalisthenics.day4.Validation;
+import eu.tjenwellens.adventofcalisthenics.day4.rule.field.FieldRule;
 
 import java.util.List;
 
