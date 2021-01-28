@@ -10,13 +10,7 @@ public class BatchFile {
 
 	public Passports parse() {
 		return new Passports(List.of(
-				new Passport(List.of(new Field("ecl","gry"))),
-				new Passport(List.of(new Field("pid","860033327"))),
-				new Passport(List.of(new Field("eyr","2020 hcl:#fffffd"))),
-				new Passport(List.of(new Field("byr","1937"))),
-				new Passport(List.of(new Field("iyr","2017"))),
-				new Passport(List.of(new Field("cid","147"))),
-				new Passport(List.of(new Field("hgt","183cm")))
+				new Passport(List.of(new Field("ecl","gry")))
 		));
 	}
 }
