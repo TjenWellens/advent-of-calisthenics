@@ -331,6 +331,14 @@ public class PassportScannerSpec {
 					assertThat(byr.isValid(new Field("byr", "1930"))).isEqualTo(Validation.VALID);
 					assertThat(byr.isValid(new Field("byr", "2002"))).isEqualTo(Validation.VALID);
 				}
+
+				@Test
+				void is_invalid_when_not_between_1920_and_2002() {
+					assertThat(byr.isValid(new Field("byr", "1900"))).isEqualTo(Validation.INVALID);
+					assertThat(byr.isValid(new Field("byr", "1919"))).isEqualTo(Validation.INVALID);
+					assertThat(byr.isValid(new Field("byr", "2003"))).isEqualTo(Validation.INVALID);
+					assertThat(byr.isValid(new Field("byr", "2100"))).isEqualTo(Validation.INVALID);
+				}
 			}
 		}
 	}
