@@ -28,11 +28,12 @@ public class PassportValidator {
 	}
 
 	public Validation isValid(Passport passport) {
-		if (passport.matchesFieldCount(7) && passport.containsFieldKeys(ALL_7_REQUIRED_KEYS.getKeys()))
+		if (ALL_8_REQUIRED_KEYS.check(passport)) {
 			return Validation.VALID;
-
-		if (passport.matchesFieldCount(8) && passport.containsFieldKeys(ALL_8_REQUIRED_KEYS.getKeys()))
+		}
+		if (ALL_7_REQUIRED_KEYS.check(passport)) {
 			return Validation.VALID;
+		}
 
 		return Validation.INVALID;
 	}

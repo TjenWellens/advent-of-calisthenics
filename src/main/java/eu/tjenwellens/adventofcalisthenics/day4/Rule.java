@@ -9,4 +9,10 @@ import java.util.List;
 @Getter
 public class Rule {
 	private final List<Field.Key> keys;
+
+	public boolean check(Passport passport) {
+		if (passport.matchesFieldCount(keys.size()) && passport.containsFieldKeys(keys))
+			return true;
+		return false;
+	}
 }
