@@ -6,6 +6,6 @@ import eu.tjenwellens.adventofcalisthenics.day4.Validation;
 public class ExperationYear implements FieldRule {
 	@Override
 	public Validation isValid(Field field) {
-		throw new UnsupportedOperationException();
+		return field.valueBetween(2020, 2030);
 	}
 }
