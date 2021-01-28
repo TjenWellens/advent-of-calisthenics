@@ -11,6 +11,6 @@ import java.util.stream.LongStream;
 
 public class ByrRule {
 	public Validation isValid(Field field) {
-		return Validation.VALID;
+		return field.valueBetween(1920, 2002);
 	}
 }
