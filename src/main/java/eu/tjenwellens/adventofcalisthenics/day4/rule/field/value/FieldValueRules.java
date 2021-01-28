@@ -19,7 +19,7 @@ public class FieldValueRules implements Rules {
 	@Override
 	public Validation isValid(Passport passport) {
 		for(FieldRule fieldRule : all()) {
-			if(passport.matchesFieldRule(HAIR_COLOR) != Validation.VALID) {
+			if(passport.matchesFieldRule(fieldRule) != Validation.VALID) {
 				return Validation.INVALID;
 			}
 		}
