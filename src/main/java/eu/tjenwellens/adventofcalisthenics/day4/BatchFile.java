@@ -11,19 +11,17 @@ public class BatchFile {
 
 	public Passports parse() {
 		List<Passport> result = new LinkedList<>();
-		Passport.PassportBuilder builder = Passport.builder();
+		List<Field> fields = new LinkedList<>();
 		for (String line : lines) {
 			if (line.isBlank()) {
-				result.add(builder.build());
-				builder = new Passport.PassportBuilder();
+				result.add(new Passport(fields));
+				fields = new LinkedList<>();
 				continue;
 			}
 
-			for(Field field : parseFields(line)) {
-				builder.field(field);
-			}
+			fields.addAll(parseFields(line));
 		}
-		result.add(builder.build());
+		result.add(new Passport(fields));
 		return new Passports(result);
 	}
 
