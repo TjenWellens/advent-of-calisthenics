@@ -15,6 +15,6 @@ public class FieldRules implements Rules {
 
 	@Override
 	public Validation isValid(Passport passport) {
-		return Validation.VALID;
+		return passport.matchesFieldRule(HAIR_COLOR);
 	}
 }

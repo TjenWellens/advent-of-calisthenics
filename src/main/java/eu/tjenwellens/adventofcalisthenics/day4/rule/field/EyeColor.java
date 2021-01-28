@@ -3,7 +3,11 @@ package eu.tjenwellens.adventofcalisthenics.day4.rule.field;
 import eu.tjenwellens.adventofcalisthenics.day4.Field;
 import eu.tjenwellens.adventofcalisthenics.day4.Validation;
 
-public class EyeColor implements FieldRule {
+public class EyeColor extends FieldRule {
+	public EyeColor() {
+		super(new Field.Key("ecl"));
+	}
+
 	private enum Color {
 		amb, blu, brn, gry, grn, hzl, oth
 	}

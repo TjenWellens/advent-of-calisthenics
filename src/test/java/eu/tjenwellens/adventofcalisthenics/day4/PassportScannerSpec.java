@@ -480,7 +480,7 @@ public class PassportScannerSpec {
 						new Field("eyr","2030"),
 						new Field("byr","1980"),
 						new Field("hcl","#623a2f")
-				)))).isEqualTo(Validation.INVALID);
+				)))).isEqualTo(Validation.VALID);
 			}
 		}
 	}
