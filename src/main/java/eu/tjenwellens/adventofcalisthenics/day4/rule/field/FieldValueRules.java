@@ -6,7 +6,7 @@ import eu.tjenwellens.adventofcalisthenics.day4.Validation;
 
 import java.util.List;
 
-public class FieldRules implements Rules {
+public class FieldValueRules implements Rules {
 	public static final FieldRule ISSUE_YEAR = new IssueYear();
 	public static final FieldRule BIRTH_YEAR = new BirthYear();
 	public static final FieldRule EXPIRATION_YEAR = new ExperationYear();

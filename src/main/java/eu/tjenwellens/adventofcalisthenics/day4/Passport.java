@@ -1,7 +1,6 @@
 package eu.tjenwellens.adventofcalisthenics.day4;
 
 import eu.tjenwellens.adventofcalisthenics.day4.rule.field.FieldRule;
-import eu.tjenwellens.adventofcalisthenics.day4.rule.field.FieldRules;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
