@@ -1,4 +1,6 @@
-package eu.tjenwellens.adventofcalisthenics.day4;
+package eu.tjenwellens.adventofcalisthenics.day4.rule.field.key;
+
+import eu.tjenwellens.adventofcalisthenics.day4.*;
 
 import java.util.List;
 

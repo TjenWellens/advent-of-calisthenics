@@ -1,6 +1,7 @@
 package eu.tjenwellens.adventofcalisthenics.day4;
 
-import eu.tjenwellens.adventofcalisthenics.day4.rule.field.value.FieldValueRules;
+import eu.tjenwellens.adventofcalisthenics.day4.rule.field.key.KeyRules;
+import eu.tjenwellens.adventofcalisthenics.day4.rule.field.value.ValueRules;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -272,7 +273,7 @@ public class PassportScannerSpec {
 		@Disabled
 		@Nested
 		class AcceptanceTest {
-			private final PassportScanner scanner = new PassportScanner(new FieldValueRules());
+			private final PassportScanner scanner = new PassportScanner(new ValueRules());
 
 			@Test
 			void scanner_counts_valid_passports() {
@@ -324,70 +325,70 @@ public class PassportScannerSpec {
 		class ValueRulesTest {
 			@Test
 			void birth_year_is_valid_when_between_1920_and_2002() {
-				assertThat(FieldValueRules.BIRTH_YEAR.isValid(new Field("byr", "1900"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.BIRTH_YEAR.isValid(new Field("byr", "1919"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.BIRTH_YEAR.isValid(new Field("byr", "1920"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.BIRTH_YEAR.isValid(new Field("byr", "1930"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.BIRTH_YEAR.isValid(new Field("byr", "2002"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.BIRTH_YEAR.isValid(new Field("byr", "2003"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.BIRTH_YEAR.isValid(new Field("byr", "2100"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.BIRTH_YEAR.isValid(new Field("byr", "1900"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.BIRTH_YEAR.isValid(new Field("byr", "1919"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.BIRTH_YEAR.isValid(new Field("byr", "1920"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.BIRTH_YEAR.isValid(new Field("byr", "1930"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.BIRTH_YEAR.isValid(new Field("byr", "2002"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.BIRTH_YEAR.isValid(new Field("byr", "2003"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.BIRTH_YEAR.isValid(new Field("byr", "2100"))).isEqualTo(Validation.INVALID);
 			}
 			@Test
 			void issue_year_is_valid_when_between_2010_and_2020() {
-				assertThat(FieldValueRules.ISSUE_YEAR.isValid(new Field("iyr", "1900"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.ISSUE_YEAR.isValid(new Field("iyr", "2009"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.ISSUE_YEAR.isValid(new Field("iyr", "2010"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.ISSUE_YEAR.isValid(new Field("iyr", "2015"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.ISSUE_YEAR.isValid(new Field("iyr", "2020"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.ISSUE_YEAR.isValid(new Field("iyr", "2021"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.ISSUE_YEAR.isValid(new Field("iyr", "2100"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.ISSUE_YEAR.isValid(new Field("iyr", "1900"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.ISSUE_YEAR.isValid(new Field("iyr", "2009"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.ISSUE_YEAR.isValid(new Field("iyr", "2010"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.ISSUE_YEAR.isValid(new Field("iyr", "2015"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.ISSUE_YEAR.isValid(new Field("iyr", "2020"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.ISSUE_YEAR.isValid(new Field("iyr", "2021"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.ISSUE_YEAR.isValid(new Field("iyr", "2100"))).isEqualTo(Validation.INVALID);
 			}
 			@Test
 			void expiration_year_is_valid_when_between_2020_and_2030() {
-				assertThat(FieldValueRules.EXPIRATION_YEAR.isValid(new Field("eyr", "1900"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2019"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2020"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2025"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2030"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2031"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2100"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.EXPIRATION_YEAR.isValid(new Field("eyr", "1900"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2019"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2020"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2025"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2030"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2031"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2100"))).isEqualTo(Validation.INVALID);
 			}
 			@Test
 			void height_is_valid_when_centimeters_between_150_and_193() {
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "100cm"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "149cm"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "150cm"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "180cm"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "193cm"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "194cm"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "200cm"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "100cm"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "149cm"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "150cm"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "180cm"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "193cm"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "194cm"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "200cm"))).isEqualTo(Validation.INVALID);
 			}
 			@Test
 			void height_is_valid_when_inches_between_59_and_76() {
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "50in"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "58in"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "59in"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "70in"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "76in"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "77in"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "100in"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "50in"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "58in"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "59in"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "70in"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "76in"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "77in"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "100in"))).isEqualTo(Validation.INVALID);
 			}
 			@Test
 			void height_is_invalid_when_neither_centimeters_nor_inches() {
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "10"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "59"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "150"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.HEIGHT.isValid(new Field("eyr", "1000"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "10"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "59"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "150"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.HEIGHT.isValid(new Field("eyr", "1000"))).isEqualTo(Validation.INVALID);
 			}
 			@Test
 			void hair_color_is_valid_when_hexcolor() {
-				assertThat(FieldValueRules.HAIR_COLOR.isValid(new Field("hcl", "#123abc"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.HAIR_COLOR.isValid(new Field("hcl", "#abc123"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.HAIR_COLOR.isValid(new Field("hcl", "#abcdef"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.HAIR_COLOR.isValid(new Field("hcl", "#123abc"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.HAIR_COLOR.isValid(new Field("hcl", "#abc123"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.HAIR_COLOR.isValid(new Field("hcl", "#abcdef"))).isEqualTo(Validation.VALID);
 
-				assertThat(FieldValueRules.HAIR_COLOR.isValid(new Field("hcl", "123abc"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.HAIR_COLOR.isValid(new Field("hcl", "#55555"))).isEqualTo(Validation.INVALID);
-				assertThat(FieldValueRules.HAIR_COLOR.isValid(new Field("hcl", "#66666g"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.HAIR_COLOR.isValid(new Field("hcl", "123abc"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.HAIR_COLOR.isValid(new Field("hcl", "#55555"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.HAIR_COLOR.isValid(new Field("hcl", "#66666g"))).isEqualTo(Validation.INVALID);
 			}
 			@Nested
 			class EyeColor {
@@ -395,70 +396,70 @@ public class PassportScannerSpec {
 				class Valid{
 					@Test
 					void when_amb() {
-						assertThat(FieldValueRules.EYE_COLOR.isValid(new Field("ecl", "amb"))).isEqualTo(Validation.VALID);
+						assertThat(ValueRules.EYE_COLOR.isValid(new Field("ecl", "amb"))).isEqualTo(Validation.VALID);
 					}
 					@Test
 					void when_blu() {
-						assertThat(FieldValueRules.EYE_COLOR.isValid(new Field("ecl", "blu"))).isEqualTo(Validation.VALID);
+						assertThat(ValueRules.EYE_COLOR.isValid(new Field("ecl", "blu"))).isEqualTo(Validation.VALID);
 					}
 					@Test
 					void when_brn() {
-						assertThat(FieldValueRules.EYE_COLOR.isValid(new Field("ecl", "brn"))).isEqualTo(Validation.VALID);
+						assertThat(ValueRules.EYE_COLOR.isValid(new Field("ecl", "brn"))).isEqualTo(Validation.VALID);
 					}
 					@Test
 					void when_gry() {
-						assertThat(FieldValueRules.EYE_COLOR.isValid(new Field("ecl", "gry"))).isEqualTo(Validation.VALID);
+						assertThat(ValueRules.EYE_COLOR.isValid(new Field("ecl", "gry"))).isEqualTo(Validation.VALID);
 					}
 					@Test
 					void when_grn() {
-						assertThat(FieldValueRules.EYE_COLOR.isValid(new Field("ecl", "grn"))).isEqualTo(Validation.VALID);
+						assertThat(ValueRules.EYE_COLOR.isValid(new Field("ecl", "grn"))).isEqualTo(Validation.VALID);
 					}
 					@Test
 					void when_hzl() {
-						assertThat(FieldValueRules.EYE_COLOR.isValid(new Field("ecl", "hzl"))).isEqualTo(Validation.VALID);
+						assertThat(ValueRules.EYE_COLOR.isValid(new Field("ecl", "hzl"))).isEqualTo(Validation.VALID);
 					}
 					@Test
 					void when_oth() {
-						assertThat(FieldValueRules.EYE_COLOR.isValid(new Field("ecl", "oth"))).isEqualTo(Validation.VALID);
+						assertThat(ValueRules.EYE_COLOR.isValid(new Field("ecl", "oth"))).isEqualTo(Validation.VALID);
 					}
 				}
 				@Nested
 				class Invalid{
 					@Test
 					void when_anything_else() {
-						assertThat(FieldValueRules.EYE_COLOR.isValid(new Field("ecl", "foo"))).isEqualTo(Validation.INVALID);
+						assertThat(ValueRules.EYE_COLOR.isValid(new Field("ecl", "foo"))).isEqualTo(Validation.INVALID);
 					}
 					@Test
 					void when_ends_with_correct_but_not_exact_match() {
-						assertThat(FieldValueRules.EYE_COLOR.isValid(new Field("ecl", "foo_oth"))).isEqualTo(Validation.INVALID);
+						assertThat(ValueRules.EYE_COLOR.isValid(new Field("ecl", "foo_oth"))).isEqualTo(Validation.INVALID);
 					}
 					@Test
 					void when_begins_with_correct_but_not_exact_match() {
-						assertThat(FieldValueRules.EYE_COLOR.isValid(new Field("ecl", "oth_foo"))).isEqualTo(Validation.INVALID);
+						assertThat(ValueRules.EYE_COLOR.isValid(new Field("ecl", "oth_foo"))).isEqualTo(Validation.INVALID);
 					}
 				}
 			}
 			@Test
 			void passport_id_is_valid_when_exactly_9_digits() {
-				assertThat(FieldValueRules.PASSPORT_ID.isValid(new Field("pid", "123456789"))).isEqualTo(Validation.VALID);
-				assertThat(FieldValueRules.PASSPORT_ID.isValid(new Field("pid", "999999999"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.PASSPORT_ID.isValid(new Field("pid", "123456789"))).isEqualTo(Validation.VALID);
+				assertThat(ValueRules.PASSPORT_ID.isValid(new Field("pid", "999999999"))).isEqualTo(Validation.VALID);
 			}
 			@Test
 			void passport_id_is_invalid_when_8_digits() {
-				assertThat(FieldValueRules.PASSPORT_ID.isValid(new Field("pid", "12345678"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.PASSPORT_ID.isValid(new Field("pid", "12345678"))).isEqualTo(Validation.INVALID);
 			}
 			@Test
 			void passport_id_is_invalid_when_10_digits() {
-				assertThat(FieldValueRules.PASSPORT_ID.isValid(new Field("pid", "1234567890"))).isEqualTo(Validation.INVALID);
+				assertThat(ValueRules.PASSPORT_ID.isValid(new Field("pid", "1234567890"))).isEqualTo(Validation.INVALID);
 			}
 		}
 
 		@DisplayName("field-rules")
 		@Nested
-		class FieldValueRulesTest {
+		class ValueRulesTest {
 			@Test
 			void fieldrules_validates_passport_when_valid() {
-				final FieldValueRules rules = new FieldValueRules();
+				final ValueRules rules = new ValueRules();
 				assertThat(rules.isValid(new Passport(List.of(
 						new Field("pid","087499704"),
 						new Field("hgt","74in"),
@@ -471,7 +472,7 @@ public class PassportScannerSpec {
 			}
 			@Test
 			void fieldrules_invalidates_passport_when_invalid_field_value() {
-				final FieldValueRules rules = new FieldValueRules();
+				final ValueRules rules = new ValueRules();
 				assertThat(rules.isValid(new Passport(List.of(
 						new Field("pid","087499704"),
 						new Field("hgt","74in"),
@@ -484,7 +485,7 @@ public class PassportScannerSpec {
 			}
 			@Test
 			void fieldrules_invalidates_passport_when_invalid_field_value2() {
-				final FieldValueRules rules = new FieldValueRules();
+				final ValueRules rules = new ValueRules();
 				assertThat(rules.isValid(new Passport(List.of(
 						new Field("pid","087499704"),
 						new Field("hgt","foo"),

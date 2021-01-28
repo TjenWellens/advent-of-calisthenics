@@ -7,7 +7,7 @@ import eu.tjenwellens.adventofcalisthenics.day4.rule.field.FieldRule;
 
 import java.util.List;
 
-public class FieldValueRules implements Rules {
+public class ValueRules implements Rules {
 	public static final FieldRule ISSUE_YEAR = new IssueYear();
 	public static final FieldRule BIRTH_YEAR = new BirthYear();
 	public static final FieldRule EXPIRATION_YEAR = new ExperationYear();
