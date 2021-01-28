@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PassportScannerSpec {
 	@Nested
 	class V1_KeyValidation {
-		private final PassportScanner scanner = new PassportScanner(new Rules());
+		private final PassportScanner scanner = new PassportScanner(new KeyRules());
 		@Disabled
 		@Test
 		void scanner_counts_valid_passports() {
@@ -143,6 +143,8 @@ public class PassportScannerSpec {
 		@DisplayName("a passport")
 		@Nested
 		class APassport {
+			private final Rules rules = new KeyRules();
+
 			@DisplayName("is valid")
 			@Nested
 			class IsValid {
@@ -158,7 +160,7 @@ public class PassportScannerSpec {
 							new Field("cid", "147"),
 							new Field("hgt", "183cm")
 					));
-					assertThat(new Rules().isValid(passport)).isEqualTo(Validation.VALID);
+					assertThat(rules.isValid(passport)).isEqualTo(Validation.VALID);
 				}
 
 				@Test
@@ -172,7 +174,7 @@ public class PassportScannerSpec {
 							new Field("iyr", "2017"),
 							new Field("hgt", "183cm")
 					));
-					assertThat(new Rules().isValid(passport)).isEqualTo(Validation.VALID);
+					assertThat(rules.isValid(passport)).isEqualTo(Validation.VALID);
 				}
 			}
 
@@ -190,7 +192,7 @@ public class PassportScannerSpec {
 							new Field("cid", "147"),
 							new Field("hgt", "183cm")
 					));
-					assertThat(new Rules().isValid(passport)).isEqualTo(Validation.INVALID);
+					assertThat(rules.isValid(passport)).isEqualTo(Validation.INVALID);
 				}
 
 				@Test
@@ -205,7 +207,7 @@ public class PassportScannerSpec {
 							new Field("cid", "bar"),
 							new Field("hgt", "bar")
 					));
-					assertThat(new Rules().isValid(passport)).isEqualTo(Validation.INVALID);
+					assertThat(rules.isValid(passport)).isEqualTo(Validation.INVALID);
 				}
 			}
 		}
