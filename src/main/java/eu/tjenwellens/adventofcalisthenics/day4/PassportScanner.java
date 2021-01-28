@@ -23,7 +23,7 @@ public class PassportScanner {
 			new Field.Key("hgt")
 	));
 	public PassportCount countValidPassports(BatchFile batchFile) {
-		return new PassportCount(1);
+		return batchFile.parse().count();
 	}
 
 	public Validation isValid(Passport passport) {

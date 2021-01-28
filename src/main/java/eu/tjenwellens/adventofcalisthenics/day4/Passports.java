@@ -11,4 +11,8 @@ import java.util.List;
 public class Passports {
 	@Singular
 	private final List<Passport> passports;
+
+	public PassportCount count() {
+		return new PassportCount(passports.size());
+	}
 }
