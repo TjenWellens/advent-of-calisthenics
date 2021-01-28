@@ -217,5 +217,19 @@ public class PassportScannerSpec {
 
 			assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(1));
 		}
+		@Test
+		void counts_all_valid_passports() {
+			final List<String> lines = Arrays.asList("""
+							ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+							byr:1937 iyr:2017 cid:147 hgt:183cm
+
+							ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+							byr:1937 iyr:2017 cid:147 hgt:183cm
+				""".split("\n"));
+
+			final BatchFile batchFile = new BatchFile(lines);
+
+			assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(2));
+		}
 	}
 }
