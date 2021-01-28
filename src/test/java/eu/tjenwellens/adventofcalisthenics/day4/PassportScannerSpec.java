@@ -63,7 +63,6 @@ public class PassportScannerSpec {
 			)));
 		}
 
-		@Disabled
 		@Test
 		void can_parse_multiple_single_line_single_field_passwords() {
 			final List<String> lines = Arrays.asList("""
