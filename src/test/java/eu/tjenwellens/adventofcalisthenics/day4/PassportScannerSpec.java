@@ -452,11 +452,6 @@ public class PassportScannerSpec {
 			void passport_id_is_invalid_when_10_digits() {
 				assertThat(ValueRules.PASSPORT_ID.isValid(new Field("pid", "1234567890"))).isEqualTo(Validation.INVALID);
 			}
-		}
-
-		@DisplayName("field-rules")
-		@Nested
-		class ValueRulesTest {
 			@Test
 			void fieldrules_validates_passport_when_valid() {
 				final ValueRules rules = new ValueRules();
@@ -496,6 +491,11 @@ public class PassportScannerSpec {
 						new Field("hcl","#623a2f")
 				)))).isEqualTo(Validation.INVALID);
 			}
+		}
+
+		@DisplayName("field-rules")
+		@Nested
+		class FieldRulesTest {
 		}
 	}
 }
