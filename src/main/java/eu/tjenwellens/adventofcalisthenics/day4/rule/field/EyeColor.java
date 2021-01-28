@@ -11,7 +11,7 @@ public class EyeColor implements FieldRule {
 	@Override
 	public Validation isValid(Field field) {
 		for(Color color : Color.values()) {
-			if(field.valueEndsWith(color.name()))
+			if(field.valueEquals(new Field.Value(color.name())))
 				return Validation.VALID;
 		}
 		return Validation.INVALID;

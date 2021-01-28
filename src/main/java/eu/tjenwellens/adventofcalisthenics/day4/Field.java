@@ -34,6 +34,10 @@ public class Field {
 		return value.matches("#[0-9a-f]{6}") ? Validation.VALID : Validation.INVALID;
 	}
 
+	public boolean valueEquals(Value value) {
+		return this.value.equals(value.value);
+	}
+
 	@AllArgsConstructor
 	public static class Key {
 		private final String key;
