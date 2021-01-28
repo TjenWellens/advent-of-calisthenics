@@ -185,7 +185,7 @@ public class PassportScannerSpec {
 			}
 
 			@Test
-			void when_an_unknown_field_is_present() {
+			void when_8_fields_are_present_but_one_unknown_field_is_present() {
 				final Passport passport = new Passport(List.of(
 						new Field("foo", "bar"),
 						new Field("pid", "bar"),
