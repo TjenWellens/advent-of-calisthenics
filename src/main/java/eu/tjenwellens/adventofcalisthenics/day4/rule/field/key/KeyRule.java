@@ -12,7 +12,7 @@ class KeyRule {
 	private final List<Field.Key> keys;
 
 	public Validation check(Passport passport) {
-		if (!passport.matchesFieldCount(keys.size()))
+		if (!passport.matchesFieldCount(new Passport.FieldCount(keys.size())))
 			return Validation.INVALID;
 		if (!passport.containsFieldKeys(keys))
 			return Validation.INVALID;

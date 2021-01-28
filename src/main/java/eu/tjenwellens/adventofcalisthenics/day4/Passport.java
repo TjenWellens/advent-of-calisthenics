@@ -3,6 +3,7 @@ package eu.tjenwellens.adventofcalisthenics.day4;
 import eu.tjenwellens.adventofcalisthenics.day4.rule.field.FieldRule;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 import java.util.List;
@@ -30,8 +31,8 @@ public class Passport {
 		return false;
 	}
 
-	public boolean matchesFieldCount(int fieldCount) {
-		return fields.size() == fieldCount;
+	public boolean matchesFieldCount(FieldCount fieldCount) {
+		return fields.size() == fieldCount.count;
 	}
 
 	public Validation matchesFieldRule(FieldRule rule) {
@@ -45,5 +46,10 @@ public class Passport {
 			if(rule.appliesTo(field)) return Optional.of(field);
 		}
 		return Optional.empty();
+	}
+
+	@RequiredArgsConstructor
+	public static class FieldCount {
+		private final int count;
 	}
 }
