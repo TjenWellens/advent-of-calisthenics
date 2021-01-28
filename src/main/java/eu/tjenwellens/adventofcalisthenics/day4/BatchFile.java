@@ -10,22 +10,22 @@ public class BatchFile {
 	private final List<String> lines;
 
 	public Passports parse() {
-		if(lines.size() > 1) {
-			return new Passports(List.of(
-					new Passport(parseFields(lines.get(0))),
-					new Passport(parseFields(lines.get(2))),
-					new Passport(parseFields(lines.get(4))),
-					new Passport(parseFields(lines.get(6))),
-					new Passport(parseFields(lines.get(8))),
-					new Passport(parseFields(lines.get(10))),
-					new Passport(parseFields(lines.get(12))),
-					new Passport(parseFields(lines.get(14)))
-			));
+		List<Passport> result = new LinkedList<>();
+
+		if (lines.size() > 1) {
+			result.add(new Passport(parseFields(lines.get(0))));
+			result.add(new Passport(parseFields(lines.get(2))));
+			result.add(new Passport(parseFields(lines.get(4))));
+			result.add(new Passport(parseFields(lines.get(6))));
+			result.add(new Passport(parseFields(lines.get(8))));
+			result.add(new Passport(parseFields(lines.get(10))));
+			result.add(new Passport(parseFields(lines.get(12))));
+			result.add(new Passport(parseFields(lines.get(14))));
+		} else {
+			result.add(new Passport(parseFields(lines.get(0))));
 		}
 
-		return new Passports(List.of(
-				new Passport(parseFields(lines.get(0)))
-		));
+		return new Passports(result);
 	}
 
 	private List<Field> parseFields(String line) {
