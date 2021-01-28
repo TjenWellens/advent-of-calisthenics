@@ -13,13 +13,13 @@ public class BatchFile {
 		if(lines.size() > 1) {
 			return new Passports(List.of(
 					new Passport(parseFields(lines.get(0))),
-					new Passport(List.of(new Field("pid", "860033327"))),
-					new Passport(List.of(new Field("eyr", "2020"))),
-					new Passport(List.of(new Field("hcl", "#fffffd"))),
-					new Passport(List.of(new Field("byr", "1937"))),
-					new Passport(List.of(new Field("iyr", "2017"))),
-					new Passport(List.of(new Field("cid", "147"))),
-					new Passport(List.of(new Field("hgt", "183cm")))
+					new Passport(parseFields(lines.get(2))),
+					new Passport(parseFields(lines.get(4))),
+					new Passport(parseFields(lines.get(6))),
+					new Passport(parseFields(lines.get(8))),
+					new Passport(parseFields(lines.get(10))),
+					new Passport(parseFields(lines.get(12))),
+					new Passport(parseFields(lines.get(14)))
 			));
 		}
 
