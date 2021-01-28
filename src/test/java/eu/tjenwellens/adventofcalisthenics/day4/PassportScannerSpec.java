@@ -123,5 +123,25 @@ public class PassportScannerSpec {
 					new Passport(List.of(new Field("ecl", "gry"),new Field("pid", "860033327")))
 			)));
 		}
+
+		@Test
+		void can_parse_a_password_with_multiple_fields_on_multiple_lines() {
+			final List<String> lines = Arrays.asList("""
+								ecl:gry hcl:#fffffd
+								pid:860033327
+								byr:1937
+					""".split("\n"));
+
+			final BatchFile batchFile = new BatchFile(lines);
+
+			assertThat(batchFile.parse()).isEqualTo(new Passports(List.of(
+					new Passport(List.of(
+							new Field("ecl", "gry"),
+							new Field("hcl", "#fffffd"),
+							new Field("pid", "860033327"),
+							new Field("byr", "1937")
+					))
+			)));
+		}
 	}
 }
