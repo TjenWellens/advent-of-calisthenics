@@ -21,8 +21,13 @@ public class Field {
 		return minimum <= value && value <= maximum ? Validation.VALID : Validation.INVALID;
 	}
 
-	public Value getValue() {
-		return new Value(value);
+	public boolean valueEndsWith(String suffix) {
+		return value.endsWith(suffix);
+	}
+
+	public Field withoutSuffix(String suffix) {
+		final String valueWithoutSuffix = value.substring(0, value.length() - suffix.length());
+		return new Field(key, valueWithoutSuffix);
 	}
 
 	@AllArgsConstructor
@@ -31,8 +36,6 @@ public class Field {
 	}
 
 	@AllArgsConstructor
-	@Getter
-	@EqualsAndHashCode
 	public static class Value {
 		private final String value;
 	}

@@ -9,17 +9,12 @@ class Height implements FieldRule {
 
 	@Override
 	public Validation isValid(Field field) {
-		final String value = field.getValue().getValue();
-		if (value.endsWith("cm")) {
-			return Centimeters.isValid(new Field("hgt", stripValueSuffix(value, "cm")));
+		if (field.valueEndsWith("cm")) {
+			return Centimeters.isValid(field.withoutSuffix("cm"));
 		}
-		if (value.endsWith("in")) {
-			return Inches.isValid(new Field("hgt", stripValueSuffix(value, "in")));
+		if (field.valueEndsWith("in")) {
+			return Inches.isValid(field.withoutSuffix("in"));
 		}
 		return Validation.INVALID;
-	}
-
-	private String stripValueSuffix(String value, String suffix) {
-		return value.substring(0, value.length() - suffix.length());
 	}
 }
