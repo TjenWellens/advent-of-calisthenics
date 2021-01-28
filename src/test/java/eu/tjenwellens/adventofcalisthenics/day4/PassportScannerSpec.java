@@ -457,7 +457,7 @@ public class PassportScannerSpec {
 		@Nested
 		class FieldRulesTest {
 			@Test
-			void fieldrules_validates_passport() {
+			void fieldrules_validates_passport_when_valid() {
 				final FieldRules rules = new FieldRules();
 				assertThat(rules.isValid(new Passport(List.of(
 						new Field("pid","087499704"),
@@ -468,6 +468,19 @@ public class PassportScannerSpec {
 						new Field("byr","1980"),
 						new Field("hcl","#623a2f")
 				)))).isEqualTo(Validation.VALID);
+			}
+			@Test
+			void fieldrules_invalidates_passport_when_invalid_field_value() {
+				final FieldRules rules = new FieldRules();
+				assertThat(rules.isValid(new Passport(List.of(
+						new Field("pid","087499704"),
+						new Field("hgt","74in"),
+						new Field("ecl","foo"),
+						new Field("iyr","2012"),
+						new Field("eyr","2030"),
+						new Field("byr","1980"),
+						new Field("hcl","#623a2f")
+				)))).isEqualTo(Validation.INVALID);
 			}
 		}
 	}
