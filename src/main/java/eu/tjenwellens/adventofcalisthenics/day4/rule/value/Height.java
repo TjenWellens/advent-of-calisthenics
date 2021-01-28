@@ -2,11 +2,12 @@ package eu.tjenwellens.adventofcalisthenics.day4.rule.value;
 
 import eu.tjenwellens.adventofcalisthenics.day4.passport.Field;
 import eu.tjenwellens.adventofcalisthenics.day4.Validation;
+import eu.tjenwellens.adventofcalisthenics.day4.passport.Keys;
 import eu.tjenwellens.adventofcalisthenics.day4.rule.FieldRule;
 
 class Height extends FieldRule {
 	public Height() {
-		super(new Field.Key("hgt"));
+		super(Keys.HEIGHT);
 	}
 
 	@Override
