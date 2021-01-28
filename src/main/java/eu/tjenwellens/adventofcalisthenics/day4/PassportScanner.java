@@ -1,7 +1,10 @@
 package eu.tjenwellens.adventofcalisthenics.day4;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 public class PassportScanner {
-	private static final Rules rules = new Rules();
+	private final Rules rules;
 
 	public PassportCount countValidPassports(BatchFile batchFile) {
 		final Passports passports = batchFile.parse();

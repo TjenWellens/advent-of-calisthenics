@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PassportScannerSpec {
 	@Nested
 	class V1_KeyValidation {
-		private final PassportScanner scanner = new PassportScanner();
+		private final PassportScanner scanner = new PassportScanner(new Rules());
 		@Disabled
 		@Test
 		void scanner_counts_valid_passports() {
