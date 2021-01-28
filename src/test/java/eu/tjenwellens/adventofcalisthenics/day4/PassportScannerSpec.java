@@ -150,7 +150,7 @@ public class PassportScannerSpec {
 	class APassportValidator {
 		@DisplayName("is valid")
 		@Nested
-		class Valid {
+		class IsValid {
 			@Test
 			void when_all_eight_fields_are_present() {
 				final Passport passport = new Passport(List.of(
@@ -164,6 +164,23 @@ public class PassportScannerSpec {
 						new Field("hgt", "183cm")
 				));
 				assertThat(new PassportValidator().isValid(passport)).isEqualTo(PassportValidator.Validation.VALID);
+			}
+		}
+		@DisplayName("is invalid")
+		@Nested
+		class IsInvalid {
+			@Test
+			void when_missing_a_field_other_than_cid() {
+				final Passport passport = new Passport(List.of(
+						new Field("pid", "860033327"),
+						new Field("eyr", "2020"),
+						new Field("hcl", "#fffffd"),
+						new Field("byr", "1937"),
+						new Field("iyr", "2017"),
+						new Field("cid", "147"),
+						new Field("hgt", "183cm")
+				));
+				assertThat(new PassportValidator().isValid(passport)).isEqualTo(PassportValidator.Validation.INVALID);
 			}
 		}
 	}
