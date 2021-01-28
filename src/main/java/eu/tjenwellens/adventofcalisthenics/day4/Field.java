@@ -2,6 +2,7 @@ package eu.tjenwellens.adventofcalisthenics.day4;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 
 @AllArgsConstructor
@@ -20,8 +21,18 @@ public class Field {
 		return minimum <= value && value <= maximum ? Validation.VALID : Validation.INVALID;
 	}
 
+	public Value getValue() {
+		return new Value(value);
+	}
+
 	@AllArgsConstructor
 	public static class Key {
 		private final String key;
+	}
+
+	@AllArgsConstructor
+	@Getter
+	public static class Value {
+		private final String value;
 	}
 }

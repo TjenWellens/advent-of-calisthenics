@@ -8,6 +8,7 @@ public class FieldRules implements Rules {
 	public static final FieldRule ISSUE_YEAR = new IssueYear();
 	public static final FieldRule BIRTH_YEAR = new BirthYear();
 	public static final FieldRule EXPIRATION_YEAR = new ExperationYear();
+	public static final FieldRule HEIGHT = new Height();
 
 	@Override
 	public Validation isValid(Passport passport) {

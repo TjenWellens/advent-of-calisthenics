@@ -352,6 +352,33 @@ public class PassportScannerSpec {
 				assertThat(FieldRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2031"))).isEqualTo(Validation.INVALID);
 				assertThat(FieldRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2100"))).isEqualTo(Validation.INVALID);
 			}
+			@Test
+			void height_is_valid_when_centimeters_between_150_and_193() {
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "100cm"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "149cm"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "150cm"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "180cm"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "193cm"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "194cm"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "200cm"))).isEqualTo(Validation.INVALID);
+			}
+			@Test
+			void height_is_valid_when_inches_between_59_and_76() {
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "50in"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "58in"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "59in"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "70in"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "76in"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "77in"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "100in"))).isEqualTo(Validation.INVALID);
+			}
+			@Test
+			void height_is_invalid_when_neither_centimeters_nor_inches() {
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "10"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "59"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "150"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.HEIGHT.isValid(new Field("eyr", "1000"))).isEqualTo(Validation.INVALID);
+			}
 		}
 	}
 }
