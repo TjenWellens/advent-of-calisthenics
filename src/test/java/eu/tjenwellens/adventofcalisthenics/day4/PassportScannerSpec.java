@@ -1,6 +1,5 @@
 package eu.tjenwellens.adventofcalisthenics.day4;
 
-import eu.tjenwellens.adventofcalisthenics.day4.rule.field.FieldRule;
 import eu.tjenwellens.adventofcalisthenics.day4.rule.field.FieldRules;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -323,35 +322,25 @@ public class PassportScannerSpec {
 
 		@Nested
 		class ValueRulesTest {
-			@Nested
-			class Byr {
-				final FieldRule byr = FieldRules.BIRTH_YEAR;
-
-				@Test
-				void is_valid_when_between_1920_and_2002() {
-					assertThat(byr.isValid(new Field("byr", "1900"))).isEqualTo(Validation.INVALID);
-					assertThat(byr.isValid(new Field("byr", "1919"))).isEqualTo(Validation.INVALID);
-					assertThat(byr.isValid(new Field("byr", "1920"))).isEqualTo(Validation.VALID);
-					assertThat(byr.isValid(new Field("byr", "1930"))).isEqualTo(Validation.VALID);
-					assertThat(byr.isValid(new Field("byr", "2002"))).isEqualTo(Validation.VALID);
-					assertThat(byr.isValid(new Field("byr", "2003"))).isEqualTo(Validation.INVALID);
-					assertThat(byr.isValid(new Field("byr", "2100"))).isEqualTo(Validation.INVALID);
-				}
+			@Test
+			void birth_year_is_valid_when_between_1920_and_2002() {
+				assertThat(FieldRules.BIRTH_YEAR.isValid(new Field("byr", "1900"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.BIRTH_YEAR.isValid(new Field("byr", "1919"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.BIRTH_YEAR.isValid(new Field("byr", "1920"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.BIRTH_YEAR.isValid(new Field("byr", "1930"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.BIRTH_YEAR.isValid(new Field("byr", "2002"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.BIRTH_YEAR.isValid(new Field("byr", "2003"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.BIRTH_YEAR.isValid(new Field("byr", "2100"))).isEqualTo(Validation.INVALID);
 			}
-			@Nested
-			class IssueYear {
-				final FieldRule rule = FieldRules.ISSUE_YEAR;
-
-				@Test
-				void is_valid_when_between_2010_and_2020() {
-					assertThat(rule.isValid(new Field("iyr", "1900"))).isEqualTo(Validation.INVALID);
-					assertThat(rule.isValid(new Field("iyr", "2009"))).isEqualTo(Validation.INVALID);
-					assertThat(rule.isValid(new Field("iyr", "2010"))).isEqualTo(Validation.VALID);
-					assertThat(rule.isValid(new Field("iyr", "2015"))).isEqualTo(Validation.VALID);
-					assertThat(rule.isValid(new Field("iyr", "2020"))).isEqualTo(Validation.VALID);
-					assertThat(rule.isValid(new Field("iyr", "2021"))).isEqualTo(Validation.INVALID);
-					assertThat(rule.isValid(new Field("iyr", "2100"))).isEqualTo(Validation.INVALID);
-				}
+			@Test
+			void issue_year_is_valid_when_between_2010_and_2020() {
+				assertThat(FieldRules.ISSUE_YEAR.isValid(new Field("iyr", "1900"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.ISSUE_YEAR.isValid(new Field("iyr", "2009"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.ISSUE_YEAR.isValid(new Field("iyr", "2010"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.ISSUE_YEAR.isValid(new Field("iyr", "2015"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.ISSUE_YEAR.isValid(new Field("iyr", "2020"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.ISSUE_YEAR.isValid(new Field("iyr", "2021"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.ISSUE_YEAR.isValid(new Field("iyr", "2100"))).isEqualTo(Validation.INVALID);
 			}
 		}
 	}
