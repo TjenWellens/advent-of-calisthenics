@@ -270,6 +270,7 @@ public class PassportScannerSpec {
 		@Disabled
 		@Nested
 		class AcceptanceTest {
+			private final PassportScanner scanner = new PassportScanner(new FieldRules());
 			@Test
 			void scanner_counts_valid_passports() {
 				final List<String> lines = Arrays.asList("""
@@ -289,7 +290,7 @@ public class PassportScannerSpec {
 
 				final BatchFile batchFile = new BatchFile(lines);
 
-				assertThat(new V2PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(4));
+				assertThat(scanner.countValidPassports(batchFile)).isEqualTo(new PassportCount(4));
 			}
 			@Test
 			void scanner_does_not_count_invalid_passports() {
@@ -311,7 +312,7 @@ public class PassportScannerSpec {
 
 				final BatchFile batchFile = new BatchFile(lines);
 
-				assertThat(new V2PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(0));
+				assertThat(scanner.countValidPassports(batchFile)).isEqualTo(new PassportCount(0));
 			}
 		}
 	}
