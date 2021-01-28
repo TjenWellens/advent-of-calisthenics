@@ -32,6 +32,7 @@ public class Field {
 
 	@AllArgsConstructor
 	@Getter
+	@EqualsAndHashCode
 	public static class Value {
 		private final String value;
 	}
