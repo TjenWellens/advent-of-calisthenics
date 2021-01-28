@@ -7,4 +7,8 @@ import java.util.List;
 @AllArgsConstructor
 public class BatchFile {
 	private final List<String> lines;
+
+	public Passports parse() {
+		throw new UnsupportedOperationException();
+	}
 }
