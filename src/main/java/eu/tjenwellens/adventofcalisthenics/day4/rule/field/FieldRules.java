@@ -13,8 +13,8 @@ public class FieldRules implements Rules {
 
 	@Override
 	public Validation isValid(Passport passport) {
-//		if(keys.isValid(passport) == Validation.INVALID)
-//			return Validation.INVALID;
+		if(keys.isValid(passport) == Validation.INVALID)
+			return Validation.INVALID;
 		if(values.isValid(passport) == Validation.INVALID)
 			return Validation.INVALID;
 		return Validation.VALID;
