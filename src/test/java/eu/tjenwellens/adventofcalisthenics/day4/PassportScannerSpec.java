@@ -340,6 +340,21 @@ public class PassportScannerSpec {
 					assertThat(byr.isValid(new Field("byr", "2100"))).isEqualTo(Validation.INVALID);
 				}
 			}
+			@Nested
+			class IssueYear {
+				final IssueYearRule rule = new IssueYearRule();
+
+				@Test
+				void is_valid_when_between_2010_and_2020() {
+					assertThat(rule.isValid(new Field("iyr", "1900"))).isEqualTo(Validation.INVALID);
+					assertThat(rule.isValid(new Field("iyr", "2009"))).isEqualTo(Validation.INVALID);
+					assertThat(rule.isValid(new Field("iyr", "2010"))).isEqualTo(Validation.VALID);
+					assertThat(rule.isValid(new Field("iyr", "2015"))).isEqualTo(Validation.VALID);
+					assertThat(rule.isValid(new Field("iyr", "2020"))).isEqualTo(Validation.VALID);
+					assertThat(rule.isValid(new Field("iyr", "2021"))).isEqualTo(Validation.INVALID);
+					assertThat(rule.isValid(new Field("iyr", "2100"))).isEqualTo(Validation.INVALID);
+				}
+			}
 		}
 	}
 }
