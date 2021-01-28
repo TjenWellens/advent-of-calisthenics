@@ -106,7 +106,7 @@ public class PassportScannerSpec {
 			final BatchFile batchFile = new BatchFile(lines);
 
 			assertThat(batchFile.parse()).isEqualTo(new Passports(List.of(
-					new Passport(List.of(new Field("ecl", "gry"),new Field("pid", "860033327")))
+					new Passport(List.of(new Field("ecl", "gry"), new Field("pid", "860033327")))
 			)));
 		}
 
@@ -120,7 +120,7 @@ public class PassportScannerSpec {
 			final BatchFile batchFile = new BatchFile(lines);
 
 			assertThat(batchFile.parse()).isEqualTo(new Passports(List.of(
-					new Passport(List.of(new Field("ecl", "gry"),new Field("pid", "860033327")))
+					new Passport(List.of(new Field("ecl", "gry"), new Field("pid", "860033327")))
 			)));
 		}
 
@@ -142,6 +142,29 @@ public class PassportScannerSpec {
 							new Field("byr", "1937")
 					))
 			)));
+		}
+	}
+
+	@DisplayName("a passport")
+	@Nested
+	class APassportValidator {
+		@DisplayName("is valid")
+		@Nested
+		class Valid {
+			@Test
+			void when_all_eight_fields_are_present() {
+				final Passport passport = new Passport(List.of(
+						new Field("ecl", "gry"),
+						new Field("pid", "860033327"),
+						new Field("eyr", "2020"),
+						new Field("hcl", "#fffffd"),
+						new Field("byr", "1937"),
+						new Field("iyr", "2017"),
+						new Field("cid", "147"),
+						new Field("hgt", "183cm")
+				));
+				assertThat(new PassportValidator().isValid(passport)).isEqualTo(PassportValidator.Validation.VALID);
+			}
 		}
 	}
 }
