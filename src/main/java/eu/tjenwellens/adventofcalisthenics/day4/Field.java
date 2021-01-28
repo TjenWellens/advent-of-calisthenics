@@ -30,6 +30,10 @@ public class Field {
 		return new Field(key, valueWithoutSuffix);
 	}
 
+	public Validation isHexColor() {
+		return value.matches("#[0-9a-f]{6}") ? Validation.VALID : Validation.INVALID;
+	}
+
 	@AllArgsConstructor
 	public static class Key {
 		private final String key;
