@@ -342,6 +342,16 @@ public class PassportScannerSpec {
 				assertThat(FieldRules.ISSUE_YEAR.isValid(new Field("iyr", "2021"))).isEqualTo(Validation.INVALID);
 				assertThat(FieldRules.ISSUE_YEAR.isValid(new Field("iyr", "2100"))).isEqualTo(Validation.INVALID);
 			}
+			@Test
+			void expiration_year_is_valid_when_between_2020_and_2030() {
+				assertThat(FieldRules.EXPIRATION_YEAR.isValid(new Field("eyr", "1900"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2019"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2020"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2025"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2030"))).isEqualTo(Validation.VALID);
+				assertThat(FieldRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2031"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.EXPIRATION_YEAR.isValid(new Field("eyr", "2100"))).isEqualTo(Validation.INVALID);
+			}
 		}
 	}
 }
