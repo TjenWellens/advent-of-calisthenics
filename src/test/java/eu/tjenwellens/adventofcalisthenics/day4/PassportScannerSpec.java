@@ -18,6 +18,7 @@ public class PassportScannerSpec {
 	@Nested
 	class V1_KeyValidation {
 		private final PassportScanner scanner = new PassportScanner(new KeyRules());
+
 		@Disabled
 		@Test
 		void scanner_counts_valid_passports() {
@@ -271,6 +272,7 @@ public class PassportScannerSpec {
 		@Nested
 		class AcceptanceTest {
 			private final PassportScanner scanner = new PassportScanner(new FieldRules());
+
 			@Test
 			void scanner_counts_valid_passports() {
 				final List<String> lines = Arrays.asList("""
@@ -292,6 +294,7 @@ public class PassportScannerSpec {
 
 				assertThat(scanner.countValidPassports(batchFile)).isEqualTo(new PassportCount(4));
 			}
+
 			@Test
 			void scanner_does_not_count_invalid_passports() {
 				final List<String> lines = Arrays.asList("""
@@ -313,6 +316,20 @@ public class PassportScannerSpec {
 				final BatchFile batchFile = new BatchFile(lines);
 
 				assertThat(scanner.countValidPassports(batchFile)).isEqualTo(new PassportCount(0));
+			}
+		}
+
+		@Nested
+		class ValueRulesTest {
+			@Nested
+			class Byr {
+				final ByrRule byr = new ByrRule();
+
+				@Test
+				void is_valid_when_between_1920_and_2002() {
+					Field field = new Field("byr", "1930");
+					assertThat(byr.isValid(field)).isEqualTo(Validation.VALID);
+				}
 			}
 		}
 	}
