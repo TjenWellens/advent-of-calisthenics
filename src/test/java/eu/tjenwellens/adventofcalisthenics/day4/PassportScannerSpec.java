@@ -51,6 +51,20 @@ public class PassportScannerSpec {
 	@Nested
 	class ABatchFile {
 		@Test
+		void can_parse_a_single_line_single_field_password() {
+			final List<String> lines = Arrays.asList("""
+								ecl:gry
+					""".split("\n"));
+
+			final BatchFile batchFile = new BatchFile(lines);
+
+			assertThat(batchFile.parse()).isEqualTo(new Passports(List.of(
+					new Passport(List.of(new Field("ecl", "gry")))
+			)));
+		}
+
+		@Disabled
+		@Test
 		void can_parse_multiple_single_line_single_field_passwords() {
 			final List<String> lines = Arrays.asList("""
 								ecl:gry
