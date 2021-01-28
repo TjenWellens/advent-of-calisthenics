@@ -11,6 +11,7 @@ public class FieldRules implements Rules {
 	public static final FieldRule HEIGHT = new Height();
 	public static final FieldRule HAIR_COLOR = new HairColor();
 	public static final FieldRule EYE_COLOR = new EyeColor();
+	public static final FieldRule PASSPORT_ID = new PassportId();
 
 	@Override
 	public Validation isValid(Passport passport) {
