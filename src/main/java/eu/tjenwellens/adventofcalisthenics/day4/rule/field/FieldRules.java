@@ -4,6 +4,8 @@ import eu.tjenwellens.adventofcalisthenics.day4.Passport;
 import eu.tjenwellens.adventofcalisthenics.day4.Rules;
 import eu.tjenwellens.adventofcalisthenics.day4.Validation;
 
+import java.util.List;
+
 public class FieldRules implements Rules {
 	public static final FieldRule ISSUE_YEAR = new IssueYear();
 	public static final FieldRule BIRTH_YEAR = new BirthYear();
@@ -15,6 +17,23 @@ public class FieldRules implements Rules {
 
 	@Override
 	public Validation isValid(Passport passport) {
-		return passport.matchesFieldRule(HAIR_COLOR);
+		for(FieldRule fieldRule : all()) {
+			if(passport.matchesFieldRule(HAIR_COLOR) != Validation.VALID) {
+				return Validation.INVALID;
+			}
+		}
+		return Validation.VALID;
+	}
+
+	private List<FieldRule> all() {
+		return List.of(
+				ISSUE_YEAR,
+				BIRTH_YEAR,
+				EXPIRATION_YEAR,
+				HEIGHT,
+				HAIR_COLOR,
+				EYE_COLOR,
+				PASSPORT_ID
+		);
 	}
 }
