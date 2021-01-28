@@ -151,7 +151,7 @@ public class PassportScannerSpec {
 						new Field("cid", "147"),
 						new Field("hgt", "183cm")
 				));
-				assertThat(new PassportScanner().isValid(passport)).isEqualTo(Validation.VALID);
+				assertThat(new Rules().isValid(passport)).isEqualTo(Validation.VALID);
 			}
 
 			@Test
@@ -165,7 +165,7 @@ public class PassportScannerSpec {
 						new Field("iyr", "2017"),
 						new Field("hgt", "183cm")
 				));
-				assertThat(new PassportScanner().isValid(passport)).isEqualTo(Validation.VALID);
+				assertThat(new Rules().isValid(passport)).isEqualTo(Validation.VALID);
 			}
 		}
 
@@ -183,7 +183,7 @@ public class PassportScannerSpec {
 						new Field("cid", "147"),
 						new Field("hgt", "183cm")
 				));
-				assertThat(new PassportScanner().isValid(passport)).isEqualTo(Validation.INVALID);
+				assertThat(new Rules().isValid(passport)).isEqualTo(Validation.INVALID);
 			}
 
 			@Test
@@ -198,7 +198,7 @@ public class PassportScannerSpec {
 						new Field("cid", "bar"),
 						new Field("hgt", "bar")
 				));
-				assertThat(new PassportScanner().isValid(passport)).isEqualTo(Validation.INVALID);
+				assertThat(new Rules().isValid(passport)).isEqualTo(Validation.INVALID);
 			}
 		}
 	}
