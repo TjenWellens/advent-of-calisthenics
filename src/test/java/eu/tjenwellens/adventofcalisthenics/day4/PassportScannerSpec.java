@@ -35,18 +35,6 @@ public class PassportScannerSpec {
 		assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(2));
 	}
 
-	@Test
-	void a_password_with_all_eight_fields_is_valid() {
-		final List<String> lines = Arrays.asList("""
-							ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
-							byr:1937 iyr:2017 cid:147 hgt:183cm
-				""".split("\n"));
-
-		final BatchFile batchFile = new BatchFile(lines);
-
-		assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(1));
-	}
-
 	@DisplayName("a batchfile")
 	@Nested
 	class ABatchFile {
@@ -212,6 +200,22 @@ public class PassportScannerSpec {
 				));
 				assertThat(new PassportScanner().isValid(passport)).isEqualTo(Validation.INVALID);
 			}
+		}
+	}
+
+	@DisplayName("a passport validator")
+	@Nested
+	class APassportValidator {
+		@Test
+		void counts_a_valid_passport() {
+			final List<String> lines = Arrays.asList("""
+							ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+							byr:1937 iyr:2017 cid:147 hgt:183cm
+				""".split("\n"));
+
+			final BatchFile batchFile = new BatchFile(lines);
+
+			assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(1));
 		}
 	}
 }
