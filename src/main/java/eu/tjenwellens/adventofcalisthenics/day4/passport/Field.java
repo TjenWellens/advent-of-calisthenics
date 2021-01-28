@@ -1,8 +1,8 @@
-package eu.tjenwellens.adventofcalisthenics.day4;
+package eu.tjenwellens.adventofcalisthenics.day4.passport;
 
+import eu.tjenwellens.adventofcalisthenics.day4.Validation;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.ToString;
 
 @AllArgsConstructor

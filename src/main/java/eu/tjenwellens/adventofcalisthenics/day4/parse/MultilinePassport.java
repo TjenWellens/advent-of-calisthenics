@@ -1,12 +1,14 @@
-package eu.tjenwellens.adventofcalisthenics.day4;
+package eu.tjenwellens.adventofcalisthenics.day4.parse;
 
+import eu.tjenwellens.adventofcalisthenics.day4.passport.Field;
+import eu.tjenwellens.adventofcalisthenics.day4.passport.Passport;
 import lombok.AllArgsConstructor;
 
 import java.util.LinkedList;
 import java.util.List;
 
 @AllArgsConstructor
-public class MultilinePassport {
+class MultilinePassport {
 	private final List<String> lines;
 
 	public Passport parsePassword() {

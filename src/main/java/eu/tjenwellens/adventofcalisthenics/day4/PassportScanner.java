@@ -1,5 +1,7 @@
 package eu.tjenwellens.adventofcalisthenics.day4;
 
+import eu.tjenwellens.adventofcalisthenics.day4.parse.BatchFile;
+import eu.tjenwellens.adventofcalisthenics.day4.rule.Rules;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

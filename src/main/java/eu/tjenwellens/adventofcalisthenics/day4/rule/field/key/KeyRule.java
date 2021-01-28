@@ -1,7 +1,7 @@
 package eu.tjenwellens.adventofcalisthenics.day4.rule.field.key;
 
-import eu.tjenwellens.adventofcalisthenics.day4.Field;
-import eu.tjenwellens.adventofcalisthenics.day4.Passport;
+import eu.tjenwellens.adventofcalisthenics.day4.passport.Field;
+import eu.tjenwellens.adventofcalisthenics.day4.passport.Passport;
 import eu.tjenwellens.adventofcalisthenics.day4.Validation;
 import lombok.RequiredArgsConstructor;
 

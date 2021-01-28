@@ -1,5 +1,9 @@
 package eu.tjenwellens.adventofcalisthenics.day4;
 
+import eu.tjenwellens.adventofcalisthenics.day4.parse.BatchFile;
+import eu.tjenwellens.adventofcalisthenics.day4.passport.Field;
+import eu.tjenwellens.adventofcalisthenics.day4.passport.Passport;
+import eu.tjenwellens.adventofcalisthenics.day4.rule.Rules;
 import eu.tjenwellens.adventofcalisthenics.day4.rule.field.FieldRules;
 import eu.tjenwellens.adventofcalisthenics.day4.rule.field.key.KeyRules;
 import eu.tjenwellens.adventofcalisthenics.day4.rule.field.value.ValueRules;

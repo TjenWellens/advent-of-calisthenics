@@ -1,6 +1,6 @@
 package eu.tjenwellens.adventofcalisthenics.day4.rule.field;
 
-import eu.tjenwellens.adventofcalisthenics.day4.Field;
+import eu.tjenwellens.adventofcalisthenics.day4.passport.Field;
 import eu.tjenwellens.adventofcalisthenics.day4.Validation;
 import lombok.RequiredArgsConstructor;
 
