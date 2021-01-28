@@ -7,6 +7,6 @@ public class PassportValidator {
 	}
 
 	public Validation isValid(Passport passport) {
-		return Validation.VALID;
+		return passport.has8fields() ? Validation.VALID : Validation.INVALID;
 	}
 }

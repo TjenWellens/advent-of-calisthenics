@@ -9,4 +9,8 @@ import java.util.List;
 @ToString
 public class Passport{
 	private final List<Field> fields;
+
+	public boolean has8fields() {
+		return fields.size() == 8;
+	}
 }
