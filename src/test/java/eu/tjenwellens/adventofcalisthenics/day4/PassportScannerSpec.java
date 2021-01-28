@@ -389,6 +389,47 @@ public class PassportScannerSpec {
 				assertThat(FieldRules.HAIR_COLOR.isValid(new Field("hcl", "#55555"))).isEqualTo(Validation.INVALID);
 				assertThat(FieldRules.HAIR_COLOR.isValid(new Field("hcl", "#66666g"))).isEqualTo(Validation.INVALID);
 			}
+			@Nested
+			class EyeColor {
+				@Nested
+				class Valid{
+					@Test
+					void when_amb() {
+						assertThat(FieldRules.EYE_COLOR.isValid(new Field("ecl", "amb"))).isEqualTo(Validation.VALID);
+					}
+					@Test
+					void when_blu() {
+						assertThat(FieldRules.EYE_COLOR.isValid(new Field("ecl", "blu"))).isEqualTo(Validation.VALID);
+					}
+					@Test
+					void when_brn() {
+						assertThat(FieldRules.EYE_COLOR.isValid(new Field("ecl", "brn"))).isEqualTo(Validation.VALID);
+					}
+					@Test
+					void when_gry() {
+						assertThat(FieldRules.EYE_COLOR.isValid(new Field("ecl", "gry"))).isEqualTo(Validation.VALID);
+					}
+					@Test
+					void when_grn() {
+						assertThat(FieldRules.EYE_COLOR.isValid(new Field("ecl", "grn"))).isEqualTo(Validation.VALID);
+					}
+					@Test
+					void when_hzl() {
+						assertThat(FieldRules.EYE_COLOR.isValid(new Field("ecl", "hzl"))).isEqualTo(Validation.VALID);
+					}
+					@Test
+					void when_oth() {
+						assertThat(FieldRules.EYE_COLOR.isValid(new Field("ecl", "oth"))).isEqualTo(Validation.VALID);
+					}
+				}
+				@Nested
+				class Invalid{
+					@Test
+					void when_anything_else() {
+						assertThat(FieldRules.EYE_COLOR.isValid(new Field("ecl", "foo"))).isEqualTo(Validation.INVALID);
+					}
+				}
+			}
 		}
 	}
 }

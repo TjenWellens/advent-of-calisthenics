@@ -10,6 +10,7 @@ public class FieldRules implements Rules {
 	public static final FieldRule EXPIRATION_YEAR = new ExperationYear();
 	public static final FieldRule HEIGHT = new Height();
 	public static final FieldRule HAIR_COLOR = new HairColor();
+	public static final FieldRule EYE_COLOR = new EyeColor();
 
 	@Override
 	public Validation isValid(Passport passport) {
