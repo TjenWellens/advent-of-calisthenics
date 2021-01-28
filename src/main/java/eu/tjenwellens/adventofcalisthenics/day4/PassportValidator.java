@@ -23,15 +23,11 @@ public class PassportValidator {
 			new Field.Key("hgt")
 	));
 
-	public enum Validation {
-		VALID, INVALID
-	}
-
 	public Validation isValid(Passport passport) {
-		if (ALL_8_REQUIRED_KEYS.check(passport)) {
+		if (ALL_8_REQUIRED_KEYS.check(passport) == Validation.VALID) {
 			return Validation.VALID;
 		}
-		if (ALL_7_REQUIRED_KEYS.check(passport)) {
+		if (ALL_7_REQUIRED_KEYS.check(passport) == Validation.VALID) {
 			return Validation.VALID;
 		}
 
