@@ -19,12 +19,15 @@ public class BatchFile {
 	}
 
 	private List<Field> parseFields(String line) {
-		final String[] fieldStrings = line.trim().split(" ");
 		final List<Field> result = new LinkedList<>();
-		for (String fieldString : fieldStrings) {
+		for (String fieldString : parseFieldStrings(line)) {
 			result.add(parseField(fieldString));
 		}
 		return result;
+	}
+
+	private String[] parseFieldStrings(String line) {
+		return line.trim().split(" ");
 	}
 
 	private Field parseField(String fieldString) {
