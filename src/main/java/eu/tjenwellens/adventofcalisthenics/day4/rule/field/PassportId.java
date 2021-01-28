@@ -6,6 +6,6 @@ import eu.tjenwellens.adventofcalisthenics.day4.Validation;
 public class PassportId implements FieldRule {
 	@Override
 	public Validation isValid(Field field) {
-		throw new UnsupportedOperationException();
+		return field.is9digits();
 	}
 }

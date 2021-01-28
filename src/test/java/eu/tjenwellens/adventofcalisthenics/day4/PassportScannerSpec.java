@@ -440,10 +440,16 @@ public class PassportScannerSpec {
 			}
 			@Test
 			void passport_id_is_valid_when_exactly_9_digits() {
-				assertThat(FieldRules.PASSPORT_ID.isValid(new Field("pid", "88888888"))).isEqualTo(Validation.INVALID);
 				assertThat(FieldRules.PASSPORT_ID.isValid(new Field("pid", "123456789"))).isEqualTo(Validation.VALID);
 				assertThat(FieldRules.PASSPORT_ID.isValid(new Field("pid", "999999999"))).isEqualTo(Validation.VALID);
-				assertThat(FieldRules.PASSPORT_ID.isValid(new Field("pid", "1000000000"))).isEqualTo(Validation.INVALID);
+			}
+			@Test
+			void passport_id_is_invalid_when_8_digits() {
+				assertThat(FieldRules.PASSPORT_ID.isValid(new Field("pid", "12345678"))).isEqualTo(Validation.INVALID);
+			}
+			@Test
+			void passport_id_is_invalid_when_10_digits() {
+				assertThat(FieldRules.PASSPORT_ID.isValid(new Field("pid", "1234567890"))).isEqualTo(Validation.INVALID);
 			}
 		}
 	}

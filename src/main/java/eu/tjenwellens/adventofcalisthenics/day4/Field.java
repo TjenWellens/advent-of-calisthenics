@@ -38,6 +38,10 @@ public class Field {
 		return this.value.equals(value.value);
 	}
 
+	public Validation is9digits() {
+		return value.matches("[0-9]{9}") ? Validation.VALID : Validation.INVALID;
+	}
+
 	@AllArgsConstructor
 	public static class Key {
 		private final String key;
