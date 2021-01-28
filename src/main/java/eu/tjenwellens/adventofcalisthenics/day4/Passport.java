@@ -31,4 +31,8 @@ public class Passport {
 		}
 		return false;
 	}
+
+	public boolean has7fields() {
+		return fields.size() == 7;
+	}
 }
