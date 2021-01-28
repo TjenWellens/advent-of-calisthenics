@@ -1,5 +1,6 @@
 package eu.tjenwellens.adventofcalisthenics.day4;
 
+import eu.tjenwellens.adventofcalisthenics.FieldRule;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -323,7 +324,7 @@ public class PassportScannerSpec {
 		class ValueRulesTest {
 			@Nested
 			class Byr {
-				final ByrRule byr = new ByrRule();
+				final FieldRule byr = new ByrRule();
 
 				@Test
 				void is_valid_when_between_1920_and_2002() {
@@ -342,7 +343,7 @@ public class PassportScannerSpec {
 			}
 			@Nested
 			class IssueYear {
-				final IssueYearRule rule = new IssueYearRule();
+				final FieldRule rule = new IssueYearRule();
 
 				@Test
 				void is_valid_when_between_2010_and_2020() {
