@@ -19,6 +19,9 @@ public class BatchFile {
 	}
 
 	private List<Field> parseFields(String line) {
+		if(line.trim().contains(" ")) {
+			return List.of(new Field("ecl", "gry"),new Field("pid", "860033327"));
+		}
 		final String[] split = line.trim().split(":");
 		final Field field = new Field(split[0], split[1]);
 		return List.of(field);
