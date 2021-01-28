@@ -11,18 +11,34 @@ public class BatchFile {
 
 	public Passports parse() {
 		Passports.PassportsBuilder result = Passports.builder();
+		for (List<String> lines : groupLinesDelimitedByBlankLine()) {
+			result.passport(parsePassword(lines));
+		}
+		return result.build();
+	}
+
+	private Passport parsePassword(List<String> lines) {
 		List<Field> fields = new LinkedList<>();
 		for (String line : lines) {
+			fields.addAll(parseFields(line));
+		}
+		return new Passport(fields);
+	}
+
+	private List<List<String>> groupLinesDelimitedByBlankLine() {
+		List<List<String>> result = new LinkedList<>();
+		List<String> linesForCurrentPassword = new LinkedList<>();
+		for (String line : lines) {
 			if (line.isBlank()) {
-				result.passport(new Passport(fields));
-				fields = new LinkedList<>();
+				result.add(linesForCurrentPassword);
+				linesForCurrentPassword = new LinkedList<>();
 				continue;
 			}
 
-			fields.addAll(parseFields(line));
+			linesForCurrentPassword.add(line);
 		}
-		result.passport(new Passport(fields));
-		return result.build();
+		result.add(linesForCurrentPassword);
+		return result;
 	}
 
 	private List<Field> parseFields(String line) {
