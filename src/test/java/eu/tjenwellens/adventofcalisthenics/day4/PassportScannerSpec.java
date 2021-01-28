@@ -428,6 +428,14 @@ public class PassportScannerSpec {
 					void when_anything_else() {
 						assertThat(FieldRules.EYE_COLOR.isValid(new Field("ecl", "foo"))).isEqualTo(Validation.INVALID);
 					}
+					@Test
+					void when_ends_with_correct_but_not_exact_match() {
+						assertThat(FieldRules.EYE_COLOR.isValid(new Field("ecl", "foo_oth"))).isEqualTo(Validation.INVALID);
+					}
+					@Test
+					void when_begins_with_correct_but_not_exact_match() {
+						assertThat(FieldRules.EYE_COLOR.isValid(new Field("ecl", "oth_foo"))).isEqualTo(Validation.INVALID);
+					}
 				}
 			}
 		}
