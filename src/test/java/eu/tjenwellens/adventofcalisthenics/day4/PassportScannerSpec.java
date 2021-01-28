@@ -480,7 +480,7 @@ public class PassportScannerSpec {
 						new Field("eyr","2030"),
 						new Field("byr","1980"),
 						new Field("hcl","#623a2f")
-				)))).isEqualTo(Validation.VALID);
+				)))).isEqualTo(Validation.INVALID);
 			}
 			@Test
 			void fieldrules_invalidates_passport_when_invalid_field_value2() {
@@ -493,7 +493,7 @@ public class PassportScannerSpec {
 						new Field("eyr","2030"),
 						new Field("byr","1980"),
 						new Field("hcl","#623a2f")
-				)))).isEqualTo(Validation.VALID);
+				)))).isEqualTo(Validation.INVALID);
 			}
 		}
 	}
