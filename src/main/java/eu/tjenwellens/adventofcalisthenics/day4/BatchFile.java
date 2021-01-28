@@ -10,19 +10,19 @@ public class BatchFile {
 	private final List<String> lines;
 
 	public Passports parse() {
-		List<Passport> result = new LinkedList<>();
+		Passports.PassportsBuilder result = Passports.builder();
 		List<Field> fields = new LinkedList<>();
 		for (String line : lines) {
 			if (line.isBlank()) {
-				result.add(new Passport(fields));
+				result.passport(new Passport(fields));
 				fields = new LinkedList<>();
 				continue;
 			}
 
 			fields.addAll(parseFields(line));
 		}
-		result.add(new Passport(fields));
-		return new Passports(result);
+		result.passport(new Passport(fields));
+		return result.build();
 	}
 
 	private List<Field> parseFields(String line) {
