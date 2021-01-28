@@ -387,6 +387,7 @@ public class PassportScannerSpec {
 
 				assertThat(FieldRules.HAIR_COLOR.isValid(new Field("hcl", "123abc"))).isEqualTo(Validation.INVALID);
 				assertThat(FieldRules.HAIR_COLOR.isValid(new Field("hcl", "#55555"))).isEqualTo(Validation.INVALID);
+				assertThat(FieldRules.HAIR_COLOR.isValid(new Field("hcl", "#66666g"))).isEqualTo(Validation.INVALID);
 			}
 		}
 	}
