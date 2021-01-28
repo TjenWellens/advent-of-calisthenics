@@ -482,6 +482,19 @@ public class PassportScannerSpec {
 						new Field("hcl","#623a2f")
 				)))).isEqualTo(Validation.VALID);
 			}
+			@Test
+			void fieldrules_invalidates_passport_when_invalid_field_value2() {
+				final FieldValueRules rules = new FieldValueRules();
+				assertThat(rules.isValid(new Passport(List.of(
+						new Field("pid","087499704"),
+						new Field("hgt","foo"),
+						new Field("ecl","grn"),
+						new Field("iyr","2012"),
+						new Field("eyr","2030"),
+						new Field("byr","1980"),
+						new Field("hcl","#623a2f")
+				)))).isEqualTo(Validation.VALID);
+			}
 		}
 	}
 }
