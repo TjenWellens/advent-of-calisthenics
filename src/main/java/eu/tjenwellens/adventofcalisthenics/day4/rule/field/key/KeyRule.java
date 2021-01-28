@@ -1,11 +1,14 @@
-package eu.tjenwellens.adventofcalisthenics.day4;
+package eu.tjenwellens.adventofcalisthenics.day4.rule.field.key;
 
+import eu.tjenwellens.adventofcalisthenics.day4.Field;
+import eu.tjenwellens.adventofcalisthenics.day4.Passport;
+import eu.tjenwellens.adventofcalisthenics.day4.Validation;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 @RequiredArgsConstructor
-public class Rule {
+class KeyRule {
 	private final List<Field.Key> keys;
 
 	public Validation check(Passport passport) {

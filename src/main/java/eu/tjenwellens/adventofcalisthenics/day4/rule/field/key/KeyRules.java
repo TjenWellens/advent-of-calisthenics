@@ -5,7 +5,7 @@ import eu.tjenwellens.adventofcalisthenics.day4.*;
 import java.util.List;
 
 public class KeyRules implements Rules {
-	private static final Rule ALL_8_REQUIRED_KEYS = new Rule(List.of(
+	private static final KeyRule ALL_8_REQUIRED_KEYS = new KeyRule(List.of(
 			new Field.Key("ecl"),
 			new Field.Key("pid"),
 			new Field.Key("eyr"),
@@ -15,7 +15,7 @@ public class KeyRules implements Rules {
 			new Field.Key("cid"),
 			new Field.Key("hgt")
 	));
-	private static final Rule ALL_7_REQUIRED_KEYS = new Rule(List.of(
+	private static final KeyRule ALL_7_REQUIRED_KEYS = new KeyRule(List.of(
 			new Field.Key("ecl"),
 			new Field.Key("pid"),
 			new Field.Key("eyr"),
