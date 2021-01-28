@@ -271,10 +271,10 @@ public class PassportScannerSpec {
 
 	@Nested
 	class V2_FieldValueValidation {
+		private final PassportScanner scanner = new PassportScanner(new ValueRules());
 		@Disabled
 		@Nested
 		class AcceptanceTest {
-			private final PassportScanner scanner = new PassportScanner(new ValueRules());
 
 			@Test
 			void scanner_counts_valid_passports() {
@@ -523,6 +523,15 @@ public class PassportScannerSpec {
 						new Field("hcl","#623a2f")
 				)))).isEqualTo(Validation.INVALID);
 			}
+		}
+
+		@Disabled
+		@Test
+		void input() throws IOException {
+			final Path path = Paths.get("src", "test", "resources", "day-4-input.txt");
+			final List<String> lines = Files.readAllLines(path);
+			final BatchFile batchFile = new BatchFile(lines);
+			assertThat(scanner.countValidPassports(batchFile)).isEqualTo(new PassportCount(160));
 		}
 	}
 }
