@@ -11,8 +11,10 @@ public class Rule {
 	private final List<Field.Key> keys;
 
 	public Validation check(Passport passport) {
-		if (passport.matchesFieldCount(keys.size()) && passport.containsFieldKeys(keys))
-			return Validation.VALID;
-		return Validation.INVALID;
+		if (!passport.matchesFieldCount(keys.size()))
+			return Validation.INVALID;
+		if (!passport.containsFieldKeys(keys))
+			return Validation.INVALID;
+		return Validation.VALID;
 	}
 }
