@@ -12,17 +12,9 @@ public class BatchFile {
 	public Passports parse() {
 		Passports.PassportsBuilder result = Passports.builder();
 		for (List<String> lines : groupLinesDelimitedByBlankLine()) {
-			result.passport(parsePassword(lines));
+			result.passport(new MultilinePassport(lines).parsePassword());
 		}
 		return result.build();
-	}
-
-	private Passport parsePassword(List<String> lines) {
-		List<Field> fields = new LinkedList<>();
-		for (String line : lines) {
-			fields.addAll(parseFields(line));
-		}
-		return new Passport(fields);
 	}
 
 	private List<List<String>> groupLinesDelimitedByBlankLine() {
@@ -39,22 +31,5 @@ public class BatchFile {
 		}
 		result.add(linesForCurrentPassword);
 		return result;
-	}
-
-	private List<Field> parseFields(String line) {
-		final List<Field> result = new LinkedList<>();
-		for (String fieldString : parseFieldStrings(line)) {
-			result.add(parseField(fieldString));
-		}
-		return result;
-	}
-
-	private String[] parseFieldStrings(String line) {
-		return line.trim().split(" ");
-	}
-
-	private Field parseField(String fieldString) {
-		final String[] split = fieldString.trim().split(":");
-		return new Field(split[0], split[1]);
 	}
 }
