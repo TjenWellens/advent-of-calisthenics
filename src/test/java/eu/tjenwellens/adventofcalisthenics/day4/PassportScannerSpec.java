@@ -324,7 +324,7 @@ public class PassportScannerSpec {
 		class ValueRulesTest {
 			@Nested
 			class Byr {
-				final FieldRule byr = new ByrRule();
+				final FieldRule byr = FieldRules.BIRTH_YEAR;
 
 				@Test
 				void is_valid_when_between_1920_and_2002() {
@@ -339,7 +339,7 @@ public class PassportScannerSpec {
 			}
 			@Nested
 			class IssueYear {
-				final FieldRule rule = new IssueYearRule();
+				final FieldRule rule = FieldRules.ISSUE_YEAR;
 
 				@Test
 				void is_valid_when_between_2010_and_2020() {
