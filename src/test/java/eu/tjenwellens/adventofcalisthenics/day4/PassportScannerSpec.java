@@ -453,18 +453,22 @@ public class PassportScannerSpec {
 			}
 		}
 
-		@Test
-		void fieldrules_validates_passport() {
-			final FieldRules rules = new FieldRules();
-			assertThat(rules.isValid(new Passport(List.of(
-					new Field("pid","087499704"),
-					new Field("hgt","74in"),
-					new Field("ecl","grn"),
-					new Field("iyr","2012"),
-					new Field("eyr","2030"),
-					new Field("byr","1980"),
-					new Field("hcl","#623a2f")
-			)))).isEqualTo(Validation.VALID);
+		@DisplayName("field-rules")
+		@Nested
+		class FieldRulesTest {
+			@Test
+			void fieldrules_validates_passport() {
+				final FieldRules rules = new FieldRules();
+				assertThat(rules.isValid(new Passport(List.of(
+						new Field("pid","087499704"),
+						new Field("hgt","74in"),
+						new Field("ecl","grn"),
+						new Field("iyr","2012"),
+						new Field("eyr","2030"),
+						new Field("byr","1980"),
+						new Field("hcl","#623a2f")
+				)))).isEqualTo(Validation.VALID);
+			}
 		}
 	}
 }
