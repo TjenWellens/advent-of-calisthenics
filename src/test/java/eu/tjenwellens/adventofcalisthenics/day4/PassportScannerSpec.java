@@ -1,6 +1,5 @@
 package eu.tjenwellens.adventofcalisthenics.day4;
 
-import eu.tjenwellens.adventofcalisthenics.day3.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -22,20 +21,20 @@ public class PassportScannerSpec {
 		@Test
 		void scanner_counts_valid_passports() {
 			final List<String> lines = Arrays.asList("""
-							ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
-							byr:1937 iyr:2017 cid:147 hgt:183cm
+								ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+								byr:1937 iyr:2017 cid:147 hgt:183cm
 
-							iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
-							hcl:#cfa07d byr:1929
+								iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
+								hcl:#cfa07d byr:1929
 
-							hcl:#ae17e1 iyr:2013
-							eyr:2024
-							ecl:brn pid:760753108 byr:1931
-							hgt:179cm
+								hcl:#ae17e1 iyr:2013
+								eyr:2024
+								ecl:brn pid:760753108 byr:1931
+								hgt:179cm
 
-							hcl:#cfa07d eyr:2025 pid:166559648
-							iyr:2011 ecl:brn hgt:59in
-				""".split("\n"));
+								hcl:#cfa07d eyr:2025 pid:166559648
+								iyr:2011 ecl:brn hgt:59in
+					""".split("\n"));
 
 			final BatchFile batchFile = new BatchFile(lines);
 
@@ -48,8 +47,8 @@ public class PassportScannerSpec {
 			@Test
 			void can_parse_a_single_line_single_field_password() {
 				final List<String> lines = Arrays.asList("""
-								ecl:gry
-					""".split("\n"));
+									ecl:gry
+						""".split("\n"));
 
 				final BatchFile batchFile = new BatchFile(lines);
 
@@ -61,22 +60,22 @@ public class PassportScannerSpec {
 			@Test
 			void can_parse_multiple_single_line_single_field_passwords() {
 				final List<String> lines = Arrays.asList("""
-								ecl:gry
+									ecl:gry
 
-								pid:860033327
+									pid:860033327
 
-								eyr:2020
+									eyr:2020
 
-								hcl:#fffffd
+									hcl:#fffffd
 
-								byr:1937
+									byr:1937
 
-								iyr:2017
+									iyr:2017
 
-								cid:147
+									cid:147
 
-								hgt:183cm
-					""".split("\n"));
+									hgt:183cm
+						""".split("\n"));
 
 				final BatchFile batchFile = new BatchFile(lines);
 
@@ -95,8 +94,8 @@ public class PassportScannerSpec {
 			@Test
 			void can_parse_a_password_with_multiple_fields_on_a_single_line() {
 				final List<String> lines = Arrays.asList("""
-								ecl:gry pid:860033327
-					""".split("\n"));
+									ecl:gry pid:860033327
+						""".split("\n"));
 
 				final BatchFile batchFile = new BatchFile(lines);
 
@@ -108,9 +107,9 @@ public class PassportScannerSpec {
 			@Test
 			void can_parse_a_password_with_fields_on_multiple_lines() {
 				final List<String> lines = Arrays.asList("""
-								ecl:gry
-								pid:860033327
-					""".split("\n"));
+									ecl:gry
+									pid:860033327
+						""".split("\n"));
 
 				final BatchFile batchFile = new BatchFile(lines);
 
@@ -122,10 +121,10 @@ public class PassportScannerSpec {
 			@Test
 			void can_parse_a_password_with_multiple_fields_on_multiple_lines() {
 				final List<String> lines = Arrays.asList("""
-								ecl:gry hcl:#fffffd
-								pid:860033327
-								byr:1937
-					""".split("\n"));
+									ecl:gry hcl:#fffffd
+									pid:860033327
+									byr:1937
+						""".split("\n"));
 
 				final BatchFile batchFile = new BatchFile(lines);
 
@@ -216,33 +215,35 @@ public class PassportScannerSpec {
 			@Test
 			void counts_a_valid_passport() {
 				final List<String> lines = Arrays.asList("""
-							ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
-							byr:1937 iyr:2017 cid:147 hgt:183cm
-				""".split("\n"));
+									ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+									byr:1937 iyr:2017 cid:147 hgt:183cm
+						""".split("\n"));
 
 				final BatchFile batchFile = new BatchFile(lines);
 
 				assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(1));
 			}
+
 			@Test
 			void counts_all_valid_passports() {
 				final List<String> lines = Arrays.asList("""
-							ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
-							byr:1937 iyr:2017 cid:147 hgt:183cm
+									ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+									byr:1937 iyr:2017 cid:147 hgt:183cm
 
-							ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
-							byr:1937 iyr:2017 cid:147 hgt:183cm
-				""".split("\n"));
+									ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+									byr:1937 iyr:2017 cid:147 hgt:183cm
+						""".split("\n"));
 
 				final BatchFile batchFile = new BatchFile(lines);
 
 				assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(2));
 			}
+
 			@Test
 			void does_not_count_an_invalid_passport() {
 				final List<String> lines = Arrays.asList("""
-							ecl:gry hgt:183cm
-				""".split("\n"));
+									ecl:gry hgt:183cm
+						""".split("\n"));
 
 				final BatchFile batchFile = new BatchFile(lines);
 
@@ -257,6 +258,57 @@ public class PassportScannerSpec {
 			final List<String> lines = Files.readAllLines(path);
 			final BatchFile batchFile = new BatchFile(lines);
 			assertThat(new PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(226));
+		}
+	}
+
+	@Nested
+	class V2_FieldValueValidation {
+		@Disabled
+		@Nested
+		class AcceptanceTest {
+			@Test
+			void scanner_counts_valid_passports() {
+				final List<String> lines = Arrays.asList("""
+									pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980
+									hcl:#623a2f
+
+									eyr:2029 ecl:blu cid:129 byr:1989
+									iyr:2014 pid:896056539 hcl:#a97842 hgt:165cm
+
+									hcl:#888785
+									hgt:164cm byr:2001 iyr:2015 cid:88
+									pid:545766238 ecl:hzl
+									eyr:2022
+
+									iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719
+						""".split("\n"));
+
+				final BatchFile batchFile = new BatchFile(lines);
+
+				assertThat(new V2PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(4));
+			}
+			@Test
+			void scanner_does_not_count_invalid_passports() {
+				final List<String> lines = Arrays.asList("""
+								 eyr:1972 cid:100
+								 hcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926
+
+								 iyr:2019
+								 hcl:#602927 eyr:1967 hgt:170cm
+								 ecl:grn pid:012533040 byr:1946
+
+								 hcl:dab227 iyr:2012
+								 ecl:brn hgt:182cm pid:021572410 eyr:2020 byr:1992 cid:277
+
+								 hgt:59cm ecl:zzz
+								 eyr:2038 hcl:74454a iyr:2023
+								 pid:3556412378 byr:2007
+						""".split("\n"));
+
+				final BatchFile batchFile = new BatchFile(lines);
+
+				assertThat(new V2PassportScanner().countValidPassports(batchFile)).isEqualTo(new PassportCount(0));
+			}
 		}
 	}
 }
